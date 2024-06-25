@@ -25,4 +25,6 @@ public class Address {
     private String country;
     @Column
     private String postalCode;
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL,orphanRemoval = true)
+    private Account account;
 }

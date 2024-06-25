@@ -37,7 +37,7 @@ public class AccountController implements AccountsApi {
     AccountRepository accountRepository;
     @Autowired
     CustomerRepository customerRepository;
-    @GetMapping("/test/{accountNumber}/balance")
+    @GetMapping("/{accountNumber}/balance")
     public ResponseEntity<AccountM>  testMethod(@PathVariable String accountNumber){
 
         Account account = accountRepository.findByAccountNumber(accountNumber);

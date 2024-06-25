@@ -1,20 +1,26 @@
 package com.bank.controller;
 
+
 import com.bank.api.CustomerApi;
-import com.bank.model.CustomerM;
+import com.bank.entity.Customer;
 import com.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 
-public class CustomerController implements CustomerApi {
+@RestController
+@RequestMapping("/api")
+public class CustomerController  implements CustomerApi {
     @Autowired
     CustomerRepository customerRepository;
+
+
     @Override
-    public CustomerM customerId(BigDecimal customerId) {
-        customerRepository.findByCustomerId(customerId);
-        CustomerM customerM = new CustomerM();
-        CustomerM ResponseEntity;
-        return customerM;
+    public ResponseEntity<Customer> customerId(BigDecimal customerId) {
+
+        return ResponseEntity.ok(customerRepository.findByCustomerId(customerId.longValue()));
     }
 }

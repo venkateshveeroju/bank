@@ -99,7 +99,8 @@ paths:
           in: path
           required: true
           schema:
-            type: number
+            type: integer
+
       responses:
         200:
           description: Person Infromation Retrieved
@@ -164,7 +165,7 @@ components:
           type: string
           example: 'country name'
         postalCode:
-          type: number
+          type: string
           example: '501510'
 
 

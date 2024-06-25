@@ -34,8 +34,12 @@ public class Account {
     @Column(nullable = false)
     private String accountNumber;
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name="customer_id")
+    @JoinColumn(name="customer_id",referencedColumnName = "id")
     private Customer customer;
+
+    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinColumn(name="address_id",referencedColumnName = "id")
+    private Address address;
     @CreationTimestamp
     private Date dateCreated;
     @UpdateTimestamp

@@ -2,6 +2,7 @@ package com.bank.service;
 
 
 import com.bank.entity.Account;
+import com.bank.entity.Address;
 import com.bank.entity.Customer;
 import com.bank.enums.Status;
 import com.bank.model.NewAccount;
@@ -47,13 +48,10 @@ public class AccountServiceImpl {
         {
             return ResponseEntity.ok("Account already exists : " +body.getCustomer().getFirstName() + "123");
         }
-        // Creating Date Object
         Date dateOne = new Date();
-        // Creating Instant object
         Instant inst = Instant.now();
 
         Customer cust = new Customer();
-        //cust.setAccount(body.getCustomer().getFirstName() + "123");
         cust.setFirstName(body.getCustomer().getFirstName());
         cust.setLastName(body.getCustomer().getLastName());
         cust.setAccountBalance(body.getCustomer().getBalance());
@@ -64,14 +62,20 @@ public class AccountServiceImpl {
         cust.setUpdationDate(dateOne.from(inst));
         cust.setCreationDate(dateOne.from(inst));
 
+        Address address = new Address();
+        address.setCity(body.getAddress().getCity());
+        address.setState(body.getAddress().getState());
+        address.setCountry(body.getAddress().getCountry());
+       //address.getPostalCode(body.getAddress().getPostalCode());
+
         Account acc = new Account();
         acc.setAccountNumber(body.getCustomer().getFirstName() + "123");
         acc.setAccountBalance(body.getCustomer().getBalance());
         acc.setStatus(Status.ACTIVE);
         acc.setDateCreated(dateOne.from(inst));
-
         acc.setLastActivity(dateOne.from(inst));
         acc.setCustomer(cust);
+        acc.setAddress(address);
 
         customerRepository.save(cust);
         return ResponseEntity.ok("Account created successfully " + accountRepository.save(acc).toString());
