@@ -1,10 +1,14 @@
 package com.bank.service;
 
 
+import com.bank.api.AccountsApi;
 import com.bank.entity.Account;
 import com.bank.entity.Address;
 import com.bank.entity.Customer;
 import com.bank.enums.Status;
+import com.bank.mapper.AccountMapper;
+import com.bank.model.AccountM;
+import com.bank.model.DepositRequest;
 import com.bank.model.NewAccount;
 import com.bank.repository.AccountRepository;
 import com.bank.repository.CustomerRepository;
@@ -24,60 +28,49 @@ public class AccountServiceImpl {
     private  AccountRepository accountRepository;
     @Autowired
     private  CustomerRepository customerRepository;
-    /*public Account getAccount(String accountNumber) {
-        Account account = accountRepository.findByAccountId(accountNumber);
-        AccountM accountM = new AccountM();
-        accountM.setAccountBalance(account.getAccountBalance());
-        accountM.setAccountType(account.getAccountType());
 
-        accountM.setStatus(account.getStatus());
-        CustomerM  customerM = new CustomerM();
-        accountM.setCustomer();
-        accountM.setDateCreated(account.getDateCreated());
-        accountM.setLastActivity(account.getLastActivity());
-        accountM.setCustomerName(account.getCustomer().getFirstName() + "," + account.getCustomer().getLastName());
-
-
-        return ResponseEntity.ok(accountM);
-       return  accountRepository.findByAccountId(accountNumber);
-    }
-*/
+    @Autowired
+    private AccountMapper accountMapper;
     public ResponseEntity<String> createAccount(NewAccount body) {
-       String str=  customerRepository.customerExistsByEmail( body.getCustomer().getEmail() );
-        if( (body.getCustomer().getEmail()!= null) && (str!=null) && (!str.isEmpty()))
-        {
-            return ResponseEntity.ok("Account already exists : " +body.getCustomer().getFirstName() + "123");
-        }
-        Date dateOne = new Date();
-        Instant inst = Instant.now();
 
-        Customer cust = new Customer();
-        cust.setFirstName(body.getCustomer().getFirstName());
-        cust.setLastName(body.getCustomer().getLastName());
-        cust.setAccountBalance(body.getCustomer().getBalance());
-        cust.setEmail( body.getCustomer().getEmail());
-        cust.setDob(body.getCustomer().getDob());
-        cust.setPassword(body.getCustomer().getPassword());
-        cust.setStatus(Status.ACTIVE);
-        cust.setUpdationDate(dateOne.from(inst));
-        cust.setCreationDate(dateOne.from(inst));
+            String str = customerRepository.findByEmail(body.getCustomer().getEmail());
+            if ((body.getCustomer().getEmail() != null) && (str != null) && (!str.isEmpty())) {
+                return ResponseEntity.ok("Account already exists : " + body.getCustomer().getName() + "123");
+            }
+            Date dateOne = new Date();
+            Instant inst = Instant.now();
 
-        Address address = new Address();
-        address.setCity(body.getAddress().getCity());
-        address.setState(body.getAddress().getState());
-        address.setCountry(body.getAddress().getCountry());
-       //address.getPostalCode(body.getAddress().getPostalCode());
+            Address address = new Address();
+            address.setStreet(body.getCustomer().getAddress().getStreet());
+            address.setCity(body.getCustomer().getAddress().getCity());
+            address.setState(body.getCustomer().getAddress().getState());
+            address.setCountry(body.getCustomer().getAddress().getCountry());
+            address.setPostalCode(body.getCustomer().getAddress().getPostalCode());
 
-        Account acc = new Account();
-        acc.setAccountNumber(body.getCustomer().getFirstName() + "123");
-        acc.setAccountBalance(body.getCustomer().getBalance());
-        acc.setStatus(Status.ACTIVE);
-        acc.setDateCreated(dateOne.from(inst));
-        acc.setLastActivity(dateOne.from(inst));
-        acc.setCustomer(cust);
-        acc.setAddress(address);
+            Account acc = new Account();
+            acc.setAccountNumber(body.getCustomer().getName() + "123");
+            acc.setBalance(body.getCustomer().getAccount().getBalance());
+            acc.setStatus(Status.ACTIVE);
+            acc.setCreatedTimeStamp(dateOne.from(inst));
+            acc.setUpdatedTimeStamp(dateOne.from(inst));
 
-        customerRepository.save(cust);
-        return ResponseEntity.ok("Account created successfully " + accountRepository.save(acc).toString());
+            Customer cust = new Customer();
+            cust.setName(body.getCustomer().getName());
+            cust.setEmail(body.getCustomer().getEmail());
+            cust.setPassword(body.getCustomer().getPassword());
+            cust.setAccount(acc);
+            cust.setAddress(address);
+
+            customerRepository.save(cust);
+            return ResponseEntity.ok("Account created successfully " + accountRepository.save(acc).toString());
+
     }
+
+
+    public AccountM getAccount(String accountNumber) {
+        AccountM accM = accountMapper.convertToAccountM(accountRepository.findByAccountNumber(accountNumber));
+        return accM;
+    }
+
+
 }

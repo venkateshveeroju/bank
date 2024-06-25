@@ -3,11 +3,14 @@ info:
   title: Banking API Specification for account operations
   description: |-
     A simple banking API that allows two operations:
-    - get account balance given account number
-    - deposit amount to a account
+    - API to open an account with the option to add initial credit.
+    - API to retrieve account information including account balance.
+    - API to retrieve person information.
+    - API to make a transfer from one account to another.
+
   version: 1.0-SNAPSHOT
 servers:
-  - url: https://localhost:/api/v1
+  - url: https://localhost:/api
 tags:
   - name: accounts
     description: Operations between bank accounts
@@ -39,14 +42,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountNotFoundError'
-  /accounts/{accountId}/balance:
+  /accounts/{accountNumber}/balance:
     get:
       tags:
         - Account
       summary: Get account balance
       description: Get account information using account number
       parameters:
-        - name: accountId
+        - name: accountNumber
           in: path
           required: true
           schema:
@@ -87,7 +90,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountNotFoundError'
-  /customer/{customerId}:
+  /customer/{accountNumber}:
     get:
       tags:
         - Customer
@@ -95,11 +98,11 @@ paths:
       description: Retrieves Person information using customer id.
       operationId: customerId
       parameters:
-        - name: customerId
+        - name: accountNumber
           in: path
           required: true
           schema:
-            type: integer
+            type: string
 
       responses:
         200:
@@ -122,7 +125,7 @@ components:
   securitySchemes:
     oAuthSample:
       type: oauth2
-      description: This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)
+      description: This API uses OAuth 2 with the implicit grant flow.
       flows:
         implicit:
           authorizationUrl: https://api.example.com/oauth2/authorize
@@ -133,11 +136,9 @@ components:
     NewAccount:
       type: object
       required:
-        - firstName
-        - lastName
+        - name
         - email
         - password
-        - dob
         - street
         - city
         - state
@@ -146,8 +147,7 @@ components:
       properties:
         customer:
           $ref: '#/components/schemas/CustomerM'
-        address:
-          $ref: '#/components/schemas/AddressM'
+
 
     AddressM:
       type: object
@@ -172,25 +172,20 @@ components:
     CustomerM:
       type: object
       properties:
-        firstName:
+        name:
           type: string
-          example: 'firstName'
-        lastName:
-          type: string
-          example: 'lastName'
-        balance:
-          type: number
-          description: Available balance
+          example: 'fullName'
         email:
           type: string
           format: email
-          example: 'abchfg@efg.com'
-        dob:
-          type: string
-          example: '12.23.2000'
+          example: 'maxmuller@gmail.com'
         password:
           type: string
-          example: "abcd1234"
+          example: "max234"
+        address:
+          $ref: '#/components/schemas/AddressM'
+        account:
+          $ref: '#/components/schemas/AccountM'
 
     CustomerCreated:
       type: string
@@ -220,28 +215,22 @@ components:
           type: string
           enum: [deposit, withdrawal]
           example: deposit
+
     AccountM:
       type: object
       properties:
-        accountId:
+        accountNumber:
           type: string
           example: 'A1234'
-        customerName:
-          type: string
-          example: 'firstname lastname'
-        accountBalance:
+        balance:
           type: number
           example: 5000.00
         status:
           type: string
-        customer:
-          $ref: '#/components/schemas/CustomerM'
-        address:
-          $ref: '#/components/schemas/AddressM'
-        dateCreated:
+        createdTimeStamp:
           type: string
           format: date # or date-time
-        lastActivity:
+        UpdatedTimeStamp:
           type: string
           format: date # or date-time
 
@@ -250,7 +239,6 @@ components:
       properties:
         message:
           type: string
-
     DepositRequest:
       type: object
       properties:
@@ -258,3 +246,4 @@ components:
           type: string
         depositAmount:
           type: number
+

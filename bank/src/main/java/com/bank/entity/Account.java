@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatusCode;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,24 +26,19 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private BigDecimal accountBalance;
+    private String accountNumber;
+    @Column(nullable = false)
+    private BigDecimal balance;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
-    /*@Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private AccountType accountType;*/
-    @Column(nullable = false)
-    private String accountNumber;
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name="customer_id",referencedColumnName = "id")
-    private Customer customer;
-
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name="address_id",referencedColumnName = "id")
-    private Address address;
     @CreationTimestamp
-    private Date dateCreated;
+    private Date createdTimeStamp;
     @UpdateTimestamp
-    private Date lastActivity;
+    private Date UpdatedTimeStamp;
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Transaction> transactionList;
 }

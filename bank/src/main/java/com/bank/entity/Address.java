@@ -25,6 +25,7 @@ public class Address {
     private String country;
     @Column
     private String postalCode;
-    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL,orphanRemoval = true)
-    private Account account;
+    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinColumn(name="customer_id",referencedColumnName = "id")
+    private Customer customer;
 }

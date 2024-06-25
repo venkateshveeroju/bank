@@ -22,28 +22,27 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String firstName;
-    @Column(nullable = false)
-    private String lastName;
+    private String name;
     @Column(unique = true,nullable = false)
     private String email;
     @Column(nullable = false)
     private String password;
-    private String dob;
+
+
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL,orphanRemoval = true)
     private Account account;
+
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL,orphanRemoval = true)
+    private Address address;
 
     /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_address_id")
     @JoinTable(name = "customer_address_id", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
     private List<Address> address = new ArrayList<Address>();
-*/
-    @Column(nullable = false)
-    private BigDecimal accountBalance;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status;*/
+
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private Date creationDate;
