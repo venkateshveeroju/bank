@@ -1,10 +1,12 @@
 package com.bank.entity;
 
 import com.bank.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,7 +19,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class Customer{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,11 +30,13 @@ public class Customer {
     @Column(nullable = false)
     private String password;
 
-
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL,orphanRemoval = true)
+    @ToString.Exclude
+    @JsonIgnore
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Account account;
-
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL,orphanRemoval = true)
+    @ToString.Exclude
+    @JsonIgnore
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Address address;
 
     /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

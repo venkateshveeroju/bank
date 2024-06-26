@@ -2,11 +2,9 @@ package com.bank.entity;
 
 import com.bank.enums.AccountType;
 import com.bank.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.http.HttpStatusCode;
@@ -36,9 +34,13 @@ public class Account {
     private Date createdTimeStamp;
     @UpdateTimestamp
     private Date UpdatedTimeStamp;
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @JsonIgnore
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
+    @ToString.Exclude
+    @JsonIgnore
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Transaction> transactionList;
 }

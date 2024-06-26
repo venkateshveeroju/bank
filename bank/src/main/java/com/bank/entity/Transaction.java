@@ -22,6 +22,6 @@ public class Transaction {
     private BigDecimal amount;
     private LocalDateTime timestamp = LocalDateTime.now();
     @ManyToOne
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 }

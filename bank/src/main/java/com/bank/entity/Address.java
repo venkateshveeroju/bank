@@ -1,10 +1,8 @@
 package com.bank.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
@@ -25,7 +23,9 @@ public class Address {
     private String country;
     @Column
     private String postalCode;
-    @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @JsonIgnore
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name="customer_id",referencedColumnName = "id")
     private Customer customer;
 }

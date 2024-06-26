@@ -11,6 +11,7 @@ import com.bank.model.AccountM;
 import com.bank.model.DepositRequest;
 import com.bank.model.NewAccount;
 import com.bank.repository.AccountRepository;
+import com.bank.repository.AddressRepository;
 import com.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,8 @@ public class AccountServiceImpl {
     private  AccountRepository accountRepository;
     @Autowired
     private  CustomerRepository customerRepository;
-
+    @Autowired
+    private AddressRepository addressRepository;
     @Autowired
     private AccountMapper accountMapper;
     public ResponseEntity<String> createAccount(NewAccount body) {
@@ -62,6 +64,8 @@ public class AccountServiceImpl {
             cust.setAddress(address);
 
             customerRepository.save(cust);
+        addressRepository.save(address);
+
             return ResponseEntity.ok("Account created successfully " + accountRepository.save(acc).toString());
 
     }
