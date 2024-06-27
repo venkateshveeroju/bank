@@ -6,10 +6,7 @@ package com.bank.controller;
 
 import com.bank.api.AccountsApi;
 import com.bank.entity.Account;
-import com.bank.model.AccountM;
-import com.bank.model.CustomerM;
-import com.bank.model.DepositRequest;
-import com.bank.model.NewAccount;
+import com.bank.model.*;
 import com.bank.repository.AccountRepository;
 import com.bank.repository.CustomerRepository;
 import com.bank.service.AccountServiceImpl;
@@ -29,7 +26,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class AccountController   implements AccountsApi{
+public class AccountController implements AccountsApi {
     @Autowired
     AccountServiceImpl accountService;
     @Autowired
@@ -37,8 +34,9 @@ public class AccountController   implements AccountsApi{
     @Autowired
     CustomerRepository customerRepository;
 
+
     @Override
-    public ResponseEntity<String> accountId(NewAccount body) {
+    public ResponseEntity<CustomerCreated> accountId(NewAccount body) {
         return ResponseEntity.ok(accountService.createAccount(body).getBody());
     }
 
@@ -51,5 +49,4 @@ public class AccountController   implements AccountsApi{
     public ResponseEntity<Void> depositToAccount(DepositRequest body) {
         return null;
     }
-
 }

@@ -7,9 +7,7 @@ import com.bank.entity.Address;
 import com.bank.entity.Customer;
 import com.bank.enums.Status;
 import com.bank.mapper.AccountMapper;
-import com.bank.model.AccountM;
-import com.bank.model.DepositRequest;
-import com.bank.model.NewAccount;
+import com.bank.model.*;
 import com.bank.repository.AccountRepository;
 import com.bank.repository.AddressRepository;
 import com.bank.repository.CustomerRepository;
@@ -33,11 +31,12 @@ public class AccountServiceImpl {
     private AddressRepository addressRepository;
     @Autowired
     private AccountMapper accountMapper;
-    public ResponseEntity<String> createAccount(NewAccount body) {
+    public ResponseEntity<CustomerCreated> createAccount(NewAccount body) {
 
             String str = customerRepository.findByEmail(body.getCustomer().getEmail());
             if ((body.getCustomer().getEmail() != null) && (str != null) && (!str.isEmpty())) {
-                return ResponseEntity.ok("Account already exists : " + body.getCustomer().getName() + "123");
+                CustomerCreated customerCreated = new CustomerCreated();
+                return ResponseEntity.ok(customerCreated);
             }
             Date dateOne = new Date();
             Instant inst = Instant.now();
@@ -62,11 +61,12 @@ public class AccountServiceImpl {
             cust.setPassword(body.getCustomer().getPassword());
             cust.setAccount(acc);
             cust.setAddress(address);
-
-            customerRepository.save(cust);
         addressRepository.save(address);
+        Account ac = accountRepository.save(acc);
+            customerRepository.save(cust);
+        CustomerCreated customerCreated = accountMapper.convertToCustomerCreated (ac);
 
-            return ResponseEntity.ok("Account created successfully " + accountRepository.save(acc).toString());
+            return ResponseEntity.ok(customerCreated);
 
     }
 

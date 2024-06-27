@@ -3,6 +3,7 @@ package com.bank.service;
 import com.bank.entity.Account;
 import com.bank.entity.Customer;
 import com.bank.mapper.CustomerMapper;
+import com.bank.model.CustomerInfo;
 import com.bank.model.CustomerM;
 import com.bank.repository.AccountRepository;
 import com.bank.repository.CustomerRepository;
@@ -20,7 +21,7 @@ public class CustomerServiceImpl  {
     private CustomerMapper customerMapper;
     @Autowired
     private AccountRepository accountRepository;
-    public CustomerM getCustomerById(String accountNumber){
+    public CustomerInfo getCustomerById(String accountNumber){
         Account accountObj = accountRepository.findByAccountNumber(accountNumber);
         Optional<Customer> customer = customerRepository.findById(accountObj.getCustomer().getId());
 

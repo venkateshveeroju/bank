@@ -110,7 +110,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerM'
+                $ref: '#/components/schemas/CustomerInfo'
         404:
           description: Account not found
           content:
@@ -187,9 +187,37 @@ components:
         account:
           $ref: '#/components/schemas/AccountM'
 
+    CustomerInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Full Name'
+        email:
+          type: string
+          format: email
+          example: 'maxmuller@gmail.com'
+        address:
+          $ref: '#/components/schemas/AddressM'
+
+
     CustomerCreated:
-      type: string
-      example: 'Account already exists : Viktor1234'
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          example: 'A1234'
+        balance:
+          type: number
+          example: 5000.00
+        status:
+          type: string
+        createdTimeStamp:
+          type: string
+          format: date # or date-time
+        UpdatedTimeStamp:
+          type: string
+          format: date # or date-time
 
 
 
