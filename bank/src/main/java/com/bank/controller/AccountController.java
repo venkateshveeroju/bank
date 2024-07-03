@@ -8,7 +8,7 @@ import com.bank.api.AccountsApi;
 import com.bank.entity.Account;
 import com.bank.model.*;
 import com.bank.repository.AccountRepository;
-import com.bank.repository.CustomerRepository;
+import com.bank.repository.UserRepository;
 import com.bank.service.AccountServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +32,11 @@ public class AccountController implements AccountsApi {
     @Autowired
     AccountRepository accountRepository;
     @Autowired
-    CustomerRepository customerRepository;
+    UserRepository UserRepository;
 
 
     @Override
-    public ResponseEntity<CustomerCreated> accountId(NewAccount body) {
+    public ResponseEntity<UserCreated> accountId(NewAccount body) {
         return ResponseEntity.ok(accountService.createAccount(body).getBody());
     }
 

@@ -23,7 +23,7 @@ paths:
       description: Create an account with an option to deposit initial amount
       operationId: accountId
       requestBody:
-        description: Customer Details and Desired amount to deposit
+        description: User Details and Desired amount to deposit
         required: true
         content:
           application/json:
@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerCreated'
+                $ref: '#/components/schemas/UserCreated'
         404:
           description: Account not found
           content:
@@ -90,13 +90,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountNotFoundError'
-  /customer/{accountNumber}:
+  /User/{accountNumber}:
     get:
       tags:
-        - Customer
+        - User
       summary: Retrieves Person information
-      description: Retrieves Person information using customer id.
-      operationId: customerId
+      description: Retrieves Person information using User id.
+      operationId: UserId
       parameters:
         - name: accountNumber
           in: path
@@ -110,7 +110,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerInfo'
+                $ref: '#/components/schemas/UserInfo'
         404:
           description: Account not found
           content:
@@ -145,8 +145,8 @@ components:
         - country
         - postalCode
       properties:
-        customer:
-          $ref: '#/components/schemas/CustomerM'
+        User:
+          $ref: '#/components/schemas/UserM'
 
 
     AddressM:
@@ -169,7 +169,7 @@ components:
           example: '501510'
 
 
-    CustomerM:
+    UserM:
       type: object
       properties:
         name:
@@ -187,7 +187,7 @@ components:
         account:
           $ref: '#/components/schemas/AccountM'
 
-    CustomerInfo:
+    UserInfo:
       type: object
       properties:
         name:
@@ -201,9 +201,10 @@ components:
           $ref: '#/components/schemas/AddressM'
 
 
-    CustomerCreated:
+    UserCreated:
       type: object
       properties:
+
         accountNumber:
           type: string
           example: 'A1234'
@@ -218,9 +219,6 @@ components:
         UpdatedTimeStamp:
           type: string
           format: date # or date-time
-
-
-
 
     TransactionM:
       type: object

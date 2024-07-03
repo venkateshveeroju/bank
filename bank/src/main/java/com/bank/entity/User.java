@@ -1,6 +1,5 @@
 package com.bank.entity;
 
-import com.bank.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,16 +9,15 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer{
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,23 +27,19 @@ public class Customer{
     private String email;
     @Column(nullable = false)
     private String password;
+    @Column
+    private boolean enabled;
+    @Column
+    private boolean tokenExpired;
 
     @ToString.Exclude
     @JsonIgnore
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Account account;
     @ToString.Exclude
     @JsonIgnore
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Address address;
-
-    /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_address_id")
-    @JoinTable(name = "customer_address_id", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
-    private List<Address> address = new ArrayList<Address>();
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Status status;*/
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
@@ -53,4 +47,12 @@ public class Customer{
     @UpdateTimestamp
     @Column(nullable = false,updatable = false)
     private Date updationDate;
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 }

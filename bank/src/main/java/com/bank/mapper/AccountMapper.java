@@ -2,8 +2,10 @@ package com.bank.mapper;
 
 import com.bank.entity.Account;
 import com.bank.model.AccountM;
-import com.bank.model.CustomerCreated;
+import com.bank.model.UserCreated;
 import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
 
 @Component
 public class AccountMapper {
@@ -17,14 +19,14 @@ public class AccountMapper {
         return accountM;
     }
 
-    public CustomerCreated convertToCustomerCreated (Account account){
-        CustomerCreated customerCreated = new CustomerCreated();
-        customerCreated.setAccountNumber(account.getAccountNumber());
-        customerCreated.setBalance(account.getBalance());
-
-        customerCreated.setCreatedTimeStamp(account.getCreatedTimeStamp());
-        customerCreated.setUpdatedTimeStamp(account.getUpdatedTimeStamp());
-        customerCreated.setBalance(account.getBalance());
-        return customerCreated;
+    public UserCreated convertToUserCreated (Account account){
+        UserCreated UserCreated = new UserCreated();
+        UserCreated.setAccountNumber(account.getAccountNumber());
+        UserCreated.setBalance(account.getBalance());
+        //UserCreated.setId(BigDecimal.valueOf(account.getId()));
+        UserCreated.setCreatedTimeStamp(account.getCreatedTimeStamp());
+        UserCreated.setUpdatedTimeStamp(account.getUpdatedTimeStamp());
+        UserCreated.setStatus(account.getStatus().toString());
+        return UserCreated;
     }
 }
