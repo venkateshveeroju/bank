@@ -121,6 +121,37 @@ paths:
           description: Authorization information is missing or invalid.
         503:
           description: Unexpected error.
+  /transfer:
+    get:
+      tags:
+        - Account
+      summary: Makes transfer between Accounts
+      description: Makes transfer between Accounts
+      operationId: transferId
+      parameters:
+        - name: accountNumber
+          in: path
+          required: true
+          schema:
+            type: string
+
+      responses:
+        200:
+          description: Person Infromation Retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+        404:
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountNotFoundError'
+        401:
+          description: Authorization information is missing or invalid.
+        503:
+          description: Unexpected error.
 components:
   securitySchemes:
     oAuthSample:
@@ -224,17 +255,20 @@ components:
       type: object
       required:
         - id
-        - accountId
-        - amount
-        - type
+        - senderAccount
+        - receiverAccount
+        - transferAmount
       properties:
         id:
           type: string
           example: 'A1234'
-        accountNumber:
+        senderAccount:
           type: string
           example: 'C1234'
-        amount:
+        receiverAccount:
+          type: string
+          example: 'C1234'
+        transferAmount:
           type: number
           example: 1000.00
         type:
@@ -272,4 +306,3 @@ components:
           type: string
         depositAmount:
           type: number
-

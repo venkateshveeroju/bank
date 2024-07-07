@@ -9,7 +9,6 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.Collection;
 import java.util.Date;
 
 
@@ -17,7 +16,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User{
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,10 +27,6 @@ public class User{
     private String email;
     @Column(nullable = false)
     private String password;
-    @Column
-    private boolean enabled;
-    @Column
-    private boolean tokenExpired;
 
     @ToString.Exclude
     @JsonIgnore
@@ -40,19 +36,12 @@ public class User{
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Address address;
-
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private Date creationDate;
     @UpdateTimestamp
     @Column(nullable = false,updatable = false)
     private Date updationDate;
-    @ManyToMany
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+
+    private String role;
 }

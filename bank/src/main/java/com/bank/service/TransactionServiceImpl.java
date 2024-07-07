@@ -1,6 +1,8 @@
 package com.bank.service;
 
+import com.bank.entity.Transaction;
 import com.bank.repository.AccountRepository;
+import com.bank.repository.TransactionRepository;
 import com.bank.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -10,8 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
-
-import static org.apache.el.lang.ELArithmetic.subtract;
+import java.time.LocalDateTime;
 
 @Transactional
 @Service
@@ -19,9 +20,11 @@ public class TransactionServiceImpl {
     private static final Logger logger = LoggerFactory.getLogger(TransactionServiceImpl.class);
     @Autowired
     private AccountRepository accountRepository;
-    @Autowired
-    private UserRepository UserRepository;
+   @Autowired
+   private UserRepository userRepository;
 
+   @Autowired
+   private TransactionRepository transactionRepository;
     public void withdrawAmountByAcctID(String accountNumber, BigDecimal amount){
         // Set precision to 10
         MathContext mc
@@ -33,22 +36,30 @@ public class TransactionServiceImpl {
         }
     }
     public void saveBalanceByAcctID(String destAcctNumber, BigDecimal amount){
-       BigDecimal finalBalance = accountRepository.findBalanceByAcctID(destAcctNumber).add(amount);
+        BigDecimal finalBalance = accountRepository.findBalanceByAcctID(destAcctNumber).add(amount);
         accountRepository.saveBalanceByAcctID( destAcctNumber, finalBalance);{
 
         }
     }
 
-    public void transferAmount(String accountNumber,  String destAcctNumber, BigDecimal amount) {
+    public void transferAmount(Long senderId, String user, String senderAccNumber,  String recvAccNumber, BigDecimal amount) {
         //validation
         //authentication
         //authorisation
         //transaction processing
         //logging and notification
-
-        accountRepository.withdrawAmountByAcctID(accountNumber, amount);
-        accountRepository.saveBalanceByAcctID(destAcctNumber, amount);
-
-
+        this.withdrawAmountByAcctID(senderAccNumber, amount);
+        this.saveBalanceByAcctID(recvAccNumber, amount);
+        Transaction transaction = new Transaction();
+        transaction.setAmount(amount);
+        transaction.setSenderAccount(senderAccNumber);
+        transaction.setReceiverAccount(recvAccNumber);
+        //transaction.setCreatedTimeStamp();
+        transaction.setUpdatedTimeStamp(LocalDateTime.now());
+        transaction.setLastModifiedBy(user);
+        transaction.setLastUpdatedBy(user);
+        transaction.setUserId(senderId);
+        //transaction.setRandomUUId();
+        transactionRepository.save(transaction);
     }
 }

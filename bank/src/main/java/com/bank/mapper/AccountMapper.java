@@ -5,8 +5,6 @@ import com.bank.model.AccountM;
 import com.bank.model.UserCreated;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-
 @Component
 public class AccountMapper {
     public  AccountM convertToAccountM(Account account){
@@ -18,7 +16,6 @@ public class AccountMapper {
         accountM.setUpdatedTimeStamp(account.getUpdatedTimeStamp());
         return accountM;
     }
-
     public UserCreated convertToUserCreated (Account account){
         UserCreated UserCreated = new UserCreated();
         UserCreated.setAccountNumber(account.getAccountNumber());

@@ -25,7 +25,7 @@ public class Address {
     private String postalCode;
     @ToString.Exclude
     @JsonIgnore
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name="user_id",referencedColumnName = "id")
     private User user;
 }

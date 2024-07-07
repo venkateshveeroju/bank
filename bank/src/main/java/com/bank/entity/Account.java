@@ -1,13 +1,13 @@
 package com.bank.entity;
 
-
+import com.bank.enums.AccountType;
 import com.bank.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
+import org.springframework.http.HttpStatusCode;
 
 
 import java.math.BigDecimal;
@@ -39,8 +39,9 @@ public class Account {
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-    @ToString.Exclude
+   /* @ToString.Exclude
     @JsonIgnore
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<Transaction> transactionList;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL,orphanRemoval = true)
+
+    private List<Transaction> transactionList;*/
 }
