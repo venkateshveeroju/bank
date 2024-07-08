@@ -213,6 +213,11 @@ components:
         password:
           type: string
           example: "max234"
+        roles:
+          type: array
+          items:
+            type: String
+
         address:
           $ref: '#/components/schemas/AddressM'
         account:

@@ -18,8 +18,8 @@ public class Account   {
   @JsonProperty("id")
   private String id = null;
 
-  @JsonProperty("customerId")
-  private String customerId = null;
+  @JsonProperty("UserId")
+  private String UserId = null;
 
   @JsonProperty("balance")
   private Float balance = null;
@@ -43,23 +43,23 @@ public class Account   {
     this.id = id;
   }
 
-  public Account customerId(String customerId) {
-    this.customerId = customerId;
+  public Account UserId(String UserId) {
+    this.UserId = UserId;
     return this;
   }
 
   /**
-   * Get customerId
-   * @return customerId
+   * Get UserId
+   * @return UserId
    **/
   @Schema(example = "C1234", description = "")
   
-    public String getCustomerId() {
-    return customerId;
+    public String getUserId() {
+    return UserId;
   }
 
-  public void setCustomerId(String customerId) {
-    this.customerId = customerId;
+  public void setUserId(String UserId) {
+    this.UserId = UserId;
   }
 
   public Account balance(Float balance) {
@@ -92,13 +92,13 @@ public class Account   {
     }
     Account account = (Account) o;
     return Objects.equals(this.id, account.id) &&
-        Objects.equals(this.customerId, account.customerId) &&
+        Objects.equals(this.UserId, account.UserId) &&
         Objects.equals(this.balance, account.balance);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, customerId, balance);
+    return Objects.hash(id, UserId, balance);
   }
 
   @Override
@@ -107,7 +107,7 @@ public class Account   {
     sb.append("class Account {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    UserId: ").append(toIndentedString(UserId)).append("\n");
     sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -18,8 +18,24 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig {
+    private static final String[] AUTH_WHITE_LIST = {
+            "/",
+            "/**",
+            // -- Swagger UI v3 (OpenAPI)
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            // other public endpoints
+            "/h2-console/**",
+            "/v2/api-docs/**",
+            "/swagger-ui/**",
+            "/v1/api-docs/**",
+            "/swagger-resources/**",
+            "/console/**",
+            "/account/**"
+    };
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-private final CustomeUserDetailService customeUserDetailService;
+    private final CustomUserDetailService customUserDetailService;
+
     @Bean
     public SecurityFilterChain applicationSecurity(HttpSecurity http) throws Exception {
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
@@ -30,26 +46,36 @@ private final CustomeUserDetailService customeUserDetailService;
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .formLogin(fl -> fl.disable())
                 .securityMatcher("/**")
+                .authorizeHttpRequests(req -> req
+                        .requestMatchers(AUTH_WHITE_LIST).permitAll())
+                .securityMatcher("/**")
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/api/accounts/**").permitAll()
+
                         .requestMatchers("/auth/login").permitAll()
                         //.requestMatchers("/admin/**").hasRole("ADMIN")
 
                         // .requestMatchers("/auth/login").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest()
+                        .authenticated()
                 );
+
+
+
         return http.build();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-        @Bean
+
+    @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-            AuthenticationManagerBuilder authManagerBuilder =  http.getSharedObject(AuthenticationManagerBuilder.class);
-            authManagerBuilder.userDetailsService(customeUserDetailService)
-                    .passwordEncoder(passwordEncoder());
-            return authManagerBuilder.build();
-        }
+        AuthenticationManagerBuilder authManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        authManagerBuilder.userDetailsService(customUserDetailService)
+                .passwordEncoder(passwordEncoder());
+        return authManagerBuilder.build();
+    }
 }

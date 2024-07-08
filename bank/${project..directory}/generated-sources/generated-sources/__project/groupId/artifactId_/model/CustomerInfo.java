@@ -10,12 +10,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * CustomerInfo
+ * UserInfo
  */
 @Validated
 
 
-public class CustomerInfo   {
+public class UserInfo   {
   @JsonProperty("firstName")
   private String firstName = null;
 
@@ -46,7 +46,7 @@ public class CustomerInfo   {
   @JsonProperty("postalCode")
   private BigDecimal postalCode = null;
 
-  public CustomerInfo firstName(String firstName) {
+  public UserInfo firstName(String firstName) {
     this.firstName = firstName;
     return this;
   }
@@ -65,7 +65,7 @@ public class CustomerInfo   {
     this.firstName = firstName;
   }
 
-  public CustomerInfo lastName(String lastName) {
+  public UserInfo lastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
@@ -84,7 +84,7 @@ public class CustomerInfo   {
     this.lastName = lastName;
   }
 
-  public CustomerInfo balance(Float balance) {
+  public UserInfo balance(Float balance) {
     this.balance = balance;
     return this;
   }
@@ -103,7 +103,7 @@ public class CustomerInfo   {
     this.balance = balance;
   }
 
-  public CustomerInfo email(String email) {
+  public UserInfo email(String email) {
     this.email = email;
     return this;
   }
@@ -122,7 +122,7 @@ public class CustomerInfo   {
     this.email = email;
   }
 
-  public CustomerInfo dob(String dob) {
+  public UserInfo dob(String dob) {
     this.dob = dob;
     return this;
   }
@@ -141,7 +141,7 @@ public class CustomerInfo   {
     this.dob = dob;
   }
 
-  public CustomerInfo street(String street) {
+  public UserInfo street(String street) {
     this.street = street;
     return this;
   }
@@ -160,7 +160,7 @@ public class CustomerInfo   {
     this.street = street;
   }
 
-  public CustomerInfo city(String city) {
+  public UserInfo city(String city) {
     this.city = city;
     return this;
   }
@@ -179,7 +179,7 @@ public class CustomerInfo   {
     this.city = city;
   }
 
-  public CustomerInfo state(String state) {
+  public UserInfo state(String state) {
     this.state = state;
     return this;
   }
@@ -198,7 +198,7 @@ public class CustomerInfo   {
     this.state = state;
   }
 
-  public CustomerInfo country(String country) {
+  public UserInfo country(String country) {
     this.country = country;
     return this;
   }
@@ -217,7 +217,7 @@ public class CustomerInfo   {
     this.country = country;
   }
 
-  public CustomerInfo postalCode(BigDecimal postalCode) {
+  public UserInfo postalCode(BigDecimal postalCode) {
     this.postalCode = postalCode;
     return this;
   }
@@ -246,17 +246,17 @@ public class CustomerInfo   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CustomerInfo customerInfo = (CustomerInfo) o;
-    return Objects.equals(this.firstName, customerInfo.firstName) &&
-        Objects.equals(this.lastName, customerInfo.lastName) &&
-        Objects.equals(this.balance, customerInfo.balance) &&
-        Objects.equals(this.email, customerInfo.email) &&
-        Objects.equals(this.dob, customerInfo.dob) &&
-        Objects.equals(this.street, customerInfo.street) &&
-        Objects.equals(this.city, customerInfo.city) &&
-        Objects.equals(this.state, customerInfo.state) &&
-        Objects.equals(this.country, customerInfo.country) &&
-        Objects.equals(this.postalCode, customerInfo.postalCode);
+    UserInfo UserInfo = (UserInfo) o;
+    return Objects.equals(this.firstName, UserInfo.firstName) &&
+        Objects.equals(this.lastName, UserInfo.lastName) &&
+        Objects.equals(this.balance, UserInfo.balance) &&
+        Objects.equals(this.email, UserInfo.email) &&
+        Objects.equals(this.dob, UserInfo.dob) &&
+        Objects.equals(this.street, UserInfo.street) &&
+        Objects.equals(this.city, UserInfo.city) &&
+        Objects.equals(this.state, UserInfo.state) &&
+        Objects.equals(this.country, UserInfo.country) &&
+        Objects.equals(this.postalCode, UserInfo.postalCode);
   }
 
   @Override
@@ -267,7 +267,7 @@ public class CustomerInfo   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CustomerInfo {\n");
+    sb.append("class UserInfo {\n");
     
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");

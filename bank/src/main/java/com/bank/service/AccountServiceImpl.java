@@ -15,14 +15,18 @@ import com.bank.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Date;
 
 
 @Service
 public class AccountServiceImpl {
+    private final static Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -31,10 +35,11 @@ public class AccountServiceImpl {
     private AddressRepository addressRepository;
     @Autowired
     private AccountMapper accountMapper;
-    private final static Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
+
+
     public UserCreated createAccount(NewAccount body) {
         try {
-            String str = userRepository.findByEmail(body.getUser().getEmail());
+            String str = userRepository.findEmailByEmail(body.getUser().getEmail());
             UserCreated userCreated = null;
             if ((body.getUser().getEmail() != null) && (str != null) && (!str.isEmpty())) {
                 return userCreated;
@@ -60,9 +65,10 @@ public class AccountServiceImpl {
             User user = new User();
             user.setName(body.getUser().getName());
             user.setEmail(body.getUser().getEmail());
-            user.setPassword(body.getUser().getPassword());
-            //user.setPassword(passwordEncoder.encode(body.getUser().getPassword()));
+            //check password encoder bean
+            user.setPassword(new BCryptPasswordEncoder().encode(body.getUser().getPassword()));
             //user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
+            //user.setRole(body.getUser().get);
             //user.setEnabled(true);
             user.setAccount(acc);
             user.setAddress(address);
