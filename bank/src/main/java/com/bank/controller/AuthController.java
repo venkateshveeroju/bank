@@ -26,7 +26,7 @@ public class AuthController {
     private final JwtIssuer jwtIssuer;
     private final AuthenticationManager authenticationManager;
 
-    @PostMapping("/auth/login")
+        @PostMapping("/auth/login")
     public LoginResponse login(@RequestBody @Validated LoginRequest request) {
         try {
             var authentication = authenticationManager.authenticate(

@@ -24,7 +24,7 @@ public class User {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
     @Column(nullable = false)
     private String password;
@@ -41,8 +41,8 @@ public class User {
     @Column(nullable = false, updatable = false)
     private Date creationDate;
     @UpdateTimestamp
-    @Column(nullable = false,updatable = false)
+    @Column(nullable = false, updatable = false)
     private Date updationDate;
-
+    @Column
     private String role;
 }

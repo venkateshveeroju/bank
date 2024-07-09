@@ -3,6 +3,7 @@ package com.bank.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -52,7 +53,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/api/accounts/**").permitAll()
-
+                        .requestMatchers("/api/test/**").hasRole("ADMIN")
+                        .requestMatchers("/api/test/user/**").hasRole("USER")
                         .requestMatchers("/auth/login").permitAll()
                         //.requestMatchers("/admin/**").hasRole("ADMIN")
 

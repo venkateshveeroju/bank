@@ -214,9 +214,9 @@ components:
           type: string
           example: "max234"
         roles:
-          type: array
-          items:
-            type: String
+          #type: array
+          #items:
+          type: String
 
         address:
           $ref: '#/components/schemas/AddressM'

@@ -36,6 +36,9 @@ public class AccountServiceImpl {
     @Autowired
     private AccountMapper accountMapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     public UserCreated createAccount(NewAccount body) {
         try {
@@ -66,9 +69,9 @@ public class AccountServiceImpl {
             user.setName(body.getUser().getName());
             user.setEmail(body.getUser().getEmail());
             //check password encoder bean
-            user.setPassword(new BCryptPasswordEncoder().encode(body.getUser().getPassword()));
+            user.setPassword(passwordEncoder.encode(body.getUser().getPassword()));
             //user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
-            //user.setRole(body.getUser().get);
+            user.setRole(body.getUser().getRoles());
             //user.setEnabled(true);
             user.setAccount(acc);
             user.setAddress(address);
