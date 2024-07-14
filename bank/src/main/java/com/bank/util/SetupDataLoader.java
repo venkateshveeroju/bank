@@ -1,6 +1,11 @@
 package com.bank.util;
 
+import com.bank.entity.Privilege;
+import com.bank.entity.Role;
+import com.bank.entity.RoleName;
 import com.bank.entity.User;
+import com.bank.repository.PrivilegeRepository;
+import com.bank.repository.RoleRepository;
 import com.bank.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +14,12 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+
+import static com.bank.entity.RoleName.ROLE_ADMIN;
 
 @Component
 public class SetupDataLoader implements
@@ -20,6 +30,11 @@ public class SetupDataLoader implements
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private PrivilegeRepository privilegeRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -27,23 +42,33 @@ public class SetupDataLoader implements
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
-/*
-        String email = "iii@gmail.com";
-        String name = "iii";
-        Optional<User> user = userRepository.findByEmail(email);
 
-        if (user == null) {
-            User user1 = new User();
-            user1.setName(name);
-            user1.setPassword(passwordEncoder.encode("test"));
-            user1.setEmail(email);
-            user1.setRole("ADMIN");
-            userRepository.save(user1);
-        }
+        if (alreadySetup)
+            return;
+        Privilege readPrivilege
+                = createPrivilegeIfNotFound("READ_PRIVILEGE");
+        Privilege writePrivilege
+                = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
+
+        List<Privilege> adminPrivileges = Arrays.asList(
+                readPrivilege, writePrivilege);
+        createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
+        createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
+
+       Role adminRole = roleRepository.findByName("ROLE_ADMIN");
+        User user = new User();
+        user.setName("Test");
+
+        user.setPassword(passwordEncoder.encode("test"));
+        user.setEmail("test@test.com");
+        user.setRoles(Arrays.asList(adminRole));
+
+        userRepository.save(user);
+
         alreadySetup = true;
     }
 
-   /* @Transactional
+    @Transactional
     Privilege createPrivilegeIfNotFound(String name) {
 
         Privilege privilege = privilegeRepository.findByName(name);
@@ -65,6 +90,5 @@ public class SetupDataLoader implements
             roleRepository.save(role);
         }
         return role;
-    }*/
     }
 }

@@ -3,7 +3,6 @@ package com.bank.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -39,7 +38,8 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain applicationSecurity(HttpSecurity http) throws Exception {
-        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        //http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
         http
                 .cors(cors -> cors.disable())
                 //.csrf(csrf -> csrf.disable())
@@ -53,18 +53,18 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/api/accounts/**").permitAll()
-                        .requestMatchers("/api/test/**").hasRole("ADMIN")
-                        .requestMatchers("/api/test/user/**").hasRole("USER")
-                        .requestMatchers("/auth/login").permitAll()
-                        //.requestMatchers("/admin/**").hasRole("ADMIN")
 
-                        // .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/h2/**").permitAll()
+                        .requestMatchers("/api/test/admin/**").hasRole("USER")
+                       // .requestMatchers("/api/test/user/**").hasRole("USER")
+                        .requestMatchers("/api/test/user/**").hasAuthority("READ_PRIVILEGE")
+                        //.requestMatchers("/api/test/admin/**").hasAuthority("SCOPE_READ_PRIVILEGE")
+                        //hasRole("ADMIN")
                         .anyRequest()
                         .authenticated()
-                );
-
-
-
+                )
+                .headers(req -> req.frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()));
         return http.build();
     }
 

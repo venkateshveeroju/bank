@@ -8,16 +8,24 @@ import java.util.List;
 
 @Component
 public class JwtToPrincipleConvertor {
-    public UserPriciple convert(DecodedJWT jwt) {
-        return UserPriciple.builder()
+    public UserPrinciple convert(DecodedJWT jwt) {
+        return UserPrinciple.builder()
                 .userId(Long.valueOf(jwt.getSubject()))
                 .email(jwt.getClaim("e").asString())
                 .authorities(extractAuthorityFromClaim(jwt))
+                //.authorities(extractPrivilegeAuthorityFromClaim(jwt))
                 .build();
     }
 
     private List<SimpleGrantedAuthority> extractAuthorityFromClaim(DecodedJWT jwt) {
-        var claim = jwt.getClaim("a");
+        var claim = jwt.getClaim("auth");
+
+        if (claim.isNull() || claim.isMissing()) return List.of();
+        return claim.asList(SimpleGrantedAuthority.class);
+    }
+    private List<SimpleGrantedAuthority> extractPrivilegeAuthorityFromClaim(DecodedJWT jwt) {
+        var claim = jwt.getClaim("p");
+
         if (claim.isNull() || claim.isMissing()) return List.of();
         return claim.asList(SimpleGrantedAuthority.class);
     }

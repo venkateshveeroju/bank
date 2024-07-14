@@ -9,8 +9,8 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.Date;
-import java.util.List;
+import javax.validation.constraints.Email;
+import java.util.*;
 
 
 @Entity
@@ -24,7 +24,8 @@ public class User {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(unique = true, nullable = false)
+    @Column(unique = true,nullable = false)
+    @Email
     private String email;
     @Column(nullable = false)
     private String password;
@@ -41,8 +42,17 @@ public class User {
     @Column(nullable = false, updatable = false)
     private Date creationDate;
     @UpdateTimestamp
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private Date updationDate;
-    @Column
-    private String role;
+    /*@Column
+    private String role;*/
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 }

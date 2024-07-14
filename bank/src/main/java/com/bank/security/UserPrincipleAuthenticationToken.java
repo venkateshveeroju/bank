@@ -1,16 +1,16 @@
 package com.bank.security;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.security.auth.Subject;
-import java.util.Collection;
+
 
 public class UserPrincipleAuthenticationToken extends AbstractAuthenticationToken {
-    private final UserPriciple priciple;
-    public UserPrincipleAuthenticationToken( UserPriciple userPriciple) {
-        super(userPriciple.getAuthorities());
-        this.priciple = userPriciple;
+    private final UserPrinciple principle;
+
+    public UserPrincipleAuthenticationToken(UserPrinciple userPrinciple) {
+        super(userPrinciple.getAuthorities());
+        this.principle = userPrinciple;
         this.setAuthenticated(true);
     }
 
@@ -21,7 +21,7 @@ public class UserPrincipleAuthenticationToken extends AbstractAuthenticationToke
 
     @Override
     public Object getPrincipal() {
-        return priciple;
+        return principle;
     }
 
     @Override

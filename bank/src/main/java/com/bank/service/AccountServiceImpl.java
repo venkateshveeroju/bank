@@ -1,27 +1,22 @@
 package com.bank.service;
 
 
-import com.bank.entity.Account;
-import com.bank.entity.Address;
-import com.bank.entity.User;
+import com.bank.entity.*;
 import com.bank.enums.Status;
 import com.bank.mapper.AccountMapper;
 import com.bank.model.AccountM;
 import com.bank.model.NewAccount;
 import com.bank.model.UserCreated;
-import com.bank.repository.AccountRepository;
-import com.bank.repository.AddressRepository;
-import com.bank.repository.UserRepository;
+import com.bank.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.*;
 
 
 @Service
@@ -37,8 +32,9 @@ public class AccountServiceImpl {
     private AccountMapper accountMapper;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
+    private RoleRepository roleRepository;
+    @Autowired
+    private PrivilegeRepository privilegeRepository;
 
     public UserCreated createAccount(NewAccount body) {
         try {
@@ -58,8 +54,12 @@ public class AccountServiceImpl {
             address.setPostalCode(body.getUser().getAddress().getPostalCode());
 
             Account acc = new Account();
-            acc.setAccountNumber(body.getUser().getName() + "123");
-            acc.setBalance(body.getUser().getAccount().getBalance());
+            acc.setAccountNumber(body.getUser().getName() + "001001");
+            if (body.getUser().getAccount().getBalance() != null) {
+                acc.setBalance(body.getUser().getAccount().getBalance());
+            } else {
+                acc.setBalance(new BigDecimal(0));
+            }
             acc.setStatus(Status.ACTIVE);
             acc.setCreatedTimeStamp(dateOne.from(inst));
             acc.setUpdatedTimeStamp(dateOne.from(inst));
@@ -69,16 +69,62 @@ public class AccountServiceImpl {
             user.setName(body.getUser().getName());
             user.setEmail(body.getUser().getEmail());
             //check password encoder bean
-            user.setPassword(passwordEncoder.encode(body.getUser().getPassword()));
-            //user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
-            user.setRole(body.getUser().getRoles());
-            //user.setEnabled(true);
+            user.setPassword(new BCryptPasswordEncoder().encode(body.getUser().getPassword()));
+            Set<String> strRoles = new HashSet<>();
+            strRoles.add("ADMIN");
+
+
+            //user.setRole(body.getUser().getRoles());
+
+
+            Set<Role> roles = new HashSet<>();
+
+            if (strRoles == null) {
+                Role userRole = roleRepository.findByName("ROLE_USER");
+
+                roles.add(userRole);
+            } else {
+                strRoles.forEach(role -> {
+                    switch (role) {
+
+                        case "ROLE_ADMIN":
+                            Role pmRole = roleRepository.findByName("ROLE_ADMIN");
+
+                            roles.add(pmRole);
+
+                            break;
+
+                        default:
+                            Role userRole = roleRepository.findByName("ROLE_USER");
+                            roles.add(userRole);
+                    }
+                });
+            }
+
+            List<String> privileges = new ArrayList<>();
+            List<Privilege> collection = new ArrayList<>();
+            for (Role role : roles) {
+                privileges.add(role.getName());
+                collection.addAll(role.getPrivileges());
+            }
+
+
+            Role role = new Role();
+            role.setPrivileges(collection);
+            roleRepository.save(role);
+            Privilege privilegeObj = new Privilege();
+            privilegeObj.setRoles(roles);
+            privilegeRepository.save(privilegeObj);
+
+
+            user.setRoles(roles);
+
             user.setAccount(acc);
             user.setAddress(address);
 
             acc.setUser(user);
             address.setUser(user);
-            //acc.setTransactionList(null);
+
             addressRepository.save(address);
             Account ac = accountRepository.save(acc);
             userRepository.save(user);
@@ -89,8 +135,6 @@ public class AccountServiceImpl {
             logger.error(ex.getMessage());
             return null;
         }
-
-
     }
 
 

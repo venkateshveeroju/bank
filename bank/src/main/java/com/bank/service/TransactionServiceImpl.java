@@ -60,6 +60,7 @@ public class TransactionServiceImpl {
         transaction.setLastUpdatedBy(user);
         transaction.setUserId(senderId);
         //transaction.setRandomUUId();
+
         transactionRepository.save(transaction);
     }
 }

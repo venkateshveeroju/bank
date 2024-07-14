@@ -25,7 +25,7 @@ public class Account {
     private Long id;
     @Column(nullable = false)
     private String accountNumber;
-    @Column(nullable = false)
+
     private BigDecimal balance;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

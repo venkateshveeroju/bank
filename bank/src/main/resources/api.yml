@@ -10,7 +10,11 @@ info:
 
   version: 1.0-SNAPSHOT
 servers:
-  - url: https://localhost:/api
+  - url: '{protocol}://localhost:8081/{basePath}'
+    description: My API locally hosted release
+security:
+  - bearerAuth: []
+
 tags:
   - name: accounts
     description: Operations between bank accounts
@@ -44,6 +48,8 @@ paths:
                 $ref: '#/components/schemas/AccountNotFoundError'
   /accounts/{accountNumber}/balance:
     get:
+      security:
+        - bearerAuth: [ ]
       tags:
         - Account
       summary: Get account balance
@@ -122,26 +128,27 @@ paths:
         503:
           description: Unexpected error.
   /transfer:
-    get:
+    post:
       tags:
         - Account
       summary: Makes transfer between Accounts
       description: Makes transfer between Accounts
       operationId: transferId
-      parameters:
-        - name: accountNumber
-          in: path
-          required: true
-          schema:
-            type: string
-
+      requestBody:
+        description: Sender Account , Receiver account and Amount to be transferred need to be provided
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequest'
       responses:
         200:
-          description: Person Infromation Retrieved
+          description: Person Information Retrieved
           content:
-            application/json:
+            text/plain:
               schema:
-                $ref: '#/components/schemas/UserInfo'
+                type: string
+                example: Transfer Successfull
         404:
           description: Account not found
           content:
@@ -152,17 +159,16 @@ paths:
           description: Authorization information is missing or invalid.
         503:
           description: Unexpected error.
+
 components:
   securitySchemes:
-    oAuthSample:
-      type: oauth2
-      description: This API uses OAuth 2 with the implicit grant flow.
-      flows:
-        implicit:
-          authorizationUrl: https://api.example.com/oauth2/authorize
-          scopes:
-            read_pets: read your pets
-            write_pets: modify pets in your account
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  # 2) Apply the security globally to all operations
+
+
   schemas:
     NewAccount:
       type: object
@@ -214,14 +220,12 @@ components:
           type: string
           example: "max234"
         roles:
-          #type: array
-          #items:
-          type: String
-
+          type: string
         address:
           $ref: '#/components/schemas/AddressM'
         account:
           $ref: '#/components/schemas/AccountM'
+
 
     UserInfo:
       type: object
@@ -256,31 +260,6 @@ components:
           type: string
           format: date # or date-time
 
-    TransactionM:
-      type: object
-      required:
-        - id
-        - senderAccount
-        - receiverAccount
-        - transferAmount
-      properties:
-        id:
-          type: string
-          example: 'A1234'
-        senderAccount:
-          type: string
-          example: 'C1234'
-        receiverAccount:
-          type: string
-          example: 'C1234'
-        transferAmount:
-          type: number
-          example: 1000.00
-        type:
-          type: string
-          enum: [deposit, withdrawal]
-          example: deposit
-
     AccountM:
       type: object
       properties:
@@ -304,10 +283,27 @@ components:
       properties:
         message:
           type: string
+
+    TransferRequest:
+      type: object
+      properties:
+        senderAccount:
+          type: string
+        receiverAccount:
+          type: string
+        amount:
+          type: number
+
     DepositRequest:
       type: object
       properties:
         accountNumber:
           type: string
-        depositAmount:
+        amount:
           type: number
+
+
+
+
+
+

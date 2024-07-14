@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -104,53 +104,53 @@
 	<build>
 		<plugins>
 
-	<plugin>
-		<groupId>io.swagger.codegen.v3</groupId>
-		<artifactId>swagger-codegen-maven-plugin</artifactId>
-		<version>3.0.31</version>
-		<dependencies>
-			<dependency>
-				<groupId>jakarta.xml.bind</groupId>
-				<artifactId>jakarta.xml.bind-api</artifactId>
-				<version>2.3.2</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.jknack</groupId>
-				<artifactId>handlebars</artifactId>
-				<version>4.3.0</version>
-			</dependency>
-		</dependencies>
-		<executions>
-			<execution>
-				<goals>
-					<goal>generate</goal>
-				</goals>
-				<configuration>
-					<inputSpec>${project.basedir}/src/main/resources/api.yml</inputSpec>
-					<language>spring</language>
+			<plugin>
+				<groupId>io.swagger.codegen.v3</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>3.0.31</version>
+				<dependencies>
+					<dependency>
+						<groupId>jakarta.xml.bind</groupId>
+						<artifactId>jakarta.xml.bind-api</artifactId>
+						<version>2.3.2</version>
+					</dependency>
+					<dependency>
+						<groupId>com.github.jknack</groupId>
+						<artifactId>handlebars</artifactId>
+						<version>4.3.0</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/api.yml</inputSpec>
+							<language>spring</language>
 
-					<generateApiDocumentation>false</generateApiDocumentation>
-					<generateModelDocumentation>false</generateModelDocumentation>
-					<generateApiTests>false</generateApiTests>
-					<generateModelTests>false</generateModelTests>
-					<generateSupportingFiles>false</generateSupportingFiles>
-					<apiPackage>com.bank.api</apiPackage>
-					<modelPackage>com.bank.model</modelPackage>
-					<!--modelNameSuffix>Dt</modelNameSuffix-->
-					<configOptions>
-						<interfaceOnly>true</interfaceOnly>
-						<sourceFolder>java</sourceFolder>
-						<skipDefaultInterface>true</skipDefaultInterface>
-						<useBeanValidation>false</useBeanValidation>
-						<enable303>false</enable303>
-						<dateLibrary>java17</dateLibrary>
-						<hideGenerationTimestamp>true</hideGenerationTimestamp>
-						<java17>false</java17>
-					</configOptions>
-				</configuration>
-			</execution>
-		</executions>
-	</plugin>
-	</plugins>
+							<generateApiDocumentation>false</generateApiDocumentation>
+							<generateModelDocumentation>false</generateModelDocumentation>
+							<generateApiTests>false</generateApiTests>
+							<generateModelTests>false</generateModelTests>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<apiPackage>com.bank.api</apiPackage>
+							<modelPackage>com.bank.model</modelPackage>
+							<!--modelNameSuffix>Dt</modelNameSuffix-->
+							<configOptions>
+								<interfaceOnly>true</interfaceOnly>
+								<sourceFolder>java</sourceFolder>
+								<skipDefaultInterface>true</skipDefaultInterface>
+								<useBeanValidation>false</useBeanValidation>
+								<enable303>false</enable303>
+								<dateLibrary>java17</dateLibrary>
+								<hideGenerationTimestamp>true</hideGenerationTimestamp>
+								<java17>false</java17>
+							</configOptions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

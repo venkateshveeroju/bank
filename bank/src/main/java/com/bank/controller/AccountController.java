@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api")
-public class AccountController   implements AccountsApi{
+@RequestMapping("/api/v1")
+public class AccountController implements AccountsApi{
     @Autowired
     AccountServiceImpl accountService;
     @Autowired

@@ -3,8 +3,6 @@ package com.bank.service;
 import com.bank.entity.User;
 import com.bank.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    private PasswordEncoder passwordEncoder;
 
     public Optional<User> findByEmail(String email) {
 
@@ -32,9 +29,9 @@ public class UserService {
         }
         var userObj = new User();
         //check password encoder
-        userObj.setPassword(user.get().getPassword());
+        userObj.setPassword(new BCryptPasswordEncoder().encode(user.get().getPassword()));
         userObj.setEmail(user.get().getEmail());
-        userObj.setRole(user.get().getRole());
+        userObj.setRoles(user.get().getRoles());
         return user;
     }
 
