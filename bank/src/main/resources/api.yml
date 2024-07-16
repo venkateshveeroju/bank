@@ -8,7 +8,7 @@ info:
     - API to retrieve person information.
     - API to make a transfer from one account to another.
 
-  version: 1.0-SNAPSHOT
+  version: 1.0
 servers:
   - url: '{protocol}://localhost:8081/{basePath}'
     description: My API locally hosted release

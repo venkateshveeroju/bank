@@ -24,4 +24,5 @@ public class UserMapper {
         UserInfo.setAddress(address);
         return UserInfo;
     }
+
 }

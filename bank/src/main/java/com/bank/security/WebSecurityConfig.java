@@ -38,11 +38,10 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain applicationSecurity(HttpSecurity http) throws Exception {
-        //http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         http
                 .cors(cors -> cors.disable())
-                //.csrf(csrf -> csrf.disable())
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .formLogin(fl -> fl.disable())
@@ -53,16 +52,12 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/api/accounts/**").permitAll()
-
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers("/h2/**").permitAll()
                         .requestMatchers("/api/test/admin/**").hasRole("USER")
-                       // .requestMatchers("/api/test/user/**").hasRole("USER")
                         .requestMatchers("/api/test/user/**").hasAuthority("READ_PRIVILEGE")
-                        //.requestMatchers("/api/test/admin/**").hasAuthority("SCOPE_READ_PRIVILEGE")
-                        //hasRole("ADMIN")
-                        .anyRequest()
-                        .authenticated()
+                        .requestMatchers("/api/test/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 )
                 .headers(req -> req.frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()));
         return http.build();

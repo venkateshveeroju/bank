@@ -37,7 +37,7 @@ public class JwtIssuer {
                 .parseClaimsJws(token)
                 .getBody();
 
-        return Long.parseLong(claims.getSubject());
+        return Long.parseLong((String) claims.get("email"));
     }
 
     public boolean validateToken(String authToken) {

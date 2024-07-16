@@ -4,6 +4,8 @@ import com.bank.entity.Privilege;
 import com.bank.entity.User;
 import com.bank.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,21 +15,27 @@ import org.springframework.stereotype.Component;
 
 import com.bank.entity.Role;
 import java.util.*;
-import java.util.stream.Collectors;
+
+
 
 @Component
 @RequiredArgsConstructor
 public class CustomUserDetailService implements UserDetailsService {
+    private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailService.class);
     private final UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var user = userService.findByEmail(username).orElseThrow();
+        final Optional<User> user = userService.findByEmail(username);
+        if (user == null) {
+            logger.warn("user not found: {}", username);
+            throw new UsernameNotFoundException("User " + username + " not found");
+        }
         return UserPrinciple.builder()
-                .userId(user.getId())
-                .email(user.getEmail())
-                .authorities(getAuthorities(user.getRoles()))
-                .password(user.getPassword())
+                .userId(user.get().getId())
+                .email(user.get().getEmail())
+                .authorities(getAuthorities(user.get().getRoles()))
+                .password(user.get().getPassword())
                 .build();
     }
     /*private Collection<? extends GrantedAuthority> getAuthorities(

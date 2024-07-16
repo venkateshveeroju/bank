@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -20,29 +21,34 @@ public class TransactionServiceImpl {
     private static final Logger logger = LoggerFactory.getLogger(TransactionServiceImpl.class);
     @Autowired
     private AccountRepository accountRepository;
-   @Autowired
-   private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-   @Autowired
-   private TransactionRepository transactionRepository;
-    public void withdrawAmountByAcctID(String accountNumber, BigDecimal amount){
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+    public void withdrawAmountByAcctID(String accountNumber, BigDecimal amount) {
         // Set precision to 10
         MathContext mc
                 = new MathContext(10);
         // Using subtract() method
         BigDecimal diff = (accountRepository.findBalanceByAcctID(accountNumber)).subtract(amount);
-        if(diff.compareTo(BigDecimal.ZERO)>=0)
-            accountRepository.withdrawAmountByAcctID( accountNumber, diff);{
+        if (diff.compareTo(BigDecimal.ZERO) >= 0)
+            accountRepository.withdrawAmountByAcctID(accountNumber, diff);
+        {
         }
     }
-    public void saveBalanceByAcctID(String destAcctNumber, BigDecimal amount){
+
+    public void saveBalanceByAcctID(String destAcctNumber, BigDecimal amount) {
         BigDecimal finalBalance = accountRepository.findBalanceByAcctID(destAcctNumber).add(amount);
-        accountRepository.saveBalanceByAcctID( destAcctNumber, finalBalance);{
+        accountRepository.saveBalanceByAcctID(destAcctNumber, finalBalance);
+        {
 
         }
     }
+    @PreAuthorize("hasRole('ROLE_ADMIN' || )")
+    public void transferAmount(Long senderId, String user, String senderAccNumber, String recvAccNumber, BigDecimal amount) {
 
-    public void transferAmount(Long senderId, String user, String senderAccNumber,  String recvAccNumber, BigDecimal amount) {
         //validation
         //authentication
         //authorisation
@@ -54,12 +60,10 @@ public class TransactionServiceImpl {
         transaction.setAmount(amount);
         transaction.setSenderAccount(senderAccNumber);
         transaction.setReceiverAccount(recvAccNumber);
-        //transaction.setCreatedTimeStamp();
         transaction.setUpdatedTimeStamp(LocalDateTime.now());
         transaction.setLastModifiedBy(user);
         transaction.setLastUpdatedBy(user);
         transaction.setUserId(senderId);
-        //transaction.setRandomUUId();
 
         transactionRepository.save(transaction);
     }

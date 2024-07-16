@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private static final String Existing_Email = null;
+
     @Autowired
     private UserRepository userRepository;
 

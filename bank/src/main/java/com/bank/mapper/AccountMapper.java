@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountMapper {
     public  AccountM convertToAccountM(Account account){
+        if(account == null)
+            throw new IllegalArgumentException("Invalid Account: ");
         AccountM accountM = new AccountM();
         accountM.setStatus(account.getStatus().toString());
         accountM.setAccountNumber(account.getAccountNumber());

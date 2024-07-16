@@ -8,7 +8,6 @@ import java.util.Collection;
 @Getter
 @Setter
 @AllArgsConstructor
-
 @Builder
 public class UserPrinciple implements UserDetails {
     private final Long userId;
@@ -23,12 +22,12 @@ public class UserPrinciple implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return email;
+        return this.email;
     }
 
     @Override

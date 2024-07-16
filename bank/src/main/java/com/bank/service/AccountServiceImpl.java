@@ -11,6 +11,8 @@ import com.bank.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +32,6 @@ public class AccountServiceImpl {
     private AddressRepository addressRepository;
     @Autowired
     private AccountMapper accountMapper;
-
     @Autowired
     private RoleRepository roleRepository;
     @Autowired
@@ -66,15 +67,14 @@ public class AccountServiceImpl {
 
 
             User user = new User();
-            user.setName(body.getUser().getName());
+            String name = body.getUser().getName();
+            user.setName(name);
             user.setEmail(body.getUser().getEmail());
+
             //check password encoder bean
             user.setPassword(new BCryptPasswordEncoder().encode(body.getUser().getPassword()));
             Set<String> strRoles = new HashSet<>();
             strRoles.add("ADMIN");
-
-
-            //user.setRole(body.getUser().getRoles());
 
 
             Set<Role> roles = new HashSet<>();
@@ -133,15 +133,29 @@ public class AccountServiceImpl {
             return userCreated;
         } catch (Exception ex) {
             logger.error(ex.getMessage());
-            return null;
+            throw new UsernameNotFoundException("not exist ");
         }
     }
 
-
+    @PreAuthorize("hasRole('ROLE_USER')")
     public AccountM getAccount(String accountNumber) {
-        AccountM accM = accountMapper.convertToAccountM(accountRepository.findByAccountNumber(accountNumber));
+        AccountM accM;
+        try {
+            Account account = accountRepository.findByAccountNumber(accountNumber);
+            if (account == null) {
+                throw new IllegalArgumentException("Account does not exist : " + accountNumber);
+            }
+            accM = accountMapper.convertToAccountM(account);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException(e);
+        }
         return accM;
     }
 
+    @PreAuthorize("hasAuthority('DELETE')")
+    public String deleteUserAccount(String accountNumber) {
+        accountRepository.deleteByAccountNumber(accountNumber);
+        return accountNumber;
+    }
 
 }

@@ -1,12 +1,14 @@
 package com.bank.util;
 
+import com.bank.entity.Address;
 import com.bank.entity.Privilege;
 import com.bank.entity.Role;
-import com.bank.entity.RoleName;
 import com.bank.entity.User;
+import com.bank.mapper.UserMapper;
 import com.bank.repository.PrivilegeRepository;
 import com.bank.repository.RoleRepository;
 import com.bank.repository.UserRepository;
+import com.bank.service.AccountServiceImpl;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -14,12 +16,10 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-
-import static com.bank.entity.RoleName.ROLE_ADMIN;
 
 @Component
 public class SetupDataLoader implements
@@ -38,6 +38,11 @@ public class SetupDataLoader implements
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AccountServiceImpl accountService;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     @Transactional
@@ -49,19 +54,32 @@ public class SetupDataLoader implements
                 = createPrivilegeIfNotFound("READ_PRIVILEGE");
         Privilege writePrivilege
                 = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
-
+        Privilege deletePrivilege
+                = createPrivilegeIfNotFound("DELETE_PRIVILEGE");
         List<Privilege> adminPrivileges = Arrays.asList(
-                readPrivilege, writePrivilege);
+                readPrivilege, writePrivilege, deletePrivilege);
         createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
         createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
 
-       Role adminRole = roleRepository.findByName("ROLE_ADMIN");
-        User user = new User();
-        user.setName("Test");
+        Role adminRole = roleRepository.findByName("ROLE_ADMIN");
 
+
+        User user = new User();
+        user.setName("Admin");
         user.setPassword(passwordEncoder.encode("test"));
-        user.setEmail("test@test.com");
+        user.setEmail("admin@gmail.com");
         user.setRoles(Arrays.asList(adminRole));
+
+        Address address = new Address();
+        address.setStreet("Admin street");
+        address.setCity("Admin City");
+        address.setState("Admin State");
+        address.setCountry("Admin Country");
+        address.setPostalCode("Admin Postal Code");
+
+        address.setUser(user);
+        user.setAddress(address);
+
 
         userRepository.save(user);
 
