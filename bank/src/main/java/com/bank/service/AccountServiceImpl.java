@@ -140,15 +140,13 @@ public class AccountServiceImpl {
     @PreAuthorize("hasRole('ROLE_USER')")
     public AccountM getAccount(String accountNumber) {
         AccountM accM;
-        try {
+
             Account account = accountRepository.findByAccountNumber(accountNumber);
             if (account == null) {
                 throw new IllegalArgumentException("Account does not exist : " + accountNumber);
             }
             accM = accountMapper.convertToAccountM(account);
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException(e);
-        }
+
         return accM;
     }
 
