@@ -28,13 +28,7 @@ public class TransactionController implements TransferApi {
     @Override
     @PreAuthorize("hasRole('ROLE_ADMIN') || hasRole('ROLE_USER')")
     public ResponseEntity<TransactionM> transferId(TransferRequest body) {
-        Account account = accountRepository.findByAccountNumber(body.getSenderAccount());
-        if (account.getId() != UserPrinciple.builder().build().getUserId()) {
-            ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "You are not authorized to make a transfer");
-            return new ResponseEntity(errorResponse, HttpStatus.BAD_REQUEST);
-        }
-        TransactionM transactionM = transactionServiceImpl.transferAmount(
-                account.getId(), account.getUser().getName(), body.getSenderAccount(), body.getReceiverAccount(), body.getAmount());
+        TransactionM transactionM = transactionServiceImpl.transfer(body);
         return ResponseEntity.ok(transactionM);
     }
 }

@@ -14,7 +14,7 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: true
     hibernate.ddl-auto: create
-    show-sql: true
+    show-sql: false
     generate-ddl: true
 
   devtools:
@@ -32,8 +32,8 @@ security:
     secret-key: thisismysecretkeydude
 logging:
   level:
-    root: "warn"
-    org.springframework.web: "debug"
-    org.hibernate: "error"
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: ERROR
   file:
     name: ./logs/bank.log

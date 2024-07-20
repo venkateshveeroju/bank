@@ -25,7 +25,7 @@ paths:
         - Account
       summary: Create an account
       description: Create an account with an option to deposit initial amount
-      operationId: accountId
+      operationId: createAccount
       requestBody:
         description: User Details and Desired amount to deposit
         required: true

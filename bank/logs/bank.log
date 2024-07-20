@@ -1,0 +1,206 @@
+2024-07-20T13:44:05.334+02:00 DEBUG 9964 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@33a630fa
+2024-07-20T13:44:26.768+02:00  WARN 9964 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-20T13:44:28.433+02:00 DEBUG 9964 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-07-20T13:44:29.393+02:00 DEBUG 9964 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-07-20T13:44:32.095+02:00 DEBUG 9964 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-20T13:44:32.467+02:00 DEBUG 9964 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-20T13:44:38.551+02:00 DEBUG 9964 --- [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@33a630fa, started on Sat Jul 20 13:44:05 CEST 2024
+2024-07-20T13:45:55.329+02:00 DEBUG 10452 --- [restartedMain] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-07-20T13:46:08.577+02:00  WARN 10452 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-20T13:46:10.794+02:00 DEBUG 10452 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-07-20T13:46:11.828+02:00 DEBUG 10452 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-07-20T13:46:13.863+02:00 DEBUG 10452 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-20T13:46:14.121+02:00 DEBUG 10452 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-20T13:47:03.876+02:00  INFO 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-20T13:47:03.877+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-07-20T13:47:03.878+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-07-20T13:47:03.878+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-07-20T13:47:03.889+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2cc43c3a
+2024-07-20T13:47:03.890+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@67e03e2b
+2024-07-20T13:47:03.891+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-07-20T13:47:03.891+02:00  INFO 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2024-07-20T13:47:04.039+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.html", parameters={}
+2024-07-20T13:47:04.044+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-07-20T13:47:04.144+02:00 DEBUG 10452 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-07-20T13:47:04.510+02:00 DEBUG 10452 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js", parameters={}
+2024-07-20T13:47:04.512+02:00 DEBUG 10452 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-07-20T13:47:04.551+02:00 DEBUG 10452 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-initializer.js", parameters={}
+2024-07-20T13:47:04.553+02:00 DEBUG 10452 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-07-20T13:47:04.548+02:00 DEBUG 10452 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-07-20T13:47:04.624+02:00 DEBUG 10452 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css", parameters={}
+2024-07-20T13:47:04.625+02:00 DEBUG 10452 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-07-20T13:47:04.642+02:00 DEBUG 10452 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-07-20T13:47:04.659+02:00 DEBUG 10452 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.css", parameters={}
+2024-07-20T13:47:04.689+02:00 DEBUG 10452 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js", parameters={}
+2024-07-20T13:47:04.691+02:00 DEBUG 10452 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-07-20T13:47:04.674+02:00 DEBUG 10452 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-07-20T13:47:04.693+02:00 DEBUG 10452 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-07-20T13:47:04.694+02:00 DEBUG 10452 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2024-07-20T13:47:05.088+02:00 DEBUG 10452 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-07-20T13:47:05.954+02:00 DEBUG 10452 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs/swagger-config", parameters={}
+2024-07-20T13:47:05.956+02:00 DEBUG 10452 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-07-20T13:47:06.008+02:00 DEBUG 10452 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
+2024-07-20T13:47:06.012+02:00 DEBUG 10452 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [{configUrl=/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/swagger-ui/oauth2-re (truncated)...]
+2024-07-20T13:47:06.026+02:00 DEBUG 10452 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-07-20T13:47:06.060+02:00 DEBUG 10452 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs", parameters={}
+2024-07-20T13:47:06.061+02:00 DEBUG 10452 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-07-20T13:47:09.925+02:00 DEBUG 10452 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
+2024-07-20T13:47:09.939+02:00 DEBUG 10452 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 48, 46, 49, 34, 44, 34, 105, 110, 10 (truncated)...]
+2024-07-20T13:47:09.943+02:00 DEBUG 10452 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-07-20T13:48:11.982+02:00 DEBUG 10452 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-07-20T13:48:11.997+02:00 DEBUG 10452 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountId(NewAccount)
+2024-07-20T13:48:12.112+02:00 DEBUG 10452 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: null<EOL>        passwo (truncated)...]
+2024-07-20T13:48:12.183+02:00 DEBUG 10452 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#illegal()
+2024-07-20T13:48:12.189+02:00 DEBUG 10452 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [text/plain, */*, application/json, application/*+json]
+2024-07-20T13:48:12.190+02:00 DEBUG 10452 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Error while finding user"]
+2024-07-20T13:48:12.208+02:00  WARN 10452 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.IllegalArgumentException: Email cannot be empty ]
+2024-07-20T13:48:12.360+02:00 DEBUG 10452 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-07-20T13:51:59.483+02:00 DEBUG 652 --- [restartedMain] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-07-20T13:52:24.226+02:00  WARN 652 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-20T13:52:26.880+02:00 DEBUG 652 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-07-20T13:52:29.223+02:00 DEBUG 652 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-07-20T13:52:33.128+02:00 DEBUG 652 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-20T13:52:35.497+02:00 DEBUG 652 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-20T13:54:01.389+02:00 DEBUG 1836 --- [restartedMain] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-07-20T13:54:25.857+02:00  WARN 1836 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-20T13:54:33.285+02:00 DEBUG 1836 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-07-20T13:54:34.830+02:00 DEBUG 1836 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-07-20T13:54:39.181+02:00 DEBUG 1836 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-20T13:54:39.415+02:00 DEBUG 1836 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-20T13:54:54.436+02:00  INFO 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-20T13:54:54.437+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-07-20T13:54:54.439+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-07-20T13:54:54.439+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-07-20T13:54:54.455+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@43dd3244
+2024-07-20T13:54:54.457+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4cb7269b
+2024-07-20T13:54:54.459+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-07-20T13:54:54.460+02:00  INFO 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2024-07-20T13:54:54.857+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-07-20T13:54:54.882+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountId(NewAccount)
+2024-07-20T13:54:55.512+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: null<EOL>        passwo (truncated)...]
+2024-07-20T13:56:03.432+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#illegal(IllegalArgumentException)
+2024-07-20T13:56:37.949+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [text/plain, */*, application/json, application/*+json]
+2024-07-20T13:56:38.097+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Error while finding user Email cannot be empty "]
+2024-07-20T13:56:43.356+02:00  WARN 1836 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.IllegalArgumentException: Email cannot be empty ]
+2024-07-20T13:56:43.365+02:00 DEBUG 1836 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-07-20T14:04:24.295+02:00 DEBUG 10264 --- [restartedMain] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-07-20T14:04:35.323+02:00  WARN 10264 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-20T14:04:36.526+02:00 DEBUG 10264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-07-20T14:04:37.024+02:00 DEBUG 10264 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-07-20T14:04:38.254+02:00 DEBUG 10264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-20T14:04:38.413+02:00 DEBUG 10264 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-20T14:05:48.875+02:00  INFO 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-20T14:05:48.878+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-07-20T14:05:48.878+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-07-20T14:05:48.879+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-07-20T14:05:48.882+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@19d9be2d
+2024-07-20T14:05:48.884+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7151c469
+2024-07-20T14:05:48.885+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-07-20T14:05:48.885+02:00  INFO 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-07-20T14:05:49.172+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-07-20T14:05:49.192+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountId(NewAccount)
+2024-07-20T14:05:49.858+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: null<EOL>        passwo (truncated)...]
+2024-07-20T14:05:50.258+02:00 ERROR 10264 --- [http-nio-8080-exec-1] com.bank.service.AccountServiceImpl      : not-null property references a null or transient value : com.bank.entity.User.email
+2024-07-20T14:05:50.266+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#userNameNotFoundEx(UsernameNotFoundException)
+2024-07-20T14:05:50.316+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+2024-07-20T14:05:50.322+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Error while finding user =not exist }]
+2024-07-20T14:05:50.366+02:00  WARN 10264 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.core.userdetails.UsernameNotFoundException: not exist ]
+2024-07-20T14:05:50.375+02:00 DEBUG 10264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-07-20T14:06:09.684+02:00 DEBUG 10264 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-07-20T14:06:09.697+02:00 DEBUG 10264 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountId(NewAccount)
+2024-07-20T14:06:09.700+02:00 DEBUG 10264 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: null<EOL>        passwo (truncated)...]
+2024-07-20T14:06:10.048+02:00 ERROR 10264 --- [http-nio-8080-exec-2] com.bank.service.AccountServiceImpl      : not-null property references a null or transient value : com.bank.entity.User.email
+2024-07-20T14:06:10.049+02:00 DEBUG 10264 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#userNameNotFoundEx(UsernameNotFoundException)
+2024-07-20T14:06:10.050+02:00 DEBUG 10264 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+2024-07-20T14:06:10.051+02:00 DEBUG 10264 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Error while finding user =not exist }]
+2024-07-20T14:06:10.052+02:00  WARN 10264 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.core.userdetails.UsernameNotFoundException: not exist ]
+2024-07-20T14:06:10.054+02:00 DEBUG 10264 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-07-20T14:18:14.687+02:00 DEBUG 10264 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-07-20T14:18:14.689+02:00 DEBUG 10264 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountId(NewAccount)
+2024-07-20T14:18:14.695+02:00 DEBUG 10264 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to []
+2024-07-20T14:18:14.699+02:00 DEBUG 10264 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#runTimeError(RuntimeException)
+2024-07-20T14:18:14.785+02:00 DEBUG 10264 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+2024-07-20T14:18:14.787+02:00 DEBUG 10264 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.bank.util.ErrorResponse@274e1e81]
+2024-07-20T14:18:14.828+02:00  WARN 10264 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<com.bank.model.UserCreated> com.bank.controller.AccountController.accountId(com.bank.model.NewAccount)]
+2024-07-20T14:18:14.830+02:00 DEBUG 10264 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-07-20T14:25:01.422+02:00  INFO 3160 --- [restartedMain] com.bank.BankApplication                 : Starting BankApplication using Java 17.0.10 with PID 3160 (C:\Users\Veeroju\Music\bank\bank\target\classes started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-07-20T14:25:01.437+02:00  INFO 3160 --- [restartedMain] com.bank.BankApplication                 : No active profile set, falling back to 1 default profile: "default"
+2024-07-20T14:25:01.665+02:00  INFO 3160 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-20T14:25:01.666+02:00  INFO 3160 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-20T14:25:05.902+02:00  INFO 3160 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-20T14:25:06.114+02:00  INFO 3160 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 188 ms. Found 6 JPA repository interfaces.
+2024-07-20T14:25:09.070+02:00  INFO 3160 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-20T14:25:09.098+02:00  INFO 3160 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-20T14:25:09.099+02:00  INFO 3160 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-20T14:25:09.345+02:00  INFO 3160 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-20T14:25:09.346+02:00  INFO 3160 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7679 ms
+2024-07-20T14:25:10.013+02:00  INFO 3160 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-20T14:25:10.744+02:00  INFO 3160 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/bankdb user=ADMIN
+2024-07-20T14:25:10.747+02:00  INFO 3160 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-20T14:25:10.775+02:00  INFO 3160 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/bankdb'
+2024-07-20T14:25:11.335+02:00 DEBUG 3160 --- [restartedMain] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-07-20T14:25:12.681+02:00  INFO 3160 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-20T14:25:16.617+02:00  INFO 3160 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-20T14:25:17.778+02:00  INFO 3160 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-20T14:25:18.981+02:00  WARN 3160 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-20T14:25:20.075+02:00 DEBUG 3160 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-07-20T14:25:20.595+02:00 DEBUG 3160 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-07-20T14:25:21.050+02:00  INFO 3160 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-07-20T14:25:21.325+02:00  INFO 3160 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@3c7a759d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@182bbc7, org.springframework.security.web.context.SecurityContextHolderFilter@3d595bbb, org.springframework.security.web.header.HeaderWriterFilter@c077c07, org.springframework.security.web.authentication.logout.LogoutFilter@36d6d054, com.bank.security.JwtAuthenticationFilter@66e9cef7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1d653ca0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@68f6ba21, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@67176d7f, org.springframework.security.web.session.SessionManagementFilter@62b3bd3a, org.springframework.security.web.access.ExceptionTranslationFilter@4a50ac10, org.springframework.security.web.access.intercept.AuthorizationFilter@1234bfdf]
+2024-07-20T14:25:21.759+02:00 DEBUG 3160 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-20T14:25:21.902+02:00 DEBUG 3160 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-20T14:25:23.313+02:00  INFO 3160 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-07-20T14:25:23.498+02:00  INFO 3160 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-07-20T14:25:24.620+02:00  INFO 3160 --- [restartedMain] com.bank.BankApplication                 : Started BankApplication in 24.683 seconds (process running for 26.244)
+2024-07-20T14:26:27.933+02:00  INFO 3160 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-20T14:26:27.939+02:00  INFO 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-20T14:26:27.939+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-07-20T14:26:27.940+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-07-20T14:26:27.940+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-07-20T14:26:27.944+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7d8a0faa
+2024-07-20T14:26:27.945+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@2be8bdd
+2024-07-20T14:26:27.946+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-07-20T14:26:27.947+02:00  INFO 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-07-20T14:26:28.103+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-07-20T14:26:28.108+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountId(NewAccount)
+2024-07-20T14:26:28.547+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to []
+2024-07-20T14:26:28.555+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#runTimeError(RuntimeException)
+2024-07-20T14:26:28.621+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+2024-07-20T14:26:28.630+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.bank.util.ErrorResponse@592b760b]
+2024-07-20T14:26:28.660+02:00  WARN 3160 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<com.bank.model.UserCreated> com.bank.controller.AccountController.accountId(com.bank.model.NewAccount)]
+2024-07-20T14:26:28.661+02:00 DEBUG 3160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-07-20T14:26:41.353+02:00 DEBUG 3160 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-07-20T14:26:41.356+02:00 DEBUG 3160 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountId(NewAccount)
+2024-07-20T14:26:41.372+02:00 DEBUG 3160 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: null<EOL>        passwo (truncated)...]
+2024-07-20T14:26:41.455+02:00 DEBUG 3160 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#illegal(IllegalArgumentException)
+2024-07-20T14:26:41.457+02:00 DEBUG 3160 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+2024-07-20T14:26:41.461+02:00 DEBUG 3160 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.bank.util.ErrorResponse@696f204e]
+2024-07-20T14:26:41.466+02:00  WARN 3160 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.IllegalArgumentException: Email cannot be empty ]
+2024-07-20T14:26:41.469+02:00 DEBUG 3160 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-07-20T15:22:12.879+02:00  WARN 3160 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m31s959ms672µs318ns).
+2024-07-20T15:45:01.356+02:00  INFO 3160 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-20T15:45:01.384+02:00  INFO 3160 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-20T15:45:01.390+02:00  INFO 3160 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-20T16:50:17.068+02:00  INFO 6772 --- [main] com.bank.BankApplicationTests            : Starting BankApplicationTests using Java 17.0.10 with PID 6772 (started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-07-20T16:50:17.070+02:00  INFO 6772 --- [main] com.bank.BankApplicationTests            : No active profile set, falling back to 1 default profile: "default"
+2024-07-20T16:50:17.156+02:00 DEBUG 6772 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@779dfe55
+2024-07-20T16:50:21.019+02:00  INFO 6772 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-20T16:50:21.237+02:00  INFO 6772 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 199 ms. Found 6 JPA repository interfaces.
+2024-07-20T16:50:23.964+02:00  INFO 6772 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-20T16:50:24.029+02:00  INFO 6772 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-20T16:50:24.605+02:00  INFO 6772 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/bankdb user=ADMIN
+2024-07-20T16:50:24.610+02:00  INFO 6772 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-20T16:50:27.517+02:00  INFO 6772 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-20T16:50:28.714+02:00  INFO 6772 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-20T16:50:29.772+02:00  WARN 6772 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-20T16:50:30.637+02:00 DEBUG 6772 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-07-20T16:50:31.838+02:00 DEBUG 6772 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-07-20T16:50:32.635+02:00  INFO 6772 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-07-20T16:50:33.183+02:00  INFO 6772 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@3ce34b92, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f4dce67, org.springframework.security.web.context.SecurityContextHolderFilter@64934acd, org.springframework.security.web.header.HeaderWriterFilter@1ca876b7, org.springframework.security.web.authentication.logout.LogoutFilter@4ad0465c, com.bank.security.JwtAuthenticationFilter@25df95b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1bef1304, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@f2df380, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f02ce3, org.springframework.security.web.session.SessionManagementFilter@4235e01b, org.springframework.security.web.access.ExceptionTranslationFilter@3da76d3a, org.springframework.security.web.access.intercept.AuthorizationFilter@20bc72af]
+2024-07-20T16:50:33.862+02:00 DEBUG 6772 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-07-20T16:50:33.969+02:00 DEBUG 6772 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-07-20T16:50:36.354+02:00  INFO 6772 --- [main] com.bank.BankApplicationTests            : Started BankApplicationTests in 20.133 seconds (process running for 22.382)
+2024-07-20T16:50:38.705+02:00 DEBUG 6772 --- [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@779dfe55, started on Sat Jul 20 16:50:17 CEST 2024
+2024-07-20T16:50:38.734+02:00  INFO 6772 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-20T16:50:38.738+02:00  INFO 6772 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-20T16:50:38.754+02:00  INFO 6772 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

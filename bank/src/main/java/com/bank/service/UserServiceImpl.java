@@ -59,6 +59,9 @@ public class UserServiceImpl {
     }
 
     public LoginResponse loginUser(@NotNull String email, @NotNull String password) {
+        if(email == null || password==null){
+            throw new IllegalArgumentException("Email and password are must to login");
+        }
         LoginResponse loginResponse = null;
         try {
             if (userRepository.findByEmail(email).get().getEmail() == null) {

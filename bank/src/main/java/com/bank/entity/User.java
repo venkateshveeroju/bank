@@ -23,19 +23,20 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+
     @NotNull(message = "Name must not be null")
     private String name;
     @Column(unique = true, nullable = false)
     @Email
     @NotNull(message = "Email must not be null")
-    @NotBlank(message = "Name is mandatory")
+    @NotBlank(message = "Email is mandatory")
     private String email;
     @Column(nullable = false)
     @NotNull(message = "Password must not be null")
     private String password;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date birthDay;
+    private Date birthDate;
+
     @ToString.Exclude
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)

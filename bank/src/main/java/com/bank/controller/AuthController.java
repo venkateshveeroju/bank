@@ -19,9 +19,6 @@ public class AuthController {
 
     @PostMapping("/auth/login")
     public LoginResponse login(@RequestBody @Validated LoginRequest request) {
-        if(request.getPassword() == null || request.getEmail()==null){
-            throw new IllegalArgumentException("Email and password are required to login");
-        }
         return userServiceImpl.loginUser(request.getEmail(), request.getPassword());
     }
 }

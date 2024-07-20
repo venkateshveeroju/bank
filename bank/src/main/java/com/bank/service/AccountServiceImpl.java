@@ -8,6 +8,7 @@ import com.bank.model.AccountM;
 import com.bank.model.NewAccount;
 import com.bank.model.UserCreated;
 import com.bank.repository.*;
+import jakarta.transaction.Transactional;
 import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ import java.util.*;
 
 
 @Service
+@Transactional(rollbackOn = RuntimeException.class)
 public class AccountServiceImpl {
     private final static Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
     @Autowired
@@ -41,15 +43,16 @@ public class AccountServiceImpl {
     private PasswordEncoder passwordEncoder;
 
     public UserCreated createAccount(NewAccount body) {
+        validateAccount(body);
         String email = body.getUser().getEmail();
         try {
             String str = userRepository.findEmailByEmail(email);
             if (str != null) {
                 throw new IllegalArgumentException("User already exists in system with Email : " + email);
             }
-            UserCreated userCreated = null;
+            UserCreated userCreated;
             if ((body.getUser().getEmail() != null) && (str != null) && (!str.isEmpty())) {
-                return userCreated;
+                return null;
             }
 
             Address address = new Address();
@@ -165,5 +168,13 @@ public class AccountServiceImpl {
         Account account = accountRepository.findByAccountNumber(accountNumber);
         accM = accountMapper.convertToAccountM(account);
         return accM;
+    }
+
+    private void validateAccount(NewAccount newAccount){
+        if(newAccount==null || newAccount.getUser().getEmail()==null || newAccount.getUser().getEmail().isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be empty ");
+        }else if (newAccount.getUser().getName()== null || newAccount.getUser().getName().isEmpty()){
+            throw new IllegalArgumentException("Name cannot be empty ");
+        }
     }
 }

@@ -7,6 +7,7 @@ import com.bank.model.DepositRequest;
 import com.bank.model.NewAccount;
 import com.bank.model.UserCreated;
 import com.bank.service.AccountServiceImpl;
+import jakarta.validation.Valid;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,21 +20,21 @@ import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/v1")
+@Valid
 public class AccountController implements AccountsApi {
     @Autowired
     AccountServiceImpl accountService;
 
-    @Override
-    public ResponseEntity<UserCreated> accountId(@NonNull NewAccount newAccount) {
-        if(newAccount==null || newAccount.getUser().getEmail()==null || newAccount.getUser().getEmail().isEmpty()) {
-           throw new IllegalArgumentException("Email cannot be empty ");
-        }
-        return ResponseEntity.ok(accountService.createAccount(newAccount));
-    }
+
 
     @Override
     public ResponseEntity<AccountM> accountsAccountNumberBalanceGet(@NonNull String accountNumber) {
         return new ResponseEntity<>(accountService.getAccount(accountNumber), HttpStatus.ACCEPTED);
+    }
+
+    @Override
+    public ResponseEntity<UserCreated> createAccount(NewAccount body) {
+        return ResponseEntity.ok(accountService.createAccount(body));
     }
 
     @Override
