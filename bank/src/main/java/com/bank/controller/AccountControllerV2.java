@@ -3,6 +3,7 @@ package com.bank.controller;
 import com.bank.model.NewAccount;
 import com.bank.model.UserCreated;
 import com.bank.service.AccountServiceImpl;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("api/v2/")
 @RestController
+@Hidden
 public class AccountControllerV2 {
     @Autowired
     AccountServiceImpl accountService;
@@ -20,6 +22,4 @@ public class AccountControllerV2 {
     public ResponseEntity<UserCreated> createAccountWithDOB(NewAccount body) {
         return ResponseEntity.ok(accountService.createAccount(body));
     }
-
-
 }

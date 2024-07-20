@@ -15,36 +15,12 @@ public class SwaggerConfig {
     String bearerFormat = "JWT";
     String scheme = "bearer";
 
-    @Bean
-    @Primary
+@Bean
     public OpenAPI caseOpenAPI() {
         return new OpenAPI()
                 .addSecurityItem(new SecurityRequirement()
-                        .addList(schemeName)).components(new Components()
-                        .addSecuritySchemes(
-                                schemeName, new SecurityScheme()
-                                        .name(schemeName)
-                                        .type(SecurityScheme.Type.OAUTH2)
-                                        .bearerFormat(bearerFormat)
-                                        .in(SecurityScheme.In.HEADER)
-                                        .scheme(scheme)
-                        )
-                )
-                .info(new Info()
-                        .title("Banking API Specification for account operations")
-                        .description("A simple banking API that allows two operations:\n" +
-                                "    - API to open an account with the option to add initial credit.\n" +
-                                "    - API to retrieve account information including account balance.\n" +
-                                "    - API to retrieve person information.\n" +
-                                "    - API to make a transfer from one account to another.")
-                        .version("1.0")
-                );
-    }
-    @Bean
-    public OpenAPI caseOpenAPIV2() {
-        return new OpenAPI()
-                .addSecurityItem(new SecurityRequirement()
-                        .addList(schemeName)).components(new Components()
+                        .addList(schemeName))
+                .components(new Components()
                         .addSecuritySchemes(
                                 schemeName, new SecurityScheme()
                                         .name(schemeName)
@@ -61,7 +37,8 @@ public class SwaggerConfig {
                                 "    - API to retrieve account information including account balance.\n" +
                                 "    - API to retrieve person information.\n" +
                                 "    - API to make a transfer from one account to another.")
-                        .version("2.0")
+                        .version("1.0")
                 );
     }
+
 }

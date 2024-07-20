@@ -30,3 +30,10 @@ server:
 security:
   jwt:
     secret-key: thisismysecretkeydude
+logging:
+  level:
+    root: "warn"
+    org.springframework.web: "debug"
+    org.hibernate: "error"
+  file:
+    name: ./logs/bank.log

@@ -8,12 +8,13 @@ import com.bank.model.AccountM;
 import com.bank.model.NewAccount;
 import com.bank.model.UserCreated;
 import com.bank.repository.*;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -36,16 +37,20 @@ public class AccountServiceImpl {
     private RoleRepository roleRepository;
     @Autowired
     private PrivilegeRepository privilegeRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserCreated createAccount(NewAccount body) {
+        String email = body.getUser().getEmail();
         try {
-            String str = userRepository.findEmailByEmail(body.getUser().getEmail());
+            String str = userRepository.findEmailByEmail(email);
+            if (str != null) {
+                throw new IllegalArgumentException("User already exists in system with Email : " + email);
+            }
             UserCreated userCreated = null;
             if ((body.getUser().getEmail() != null) && (str != null) && (!str.isEmpty())) {
                 return userCreated;
             }
-            Date dateOne = new Date();
-            Instant inst = Instant.now();
 
             Address address = new Address();
             address.setStreet(body.getUser().getAddress().getStreet());
@@ -61,39 +66,32 @@ public class AccountServiceImpl {
             } else {
                 acc.setBalance(new BigDecimal(0));
             }
+            String name = body.getUser().getName();
             acc.setStatus(Status.ACTIVE);
-            acc.setCreatedTimeStamp(dateOne.from(inst));
-            acc.setUpdatedTimeStamp(dateOne.from(inst));
-
+            acc.setUpdatedTimeStamp(Date.from(Instant.now()));
+            acc.setLastUpdatedBy(name);
+            acc.setLastModifiedBy(name);
 
             User user = new User();
-            String name = body.getUser().getName();
             user.setName(name);
             user.setEmail(body.getUser().getEmail());
-
-            //check password encoder bean
-            user.setPassword(new BCryptPasswordEncoder().encode(body.getUser().getPassword()));
+            
+            user.setPassword(passwordEncoder.encode(body.getUser().getPassword()));
             Set<String> strRoles = new HashSet<>();
             strRoles.add("ADMIN");
-
 
             Set<Role> roles = new HashSet<>();
 
             if (strRoles == null) {
                 Role userRole = roleRepository.findByName("ROLE_USER");
-
                 roles.add(userRole);
             } else {
                 strRoles.forEach(role -> {
                     switch (role) {
-
                         case "ROLE_ADMIN":
                             Role pmRole = roleRepository.findByName("ROLE_ADMIN");
-
                             roles.add(pmRole);
-
                             break;
-
                         default:
                             Role userRole = roleRepository.findByName("ROLE_USER");
                             roles.add(userRole);
@@ -108,7 +106,6 @@ public class AccountServiceImpl {
                 collection.addAll(role.getPrivileges());
             }
 
-
             Role role = new Role();
             role.setPrivileges(collection);
             roleRepository.save(role);
@@ -116,13 +113,12 @@ public class AccountServiceImpl {
             privilegeObj.setRoles(roles);
             privilegeRepository.save(privilegeObj);
 
-
             user.setRoles(roles);
-
             user.setAccount(acc);
             user.setAddress(address);
 
             acc.setUser(user);
+            acc.setUpdatedTimeStamp(Date.from(Instant.now()));
             address.setUser(user);
 
             addressRepository.save(address);
@@ -138,22 +134,36 @@ public class AccountServiceImpl {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    public AccountM getAccount(String accountNumber) {
+    public AccountM getAccount(@NonNull String accountNumber) {
         AccountM accM;
-
-            Account account = accountRepository.findByAccountNumber(accountNumber);
-            if (account == null) {
-                throw new IllegalArgumentException("Account does not exist : " + accountNumber);
-            }
-            accM = accountMapper.convertToAccountM(account);
-
+        Account account = accountRepository.findByAccountNumber(accountNumber);
+        if (account == null) {
+            throw new IllegalArgumentException("Account does not exist : " + accountNumber);
+        }
+        accM = accountMapper.convertToAccountM(account);
         return accM;
     }
 
     @PreAuthorize("hasAuthority('DELETE')")
-    public String deleteUserAccount(String accountNumber) {
+    public String deleteUserAccount(@NonNull String accountNumber) {
+        AccountM accM;
+        Account account = accountRepository.findByAccountNumber(accountNumber);
+        if (account == null) {
+            throw new IllegalArgumentException("Account does not exist : " + accountNumber);
+        }
         accountRepository.deleteByAccountNumber(accountNumber);
         return accountNumber;
     }
 
+    @PreAuthorize("hasAuthority('READ')")
+    public AccountM depositToAccount(@NonNull String accountNumber, BigDecimal depositAmount) {
+        AccountM accM;
+        if (accountRepository.findByAccountNumber(accountNumber) == null) {
+            throw new IllegalArgumentException("Account does not exist : " + accountNumber);
+        }
+        accountRepository.saveBalanceByAcctID(accountNumber, depositAmount);
+        Account account = accountRepository.findByAccountNumber(accountNumber);
+        accM = accountMapper.convertToAccountM(account);
+        return accM;
+    }
 }

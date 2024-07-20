@@ -8,7 +8,7 @@ info:
     - API to retrieve person information.
     - API to make a transfer from one account to another.
 
-  version: 1.0
+  version: '1.0'
 servers:
   - url: '{protocol}://localhost:8081/{basePath}'
     description: My API locally hosted release
@@ -19,7 +19,7 @@ tags:
   - name: accounts
     description: Operations between bank accounts
 paths:
-  /accounts:
+  /accounts/create-account:
     post:
       tags:
         - Account
@@ -49,7 +49,8 @@ paths:
   /accounts/{accountNumber}/balance:
     get:
       security:
-        - bearerAuth: [ ]
+        - bearerAuth:
+            - ROLE_USER
       tags:
         - Account
       summary: Get account balance
@@ -62,7 +63,7 @@ paths:
             type: string
       responses:
         200:
-          description: Account Balance Retrieved
+          description: Account Balance updated
           content:
             application/json:
               schema:
@@ -88,6 +89,12 @@ paths:
               $ref: '#/components/schemas/DepositRequest'
         required: true
       responses:
+        200:
+          description: Person Information Retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountM'
         204:
           description: Success
         404:
@@ -96,7 +103,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountNotFoundError'
-  /User/{accountNumber}:
+  /user/{accountNumber}:
     get:
       tags:
         - User
@@ -112,7 +119,7 @@ paths:
 
       responses:
         200:
-          description: Person Infromation Retrieved
+          description: Person Information Retrieved
           content:
             application/json:
               schema:
@@ -131,7 +138,7 @@ paths:
     post:
       tags:
         - Account
-      summary: Makes transfer between Accounts
+      summary: Makes money transfer between Accounts
       description: Makes transfer between Accounts
       operationId: transferId
       requestBody:
@@ -143,12 +150,11 @@ paths:
               $ref: '#/components/schemas/TransferRequest'
       responses:
         200:
-          description: Person Information Retrieved
+          description: Transaction details will be provided
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-                example: Transfer Successfull
+                $ref: '#/components/schemas/TransactionM'
         404:
           description: Account not found
           content:
@@ -160,14 +166,13 @@ paths:
         503:
           description: Unexpected error.
 
+# 1) Define the security scheme type (HTTP bearer)
 components:
   securitySchemes:
     bearerAuth:            # arbitrary name for the security scheme
       type: http
       scheme: bearer
       bearerFormat: JWT
-  # 2) Apply the security globally to all operations
-
 
   schemas:
     NewAccount:
@@ -244,7 +249,6 @@ components:
     UserCreated:
       type: object
       properties:
-
         accountNumber:
           type: string
           example: 'A1234'
@@ -255,10 +259,10 @@ components:
           type: string
         createdTimeStamp:
           type: string
-          format: date # or date-time
+          format: date-time # or date-time
         UpdatedTimeStamp:
           type: string
-          format: date # or date-time
+          format: date-time # or date-time
 
     AccountM:
       type: object
@@ -273,10 +277,10 @@ components:
           type: string
         createdTimeStamp:
           type: string
-          format: date # or date-time
+          format: date-time # or date-time
         UpdatedTimeStamp:
           type: string
-          format: date # or date-time
+          format: date-time # or date-time
 
     AccountNotFoundError:
       type: object
@@ -293,6 +297,39 @@ components:
           type: string
         amount:
           type: number
+
+    TransactionM:
+      type: object
+      properties:
+        id:
+          type: number
+          format: int64
+        amount:
+          type: number
+        userId:
+          type: number
+        senderAccount:
+          type: string
+        receiverAccount:
+          type: string
+        createdTimeStamp:
+          type: string
+          format: date-time
+        UpdatedTimeStamp:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastUpdatedBy:
+          type: string
+        randomUUId:
+          type: string
+
+
+        transactionId:
+          type: string
+        transactionBy:
+          type: string
 
     DepositRequest:
       type: object

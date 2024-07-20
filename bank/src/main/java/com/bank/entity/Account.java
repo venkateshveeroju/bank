@@ -1,25 +1,20 @@
 package com.bank.entity;
 
-import com.bank.enums.AccountType;
+
 import com.bank.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.http.HttpStatusCode;
-
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
+
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 @Data
-public class Account {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Account extends AuditEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,10 +25,7 @@ public class Account {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
-    @CreationTimestamp
-    private Date createdTimeStamp;
-    @UpdateTimestamp
-    private Date UpdatedTimeStamp;
+
     @ToString.Exclude
     @JsonIgnore
     @OneToOne(cascade = {CascadeType.ALL})

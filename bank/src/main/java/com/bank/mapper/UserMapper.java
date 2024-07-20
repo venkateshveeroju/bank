@@ -17,10 +17,8 @@ public class UserMapper {
 
 
         UserInfo UserInfo = new UserInfo();
-
         UserInfo.setEmail(User.getEmail());
         UserInfo.setName(User.getName());
-
         UserInfo.setAddress(address);
         return UserInfo;
     }

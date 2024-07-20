@@ -3,10 +3,12 @@ package com.bank.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
@@ -16,11 +18,12 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AuditEntity {
     @CreationTimestamp
-    private LocalDateTime createdTimeStamp =  LocalDateTime.now();
+    private Date createdTimeStamp = Date.from(Instant.now());
     @UpdateTimestamp
-    private LocalDateTime updatedTimeStamp;
+    private Date updatedTimeStamp;
     @Column
     private String lastModifiedBy;
     @Column

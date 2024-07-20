@@ -22,6 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -32,7 +33,6 @@ public class UserServiceImpl {
     private final JwtIssuer jwtIssuer;
     @Autowired
     private final AuthenticationManager authenticationManager;
-    private final UserService userService;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -48,7 +48,7 @@ public class UserServiceImpl {
             userInfo = userMapper.convertToAccountM(user.get());
         } catch (UsernameNotFoundException ex) {
             throw new UsernameNotFoundException("Account Number does not exist : " + accountNumber);
-        }catch (BadCredentialsException bcEx) {
+        } catch (BadCredentialsException bcEx) {
             logger.error("Credentials you provided were wrong, please check");
         } catch (NullPointerException e) {
             logger.error("User does not exist ", e);
@@ -59,10 +59,11 @@ public class UserServiceImpl {
     }
 
     public LoginResponse loginUser(@NotNull String email, @NotNull String password) {
-
+        LoginResponse loginResponse = null;
         try {
-            if (userService.findByEmail(email).get().getEmail() == null) {
-                return null;
+            if (userRepository.findByEmail(email).get().getEmail() == null) {
+                logger.error("User does not exist in the system with the email :  " + email);
+                throw new UsernameNotFoundException("User does not exist in the system ");
             }
             var authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(email, password)
@@ -74,20 +75,23 @@ public class UserServiceImpl {
                     .toList();
 
             var token = jwtIssuer.issue(principle.getUserId(), principle.getEmail(), roles);
-            return LoginResponse.builder()
+            loginResponse = LoginResponse.builder()
                     .accessToken(token)
                     .build();
 
         } catch (UsernameNotFoundException userEx) {
-            logger.error("Invalid credentials ");
+            logger.error("Invalid credentials " + userEx.getMessage());
 
         } catch (BadCredentialsException bcEx) {
             logger.error("Credentials you provided were wrong, please check");
         } catch (NullPointerException e) {
-            logger.error("User does not exist ", e);
+            logger.error("User does not exist ", e.getMessage());
+        } catch (NoSuchElementException ex) {
+            logger.error("Cannot set user authentication with userId: {}", ex.getMessage());
+            throw new NoSuchElementException("Cannot set user authentication with userId: " + ex.getMessage());
         } catch (Exception e) {
-            logger.error("Cannot set user authentication: {}", e);
+            logger.error("Cannot set user authentication: {}", e.getMessage());
         }
-        return null;
+        return loginResponse;
     }
 }

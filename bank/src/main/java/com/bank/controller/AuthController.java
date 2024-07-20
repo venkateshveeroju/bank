@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserServiceImpl userServiceImpl;
 
     @PostMapping("/auth/login")
     public LoginResponse login(@RequestBody @Validated LoginRequest request) {
-        return userService.loginUser(request.getEmail(), request.getPassword());
+        if(request.getPassword() == null || request.getEmail()==null){
+            throw new IllegalArgumentException("Email and password are required to login");
+        }
+        return userServiceImpl.loginUser(request.getEmail(), request.getPassword());
     }
 }

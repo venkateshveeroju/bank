@@ -54,6 +54,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/accounts/**").permitAll()
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers("/h2/**").permitAll()
+                        .requestMatchers("/api/transfer/**").hasRole("USER")
                         .requestMatchers("/api/test/admin/**").hasRole("USER")
                         .requestMatchers("/api/test/user/**").hasAuthority("READ_PRIVILEGE")
                         .requestMatchers("/api/test/admin/**").hasRole("ADMIN")

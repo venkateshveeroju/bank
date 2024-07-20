@@ -2,13 +2,15 @@ package com.bank.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
 
 
 @Entity
@@ -22,13 +24,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
+    @NotNull(message = "Name must not be null")
     private String name;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     @Email
+    @NotNull(message = "Email must not be null")
+    @NotBlank(message = "Name is mandatory")
     private String email;
     @Column(nullable = false)
+    @NotNull(message = "Password must not be null")
     private String password;
-
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date birthDay;
     @ToString.Exclude
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
@@ -37,14 +44,6 @@ public class User {
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Address address;
-  /*  @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private Date creationDate;
-    @UpdateTimestamp
-    @Column(nullable = false)
-    private Date updationDate;*/
-
-
     @ManyToMany
     @JoinTable(
             name = "users_roles",
@@ -53,6 +52,4 @@ public class User {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
-
-
 }

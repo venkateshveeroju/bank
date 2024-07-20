@@ -2,7 +2,7 @@ package com.bank.security;
 
 import com.bank.entity.Privilege;
 import com.bank.entity.User;
-import com.bank.service.UserService;
+import com.bank.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +22,11 @@ import java.util.*;
 @RequiredArgsConstructor
 public class CustomUserDetailService implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailService.class);
-    private final UserService userService;
+    private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final Optional<User> user = userService.findByEmail(username);
+        final Optional<User> user = userRepository.findByEmail(username);
         if (user == null) {
             logger.warn("user not found: {}", username);
             throw new UsernameNotFoundException("User " + username + " not found");

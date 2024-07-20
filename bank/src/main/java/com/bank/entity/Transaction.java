@@ -9,7 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -17,24 +17,22 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Builder
-public class Transaction  {
+public class Transaction {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private  Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false)
     private BigDecimal amount;
-    /*@ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "id")*/
-    @Column
-    private String senderAccount;
     @Column
     private Long userId;
     @Column
+    private String senderAccount;
+    @Column
     private String receiverAccount;
     @CreationTimestamp
-    private LocalDateTime createdTimeStamp;
+    private Date createdTimeStamp;
     @UpdateTimestamp
-    private LocalDateTime UpdatedTimeStamp;
+    private Date UpdatedTimeStamp;
     @Column
     private String lastModifiedBy;
     @Column

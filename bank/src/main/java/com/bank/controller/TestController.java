@@ -4,6 +4,7 @@ import com.bank.entity.User;
 import com.bank.repository.UserRepository;
 import com.bank.security.*;
 import io.jsonwebtoken.Claims;
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/test")
+@Hidden
 public class TestController {
     @Autowired
     private JwtIssuer jwtIssuer;
@@ -44,7 +46,6 @@ public class TestController {
     @GetMapping("/admin1")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String admin() {
-
         return "Hello Admin ";
     }
 
@@ -63,9 +64,7 @@ public class TestController {
     @GetMapping("/me")
     public ResponseEntity<User> authenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         User currentUser = (User) authentication.getPrincipal();
-
         return ResponseEntity.ok(currentUser);
     }
 
