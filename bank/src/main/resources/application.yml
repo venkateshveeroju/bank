@@ -17,9 +17,6 @@ spring:
     show-sql: false
     generate-ddl: true
 
-  devtools:
-    add-properties: true
-
 server:
   tomcat:
     accessors:

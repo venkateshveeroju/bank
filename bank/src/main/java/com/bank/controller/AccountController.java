@@ -25,8 +25,6 @@ public class AccountController implements AccountsApi {
     @Autowired
     AccountServiceImpl accountService;
 
-
-
     @Override
     public ResponseEntity<AccountM> accountsAccountNumberBalanceGet(@NonNull String accountNumber) {
         return new ResponseEntity<>(accountService.getAccount(accountNumber), HttpStatus.ACCEPTED);

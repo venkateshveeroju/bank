@@ -81,9 +81,12 @@ public class AccountServiceImpl {
             
             user.setPassword(passwordEncoder.encode(body.getUser().getPassword()));
             Set<String> strRoles = new HashSet<>();
-            strRoles.add("ADMIN");
+            strRoles.add("ADMIN");//ADMIN
 
             Set<Role> roles = new HashSet<>();
+            Role userRole = roleRepository.findByName("ROLE_USER");
+            roles.add(userRole);
+/*
 
             if (strRoles == null) {
                 Role userRole = roleRepository.findByName("ROLE_USER");
@@ -101,9 +104,10 @@ public class AccountServiceImpl {
                     }
                 });
             }
-
+*/
             List<String> privileges = new ArrayList<>();
             List<Privilege> collection = new ArrayList<>();
+
             for (Role role : roles) {
                 privileges.add(role.getName());
                 collection.addAll(role.getPrivileges());
@@ -132,7 +136,7 @@ public class AccountServiceImpl {
             return userCreated;
         } catch (Exception ex) {
             logger.error(ex.getMessage());
-            throw new UsernameNotFoundException("not exist ");
+            throw new IllegalArgumentException("Unsuccessfull ");
         }
     }
 
