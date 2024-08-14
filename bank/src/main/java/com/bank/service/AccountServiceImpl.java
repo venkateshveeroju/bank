@@ -47,13 +47,11 @@ public class AccountServiceImpl {
         String email = body.getUser().getEmail();
         try {
             String str = userRepository.findEmailByEmail(email);
-            if (str != null) {
+            if (str != null && !str.isEmpty()) {
                 throw new IllegalArgumentException("User already exists in system with Email : " + email);
             }
             UserCreated userCreated;
-            if ((body.getUser().getEmail() != null) && (str != null) && (!str.isEmpty())) {
-                return null;
-            }
+
 
             Address address = new Address();
             address.setStreet(body.getUser().getAddress().getStreet());
@@ -77,62 +75,28 @@ public class AccountServiceImpl {
 
             User user = new User();
             user.setName(name);
-            user.setEmail(body.getUser().getEmail());
-            
+            user.setEmail(email);
             user.setPassword(passwordEncoder.encode(body.getUser().getPassword()));
-            Set<String> strRoles = new HashSet<>();
-            strRoles.add("ADMIN");
 
-            Set<Role> roles = new HashSet<>();
+
             Role userRole = roleRepository.findByName("ROLE_USER");
-           // System.out.println("user role " + userRole.toString());
-            roles.add(userRole);
-/*
 
-            if (strRoles == null) {
-                Role userRole = roleRepository.findByName("ROLE_USER");
-                roles.add(userRole);
-            } else {
-                strRoles.forEach(role -> {
-                    switch (role) {
-                        case "ROLE_ADMIN":
-                            Role pmRole = roleRepository.findByName("ROLE_ADMIN");
-                            roles.add(pmRole);
-                            break;
-                        default:
-                            Role userRole = roleRepository.findByName("ROLE_USER");
-                            roles.add(userRole);
-                    }
-                });
-            }
-*/
-            List<String> privileges = new ArrayList<>();
-            Set<Privilege> privilegeSet = new HashSet<>();
+            Set<Role> roleSet = new HashSet<>();
+            roleSet.add(userRole);
 
-            for (Role role : roles) {
-                privileges.add(role.getName());
-                privilegeSet.addAll(role.getPrivileges());
-            }
 
-            Role role = new Role();
-            role.setPrivileges(privilegeSet);
-            roleRepository.save(role);
-            Privilege privilegeObj = new Privilege();
-            //privilegeObj.set(roles);
-            privilegeRepository.save(privilegeObj);
-
-            user.setRoles(roles);
+            user.setRoles(roleSet);
             user.setAccount(acc);
             user.setAddress(address);
 
-            acc.setUser(user);
+            /*acc.setUser(user);
             acc.setUpdatedTimeStamp(Date.from(Instant.now()));
             address.setUser(user);
 
             addressRepository.save(address);
-            Account ac = accountRepository.save(acc);
+            Account ac = accountRepository.save(acc);*/
             userRepository.save(user);
-            userCreated = accountMapper.convertToUserCreated(ac);
+            userCreated = accountMapper.convertToUserCreated(acc);
             logger.info("Account creation successful " + userCreated.toString());
             return userCreated;
         } catch (Exception ex) {
@@ -141,7 +105,7 @@ public class AccountServiceImpl {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    //@PreAuthorize("hasRole('ROLE_USER')")
     public AccountM getAccount(@NonNull String accountNumber) {
         AccountM accM;
         Account account = accountRepository.findByAccountNumber(accountNumber);
@@ -175,10 +139,10 @@ public class AccountServiceImpl {
         return accM;
     }
 
-    private void validateAccount(NewAccount newAccount){
-        if(newAccount==null || newAccount.getUser().getEmail()==null || newAccount.getUser().getEmail().isEmpty()) {
+    private void validateAccount(NewAccount newAccount) {
+        if (newAccount == null || newAccount.getUser().getEmail() == null || newAccount.getUser().getEmail().isEmpty()) {
             throw new IllegalArgumentException("Email cannot be empty ");
-        }else if (newAccount.getUser().getName()== null || newAccount.getUser().getName().isEmpty()){
+        } else if (newAccount.getUser().getName() == null || newAccount.getUser().getName().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be empty ");
         }
     }

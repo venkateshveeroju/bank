@@ -54,23 +54,28 @@ public class SetupDataLoader implements
                 = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
         Privilege deletePrivilege
                 = createPrivilegeIfNotFound("DELETE_PRIVILEGE");
+
         Set<Privilege> adminPrivileges = new HashSet<>();
         adminPrivileges.add(readPrivilege);
         adminPrivileges.add(writePrivilege);
         adminPrivileges.add(deletePrivilege);
+
         Set<Privilege> userPrivileges = new HashSet<>();
         userPrivileges.add(readPrivilege);
         userPrivileges.add(writePrivilege);
+
         createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
         createRoleIfNotFound("ROLE_USER", userPrivileges);
 
         Role adminRole = roleRepository.findByName("ROLE_ADMIN");
+        Set<Role> roleSet = new HashSet<>();
+        roleSet.add(adminRole);
 
         User user = new User();
         user.setName("Admin");
         user.setPassword(passwordEncoder.encode("test"));
         user.setEmail("admin@gmail.com");
-        user.setRoles(Arrays.asList(adminRole));
+        user.setRoles(roleSet);
 
         Address address = new Address();
         address.setStreet("Admin street");
@@ -99,8 +104,7 @@ public class SetupDataLoader implements
     }
 
     @Transactional
-    Role createRoleIfNotFound(
-            String name, Set<Privilege> privileges) {
+    Role createRoleIfNotFound(String name, Set<Privilege> privileges) {
 
         Role role = roleRepository.findByName(name);
         if (role == null) {

@@ -50,8 +50,11 @@ public class WebSecurityConfig {
                         .requestMatchers(AUTH_WHITE_LIST).permitAll())
                 .securityMatcher("/**")
                 .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("/h2-console/**").permitAll())
+                .securityMatcher("/**")
+                .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/api/accounts/**").permitAll()
+                        .requestMatchers("/api/v1/accounts/**").permitAll()
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers("/h2/**").permitAll()
                         .requestMatchers("/api/transfer/**").hasRole("USER")

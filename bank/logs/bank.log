@@ -933,3 +933,858 @@ java.lang.ClassCastException: class com.bank.entity.Privilege cannot be cast to 
 2024-08-14T18:41:27.588+02:00  INFO 25784 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-08-14T18:41:27.593+02:00  INFO 25784 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-08-14T18:41:27.596+02:00  INFO 25784 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-14T19:31:50.447+02:00  INFO 13000 --- [main] com.bank.BankApplication                 : Starting BankApplication using Java 17.0.10 with PID 13000 (C:\Users\Veeroju\Music\bank\bank\target\classes started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T19:31:50.452+02:00  INFO 13000 --- [main] com.bank.BankApplication                 : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T19:31:57.134+02:00  INFO 13000 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-14T19:31:57.470+02:00  INFO 13000 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 315 ms. Found 6 JPA repository interfaces.
+2024-08-14T19:32:03.591+02:00  INFO 13000 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-14T19:32:03.675+02:00  INFO 13000 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-14T19:32:03.685+02:00  INFO 13000 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-14T19:32:04.121+02:00  INFO 13000 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-14T19:32:04.122+02:00  INFO 13000 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 13405 ms
+2024-08-14T19:32:07.290+02:00 DEBUG 13000 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-08-14T19:32:12.678+02:00  INFO 13000 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-14T19:32:12.827+02:00  INFO 13000 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-14T19:32:13.902+02:00  INFO 13000 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/bankdb user=ADMIN
+2024-08-14T19:32:13.910+02:00  INFO 13000 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-14T19:32:21.776+02:00  INFO 13000 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T19:32:27.578+02:00  INFO 13000 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-14T19:32:29.668+02:00  WARN 13000 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-14T19:32:32.674+02:00 DEBUG 13000 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-08-14T19:32:34.292+02:00 DEBUG 13000 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-08-14T19:32:35.127+02:00  INFO 13000 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-08-14T19:32:35.651+02:00  INFO 13000 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@740ef827, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@198eeb36, org.springframework.security.web.context.SecurityContextHolderFilter@314e240c, org.springframework.security.web.header.HeaderWriterFilter@34d08905, org.springframework.security.web.authentication.logout.LogoutFilter@16c9ec5b, com.bank.security.JwtAuthenticationFilter@655203e3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@228c854f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@494e7290, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4690cb47, org.springframework.security.web.session.SessionManagementFilter@45c8db36, org.springframework.security.web.access.ExceptionTranslationFilter@4825aad0, org.springframework.security.web.access.intercept.AuthorizationFilter@2c855eb7]
+2024-08-14T19:32:36.406+02:00 DEBUG 13000 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-08-14T19:32:36.596+02:00 DEBUG 13000 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-08-14T19:32:38.431+02:00  INFO 13000 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-14T19:32:39.285+02:00  INFO 13000 --- [main] com.bank.BankApplication                 : Started BankApplication in 50.967 seconds (process running for 52.498)
+2024-08-14T19:37:12.549+02:00  INFO 13000 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-14T19:37:12.560+02:00  INFO 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-14T19:37:12.561+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-08-14T19:37:12.562+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-08-14T19:37:12.563+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-08-14T19:37:12.572+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@52caa9d8
+2024-08-14T19:37:12.575+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@457f43a2
+2024-08-14T19:37:12.578+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-08-14T19:37:12.580+02:00  INFO 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 19 ms
+2024-08-14T19:37:12.804+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.html", parameters={}
+2024-08-14T19:37:12.809+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T19:37:12.891+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:37:12.937+02:00 DEBUG 13000 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.css", parameters={}
+2024-08-14T19:37:12.941+02:00 DEBUG 13000 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T19:37:12.945+02:00 DEBUG 13000 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:37:12.956+02:00 DEBUG 13000 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js", parameters={}
+2024-08-14T19:37:12.958+02:00 DEBUG 13000 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T19:37:12.958+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css", parameters={}
+2024-08-14T19:37:12.962+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T19:37:12.978+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:37:13.023+02:00 DEBUG 13000 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:37:13.059+02:00 DEBUG 13000 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js", parameters={}
+2024-08-14T19:37:13.062+02:00 DEBUG 13000 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T19:37:13.077+02:00 DEBUG 13000 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:37:13.093+02:00 DEBUG 13000 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-initializer.js", parameters={}
+2024-08-14T19:37:13.095+02:00 DEBUG 13000 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T19:37:13.162+02:00 DEBUG 13000 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:37:14.079+02:00 DEBUG 13000 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs/swagger-config", parameters={}
+2024-08-14T19:37:14.080+02:00 DEBUG 13000 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-08-14T19:37:14.089+02:00 DEBUG 13000 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/favicon-32x32.png", parameters={}
+2024-08-14T19:37:14.091+02:00 DEBUG 13000 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T19:37:14.095+02:00 DEBUG 13000 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:37:14.115+02:00 DEBUG 13000 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
+2024-08-14T19:37:14.122+02:00 DEBUG 13000 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [{configUrl=/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/swagger-ui/oauth2-re (truncated)...]
+2024-08-14T19:37:14.131+02:00 DEBUG 13000 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:37:14.153+02:00 DEBUG 13000 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs", parameters={}
+2024-08-14T19:37:14.154+02:00 DEBUG 13000 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-08-14T19:37:15.480+02:00  INFO 13000 --- [http-nio-8080-exec-8] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1300 ms
+2024-08-14T19:37:15.537+02:00 DEBUG 13000 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
+2024-08-14T19:37:15.543+02:00 DEBUG 13000 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 48, 46, 49, 34, 44, 34, 105, 110, 10 (truncated)...]
+2024-08-14T19:37:15.545+02:00 DEBUG 13000 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T19:57:27.306+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/auth/login", parameters={}
+2024-08-14T19:57:27.307+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AuthController#login(LoginRequest)
+2024-08-14T19:57:27.340+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.bank.model.LoginRequest@564b3d54]
+2024-08-14T19:57:27.822+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-08-14T19:57:27.823+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.bank.model.LoginResponse@2da5ec78]
+2024-08-14T19:57:27.838+02:00 DEBUG 13000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:08:02.435+02:00  INFO 13000 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:08:02.454+02:00  INFO 13000 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-14T20:08:02.459+02:00  INFO 13000 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-14T20:09:42.654+02:00  INFO 4052 --- [main] com.bank.BankApplication                 : Starting BankApplication using Java 17.0.10 with PID 4052 (C:\Users\Veeroju\Music\bank\bank\target\classes started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T20:09:42.659+02:00  INFO 4052 --- [main] com.bank.BankApplication                 : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T20:09:47.777+02:00  INFO 4052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-14T20:09:48.171+02:00  INFO 4052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 368 ms. Found 6 JPA repository interfaces.
+2024-08-14T20:09:51.833+02:00  INFO 4052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-14T20:09:51.880+02:00  INFO 4052 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-14T20:09:51.881+02:00  INFO 4052 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-14T20:09:52.220+02:00  INFO 4052 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-14T20:09:52.228+02:00  INFO 4052 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9296 ms
+2024-08-14T20:09:53.152+02:00 DEBUG 4052 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-08-14T20:09:54.849+02:00  INFO 4052 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-14T20:09:54.956+02:00  INFO 4052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-14T20:09:55.938+02:00  INFO 4052 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/bankdb user=ADMIN
+2024-08-14T20:09:55.946+02:00  INFO 4052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-14T20:09:59.901+02:00  INFO 4052 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:10:01.583+02:00  INFO 4052 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-14T20:10:03.137+02:00  WARN 4052 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-14T20:10:04.375+02:00 DEBUG 4052 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-08-14T20:10:05.229+02:00 DEBUG 4052 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-08-14T20:10:05.871+02:00  INFO 4052 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-08-14T20:10:06.245+02:00  INFO 4052 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@55fbebba, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2c855eb7, org.springframework.security.web.context.SecurityContextHolderFilter@45c8db36, org.springframework.security.web.header.HeaderWriterFilter@c3972d0, org.springframework.security.web.authentication.logout.LogoutFilter@6272936b, com.bank.security.JwtAuthenticationFilter@729cd862, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@53425450, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6222a343, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a6ae0f0, org.springframework.security.web.session.SessionManagementFilter@57421698, org.springframework.security.web.access.ExceptionTranslationFilter@705e24fb, org.springframework.security.web.access.intercept.AuthorizationFilter@e00f822]
+2024-08-14T20:10:06.919+02:00 DEBUG 4052 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-08-14T20:10:07.072+02:00 DEBUG 4052 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-08-14T20:10:09.034+02:00  INFO 4052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-14T20:10:09.909+02:00  INFO 4052 --- [main] com.bank.BankApplication                 : Started BankApplication in 29.03 seconds (process running for 30.736)
+2024-08-14T20:11:25.284+02:00  INFO 4052 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-14T20:11:25.290+02:00  INFO 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-14T20:11:25.291+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-08-14T20:11:25.292+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-08-14T20:11:25.293+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-08-14T20:11:25.327+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7ebefdfa
+2024-08-14T20:11:25.329+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4f86cd50
+2024-08-14T20:11:25.330+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-08-14T20:11:25.332+02:00  INFO 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 40 ms
+2024-08-14T20:11:25.467+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.html", parameters={}
+2024-08-14T20:11:25.481+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:11:25.591+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js", parameters={}
+2024-08-14T20:11:25.592+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.css", parameters={}
+2024-08-14T20:11:25.594+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:11:25.594+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:11:25.636+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js", parameters={}
+2024-08-14T20:11:25.638+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:11:25.656+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-initializer.js", parameters={}
+2024-08-14T20:11:25.657+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:11:25.678+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:25.679+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:25.679+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:25.692+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css", parameters={}
+2024-08-14T20:11:25.695+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:11:25.710+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:25.928+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:26.033+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:26.664+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/favicon-32x32.png", parameters={}
+2024-08-14T20:11:26.663+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs/swagger-config", parameters={}
+2024-08-14T20:11:26.665+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-08-14T20:11:26.665+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:11:26.674+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:26.712+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
+2024-08-14T20:11:26.717+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [{configUrl=/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/swagger-ui/oauth2-re (truncated)...]
+2024-08-14T20:11:26.731+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:26.808+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs", parameters={}
+2024-08-14T20:11:26.808+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-08-14T20:11:29.867+02:00  INFO 4052 --- [http-nio-8080-exec-8] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 3008 ms
+2024-08-14T20:11:30.017+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
+2024-08-14T20:11:30.041+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 48, 46, 49, 34, 44, 34, 105, 110, 10 (truncated)...]
+2024-08-14T20:11:30.162+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:34.815+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-08-14T20:11:34.822+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#createAccount(NewAccount)
+2024-08-14T20:11:34.899+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: maxmuller@gmail.com (truncated)...]
+2024-08-14T20:11:35.332+02:00  INFO 4052 --- [http-nio-8080-exec-9] com.bank.service.AccountServiceImpl      : Account creation successful class UserCreated {
+    accountNumber: fullName001001
+    balance: 5000
+    status: ACTIVE
+    createdTimeStamp: Wed Aug 14 20:11:35 CEST 2024
+    updatedTimeStamp: Wed Aug 14 20:11:35 CEST 2024
+}
+2024-08-14T20:11:35.341+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2024-08-14T20:11:35.344+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [class UserCreated {<EOL>    accountNumber: fullName001001<EOL>    balance: 5000<EOL>    status: ACTIVE<EOL>    creat (truncated)...]
+2024-08-14T20:11:35.361+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:11:47.491+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:11:47.495+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:11:47.499+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:11:47.506+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:11:47.509+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:11:47.513+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:11:47.744+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:11:47.749+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:11:48.097+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:11:48.099+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:11:48.105+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:11:48.105+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:11:48.107+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:11:48.107+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:11:48.109+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:11:48.110+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:11:56.124+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:11:56.126+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:11:56.132+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:11:56.133+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:11:56.134+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:11:56.137+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:11:56.140+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:11:56.141+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:11:56.247+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:11:56.249+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:11:56.256+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:11:56.257+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:11:56.258+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:11:56.259+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:11:56.260+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:11:56.262+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:00.293+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp", parameters={}
+2024-08-14T20:12:00.295+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:00.297+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:00.297+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:00.299+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:12:00.299+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:12:00.308+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:12:00.310+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:00.403+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:12:00.407+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:00.409+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:00.410+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:00.412+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:12:00.413+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:12:00.415+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:12:00.417+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:07.546+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:12:07.549+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:07.553+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:07.553+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:07.554+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:12:07.556+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:12:07.559+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:12:07.561+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:07.683+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:12:07.687+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:07.691+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:07.692+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:07.693+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:12:07.694+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:12:07.695+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:12:07.696+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:38.488+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/h2-console", parameters={}
+2024-08-14T20:12:38.490+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:38.495+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:38.495+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:38.497+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:12:38.497+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console.}]
+2024-08-14T20:12:38.502+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console.]
+2024-08-14T20:12:38.503+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:38.627+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:12:38.629+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:38.631+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:38.632+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:38.636+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:12:38.636+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:12:38.637+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:12:38.638+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:46.537+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.do?jsessionid=815c9ef4295c478ed0f1f21345bbeabe", parameters={masked}
+2024-08-14T20:12:46.540+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:46.545+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:46.545+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:46.547+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:12:46.551+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.do.}]
+2024-08-14T20:12:46.553+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.do.]
+2024-08-14T20:12:46.555+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:46.688+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:12:46.690+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:46.692+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:46.693+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:46.693+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:12:46.694+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:12:46.695+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:12:46.696+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:51.359+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.do?jsessionid=815c9ef4295c478ed0f1f21345bbeabe", parameters={masked}
+2024-08-14T20:12:51.360+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:51.363+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:51.364+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:51.367+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:12:51.367+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.do.}]
+2024-08-14T20:12:51.370+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.do.]
+2024-08-14T20:12:51.370+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:51.523+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:12:51.525+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:51.527+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:51.527+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:51.528+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:12:51.529+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:12:51.530+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:12:51.531+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:56.709+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.do", parameters={}
+2024-08-14T20:12:56.710+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:56.713+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:56.714+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:56.718+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:12:56.719+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.do.}]
+2024-08-14T20:12:56.721+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.do.]
+2024-08-14T20:12:56.723+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:12:56.853+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:12:56.855+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:12:56.857+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:12:56.858+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:12:56.859+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:12:56.860+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:12:56.861+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:12:56.862+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:13:56.254+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.do", parameters={}
+2024-08-14T20:13:56.256+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:13:56.258+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:13:56.259+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:13:56.260+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:13:56.260+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.do.}]
+2024-08-14T20:13:56.262+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.do.]
+2024-08-14T20:13:56.268+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:13:56.369+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:13:56.370+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:13:56.372+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:13:56.373+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:13:56.374+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:13:56.374+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:13:56.375+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:13:56.376+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:14:20.909+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:14:20.910+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:14:20.917+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:14:20.917+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:14:20.918+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:14:20.919+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:14:20.922+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:14:20.923+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:14:21.073+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:14:21.074+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:14:21.077+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:14:21.078+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:14:21.080+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:14:21.081+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:14:21.082+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:14:21.083+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:15:23.401+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.html", parameters={}
+2024-08-14T20:15:23.402+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:15:23.406+02:00 DEBUG 4052 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:15:23.452+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js", parameters={}
+2024-08-14T20:15:23.452+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css", parameters={}
+2024-08-14T20:15:23.453+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:15:23.452+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.css", parameters={}
+2024-08-14T20:15:23.456+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js", parameters={}
+2024-08-14T20:15:23.460+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:15:23.463+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-initializer.js", parameters={}
+2024-08-14T20:15:23.464+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:15:23.475+02:00 DEBUG 4052 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:15:23.453+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:15:23.480+02:00 DEBUG 4052 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:15:23.483+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2024-08-14T20:15:23.489+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:15:23.501+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:15:23.583+02:00 DEBUG 4052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:15:24.362+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs/swagger-config", parameters={}
+2024-08-14T20:15:24.365+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2024-08-14T20:15:24.367+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
+2024-08-14T20:15:24.367+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [{configUrl=/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/swagger-ui/oauth2-re (truncated)...]
+2024-08-14T20:15:24.369+02:00 DEBUG 4052 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:15:24.420+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs", parameters={}
+2024-08-14T20:15:24.421+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2024-08-14T20:15:24.439+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
+2024-08-14T20:15:24.448+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 48, 46, 49, 34, 44, 34, 105, 110, 10 (truncated)...]
+2024-08-14T20:15:24.450+02:00 DEBUG 4052 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:15:29.333+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-08-14T20:15:29.334+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#createAccount(NewAccount)
+2024-08-14T20:15:29.339+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: maxmuller@gmail.com (truncated)...]
+2024-08-14T20:15:29.349+02:00 ERROR 4052 --- [http-nio-8080-exec-8] com.bank.service.AccountServiceImpl      : User already exists in system with Email : maxmuller@gmail.com
+2024-08-14T20:15:29.357+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#illegal(IllegalArgumentException)
+2024-08-14T20:15:29.365+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+2024-08-14T20:15:29.367+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.bank.util.ErrorResponse@38a53835]
+2024-08-14T20:15:29.370+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.IllegalArgumentException: Unsuccessfull ]
+2024-08-14T20:15:29.371+02:00 DEBUG 4052 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2024-08-14T20:16:10.564+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/accounts/fullName001001/balance", parameters={}
+2024-08-14T20:16:10.566+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountsAccountNumberBalanceGet(String)
+2024-08-14T20:16:10.702+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#runTimeError(RuntimeException)
+2024-08-14T20:16:10.702+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+2024-08-14T20:16:10.703+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.bank.util.ErrorResponse@2452cfd2]
+2024-08-14T20:16:10.704+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.access.AccessDeniedException: Access Denied]
+2024-08-14T20:16:10.708+02:00 DEBUG 4052 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:16:34.980+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:16:34.993+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:16:35.000+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:16:35.000+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:16:35.013+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:16:35.014+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:16:35.017+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:16:35.018+02:00 DEBUG 4052 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:16:35.366+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:16:35.367+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:16:35.369+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:16:35.369+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:16:35.370+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:16:35.370+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:16:35.375+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:16:35.377+02:00 DEBUG 4052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:16:45.076+02:00  INFO 4052 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:16:45.091+02:00  INFO 4052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-14T20:16:45.101+02:00  INFO 4052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-14T20:16:54.977+02:00  INFO 7100 --- [main] com.bank.BankApplication                 : Starting BankApplication using Java 17.0.10 with PID 7100 (C:\Users\Veeroju\Music\bank\bank\target\classes started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T20:16:54.982+02:00  INFO 7100 --- [main] com.bank.BankApplication                 : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T20:17:00.694+02:00  INFO 7100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-14T20:17:01.044+02:00  INFO 7100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 325 ms. Found 6 JPA repository interfaces.
+2024-08-14T20:17:06.157+02:00  INFO 7100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-14T20:17:06.233+02:00  INFO 7100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-14T20:17:06.234+02:00  INFO 7100 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-14T20:17:06.785+02:00  INFO 7100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-14T20:17:06.808+02:00  INFO 7100 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11294 ms
+2024-08-14T20:17:09.259+02:00 DEBUG 7100 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-08-14T20:17:18.832+02:00  INFO 7100 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-14T20:17:18.896+02:00  INFO 7100 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-14T20:17:19.547+02:00  INFO 7100 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/bankdb user=ADMIN
+2024-08-14T20:17:19.551+02:00  INFO 7100 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-14T20:17:24.350+02:00  INFO 7100 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:17:26.623+02:00  INFO 7100 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-14T20:17:29.901+02:00  WARN 7100 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-14T20:17:31.949+02:00 DEBUG 7100 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-08-14T20:17:32.703+02:00 DEBUG 7100 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-08-14T20:17:33.446+02:00  INFO 7100 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-08-14T20:17:33.927+02:00  INFO 7100 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@7c943143, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@705e24fb, org.springframework.security.web.context.SecurityContextHolderFilter@26c75b91, org.springframework.security.web.header.HeaderWriterFilter@1f6af096, org.springframework.security.web.authentication.logout.LogoutFilter@36cbe0fe, com.bank.security.JwtAuthenticationFilter@69eb544f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e1f6318, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8fe054, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3c511385, org.springframework.security.web.session.SessionManagementFilter@5563a63f, org.springframework.security.web.access.ExceptionTranslationFilter@879f852, org.springframework.security.web.access.intercept.AuthorizationFilter@3787eac3]
+2024-08-14T20:17:34.937+02:00 DEBUG 7100 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-08-14T20:17:35.064+02:00 DEBUG 7100 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-08-14T20:17:37.835+02:00  INFO 7100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-14T20:17:39.050+02:00  INFO 7100 --- [main] com.bank.BankApplication                 : Started BankApplication in 46.034 seconds (process running for 47.666)
+2024-08-14T20:18:31.941+02:00  INFO 7100 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:18:31.955+02:00  INFO 7100 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-14T20:18:31.978+02:00  INFO 7100 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-14T20:18:45.125+02:00  INFO 10772 --- [main] com.bank.BankApplication                 : Starting BankApplication using Java 17.0.10 with PID 10772 (C:\Users\Veeroju\Music\bank\bank\target\classes started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T20:18:45.133+02:00  INFO 10772 --- [main] com.bank.BankApplication                 : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T20:18:51.507+02:00  INFO 10772 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-14T20:18:51.836+02:00  INFO 10772 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 296 ms. Found 6 JPA repository interfaces.
+2024-08-14T20:18:55.532+02:00  INFO 10772 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-14T20:18:55.562+02:00  INFO 10772 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-14T20:18:55.563+02:00  INFO 10772 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-14T20:18:55.970+02:00  INFO 10772 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-14T20:18:55.973+02:00  INFO 10772 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 10497 ms
+2024-08-14T20:18:56.980+02:00 DEBUG 10772 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-08-14T20:18:58.745+02:00  INFO 10772 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-14T20:18:58.826+02:00  INFO 10772 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-14T20:18:59.527+02:00  INFO 10772 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/bankdb user=ADMIN
+2024-08-14T20:18:59.534+02:00  INFO 10772 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-14T20:19:03.346+02:00  INFO 10772 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:19:05.220+02:00  INFO 10772 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-14T20:19:06.925+02:00  WARN 10772 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-14T20:19:08.459+02:00 DEBUG 10772 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-08-14T20:19:09.079+02:00 DEBUG 10772 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-08-14T20:19:09.629+02:00  INFO 10772 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-08-14T20:19:09.883+02:00  INFO 10772 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@1683b9ba, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@470b7fcf, org.springframework.security.web.context.SecurityContextHolderFilter@7793eaca, org.springframework.security.web.header.HeaderWriterFilter@e87c4cf, org.springframework.security.web.authentication.logout.LogoutFilter@3a6ae0f0, com.bank.security.JwtAuthenticationFilter@5280688, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@720b52a7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@608c03e3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ad2a8db, org.springframework.security.web.session.SessionManagementFilter@423325e0, org.springframework.security.web.access.ExceptionTranslationFilter@230383a7, org.springframework.security.web.access.intercept.AuthorizationFilter@4c2b8df7]
+2024-08-14T20:19:10.369+02:00 DEBUG 10772 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-08-14T20:19:10.507+02:00 DEBUG 10772 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-08-14T20:19:12.086+02:00  INFO 10772 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-14T20:19:13.250+02:00  INFO 10772 --- [main] com.bank.BankApplication                 : Started BankApplication in 30.617 seconds (process running for 31.955)
+2024-08-14T20:19:20.279+02:00  INFO 10772 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-14T20:19:20.284+02:00  INFO 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-14T20:19:20.285+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-08-14T20:19:20.288+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-08-14T20:19:20.289+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-08-14T20:19:20.292+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4ba04fb4
+2024-08-14T20:19:20.294+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@1fa35f7e
+2024-08-14T20:19:20.295+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-08-14T20:19:20.297+02:00  INFO 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2024-08-14T20:19:20.424+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:19:20.434+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:19:20.441+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:19:20.475+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:19:20.689+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:19:20.696+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:19:20.902+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:19:20.906+02:00 DEBUG 10772 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:19:21.021+02:00 DEBUG 10772 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:19:21.024+02:00 DEBUG 10772 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:19:21.028+02:00 DEBUG 10772 --- [http-nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:19:21.029+02:00 DEBUG 10772 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:19:21.033+02:00 DEBUG 10772 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:19:21.034+02:00 DEBUG 10772 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:19:21.036+02:00 DEBUG 10772 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:19:21.037+02:00 DEBUG 10772 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:19:26.919+02:00 DEBUG 10772 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:19:26.923+02:00 DEBUG 10772 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:19:26.926+02:00 DEBUG 10772 --- [http-nio-8080-exec-3] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:19:26.927+02:00 DEBUG 10772 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:19:26.928+02:00 DEBUG 10772 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:19:26.928+02:00 DEBUG 10772 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:19:26.935+02:00 DEBUG 10772 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:19:26.936+02:00 DEBUG 10772 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:19:27.287+02:00 DEBUG 10772 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:19:27.289+02:00 DEBUG 10772 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:19:27.291+02:00 DEBUG 10772 --- [http-nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:19:27.292+02:00 DEBUG 10772 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:19:27.294+02:00 DEBUG 10772 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:19:27.294+02:00 DEBUG 10772 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:19:27.296+02:00 DEBUG 10772 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:19:27.299+02:00 DEBUG 10772 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:20:20.249+02:00 DEBUG 10772 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:20:20.251+02:00 DEBUG 10772 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:20:20.253+02:00 DEBUG 10772 --- [http-nio-8080-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:20:20.254+02:00 DEBUG 10772 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:20:20.256+02:00 DEBUG 10772 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:20:20.257+02:00 DEBUG 10772 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:20:20.259+02:00 DEBUG 10772 --- [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:20:20.260+02:00 DEBUG 10772 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:20:20.602+02:00 DEBUG 10772 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:20:20.605+02:00 DEBUG 10772 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:20:20.608+02:00 DEBUG 10772 --- [http-nio-8080-exec-6] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:20:20.610+02:00 DEBUG 10772 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:20:20.614+02:00 DEBUG 10772 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:20:20.615+02:00 DEBUG 10772 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:20:20.616+02:00 DEBUG 10772 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:20:20.617+02:00 DEBUG 10772 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:20:27.791+02:00 DEBUG 10772 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/login.do?jsessionid=b14701c18579ce0cd4780e2d98138203", parameters={masked}
+2024-08-14T20:20:27.796+02:00 DEBUG 10772 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:20:27.799+02:00 DEBUG 10772 --- [http-nio-8080-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:20:27.799+02:00 DEBUG 10772 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:20:27.800+02:00 DEBUG 10772 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:20:27.801+02:00 DEBUG 10772 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource login.do.}]
+2024-08-14T20:20:27.804+02:00 DEBUG 10772 --- [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource login.do.]
+2024-08-14T20:20:27.806+02:00 DEBUG 10772 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:20:27.938+02:00 DEBUG 10772 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:20:27.940+02:00 DEBUG 10772 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:20:27.942+02:00 DEBUG 10772 --- [http-nio-8080-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:20:27.945+02:00 DEBUG 10772 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:20:27.949+02:00 DEBUG 10772 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:20:27.950+02:00 DEBUG 10772 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:20:27.953+02:00 DEBUG 10772 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:20:27.955+02:00 DEBUG 10772 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:21:00.540+02:00 DEBUG 10772 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:21:00.547+02:00 DEBUG 10772 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:21:00.550+02:00 DEBUG 10772 --- [http-nio-8080-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:21:00.551+02:00 DEBUG 10772 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:21:00.552+02:00 DEBUG 10772 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:21:00.552+02:00 DEBUG 10772 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:21:00.554+02:00 DEBUG 10772 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:21:00.555+02:00 DEBUG 10772 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:21:00.906+02:00 DEBUG 10772 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:21:00.908+02:00 DEBUG 10772 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:21:00.919+02:00 DEBUG 10772 --- [http-nio-8080-exec-10] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:21:00.920+02:00 DEBUG 10772 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:21:00.922+02:00 DEBUG 10772 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:21:00.923+02:00 DEBUG 10772 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:21:00.931+02:00 DEBUG 10772 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:21:00.935+02:00 DEBUG 10772 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:22:59.440+02:00  INFO 10772 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:22:59.445+02:00  INFO 10772 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-14T20:22:59.449+02:00  INFO 10772 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-14T20:23:23.792+02:00  INFO 9536 --- [main] com.bank.BankApplication                 : Starting BankApplication using Java 17.0.10 with PID 9536 (C:\Users\Veeroju\Music\bank\bank\target\classes started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T20:23:23.798+02:00  INFO 9536 --- [main] com.bank.BankApplication                 : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T20:23:29.340+02:00  INFO 9536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-14T20:23:29.678+02:00  INFO 9536 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 311 ms. Found 6 JPA repository interfaces.
+2024-08-14T20:23:33.353+02:00  INFO 9536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-14T20:23:33.407+02:00  INFO 9536 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-14T20:23:33.408+02:00  INFO 9536 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-14T20:23:33.857+02:00  INFO 9536 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-14T20:23:33.858+02:00  INFO 9536 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9776 ms
+2024-08-14T20:23:34.971+02:00 DEBUG 9536 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-08-14T20:23:37.035+02:00  INFO 9536 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-14T20:23:37.111+02:00  INFO 9536 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-14T20:23:38.262+02:00  INFO 9536 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/bankdb user=ADMIN
+2024-08-14T20:23:38.266+02:00  INFO 9536 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-14T20:23:42.728+02:00  INFO 9536 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:23:44.491+02:00  INFO 9536 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-14T20:23:46.414+02:00  WARN 9536 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-14T20:23:48.079+02:00 DEBUG 9536 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-08-14T20:23:49.028+02:00 DEBUG 9536 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-08-14T20:23:49.615+02:00  INFO 9536 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-08-14T20:23:49.933+02:00  INFO 9536 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@6ddccee4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39000894, org.springframework.security.web.context.SecurityContextHolderFilter@f2e28c7, org.springframework.security.web.header.HeaderWriterFilter@1e4f8430, org.springframework.security.web.authentication.logout.LogoutFilter@4f20ff8e, com.bank.security.JwtAuthenticationFilter@7c5f29c6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a4ceb1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@423325e0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f5080ea, org.springframework.security.web.session.SessionManagementFilter@230383a7, org.springframework.security.web.access.ExceptionTranslationFilter@34d08905, org.springframework.security.web.access.intercept.AuthorizationFilter@77d80294]
+2024-08-14T20:23:50.556+02:00 DEBUG 9536 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-08-14T20:23:50.711+02:00 DEBUG 9536 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-08-14T20:23:52.405+02:00  INFO 9536 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-14T20:23:53.399+02:00  INFO 9536 --- [main] com.bank.BankApplication                 : Started BankApplication in 31.601 seconds (process running for 32.905)
+2024-08-14T20:23:59.949+02:00  INFO 9536 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-14T20:23:59.954+02:00  INFO 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-14T20:23:59.955+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-08-14T20:23:59.956+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-08-14T20:23:59.957+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-08-14T20:23:59.962+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3e1ba156
+2024-08-14T20:23:59.963+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@79f14c56
+2024-08-14T20:23:59.964+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-08-14T20:23:59.964+02:00  INFO 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-08-14T20:24:00.178+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:24:00.188+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:24:00.198+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:24:00.219+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:24:00.277+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:24:00.282+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:24:00.533+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:24:00.537+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:24:00.675+02:00 DEBUG 9536 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:24:00.677+02:00 DEBUG 9536 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:24:00.680+02:00 DEBUG 9536 --- [http-nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:24:00.681+02:00 DEBUG 9536 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:24:00.684+02:00 DEBUG 9536 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:24:00.685+02:00 DEBUG 9536 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:24:00.691+02:00 DEBUG 9536 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:24:00.692+02:00 DEBUG 9536 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:24:04.527+02:00 DEBUG 9536 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T20:24:04.530+02:00 DEBUG 9536 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:24:04.532+02:00 DEBUG 9536 --- [http-nio-8080-exec-3] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:24:04.533+02:00 DEBUG 9536 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:24:04.537+02:00 DEBUG 9536 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T20:24:04.538+02:00 DEBUG 9536 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T20:24:04.540+02:00 DEBUG 9536 --- [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T20:24:04.541+02:00 DEBUG 9536 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:24:04.643+02:00 DEBUG 9536 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T20:24:04.645+02:00 DEBUG 9536 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:24:04.646+02:00 DEBUG 9536 --- [http-nio-8080-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:24:04.647+02:00 DEBUG 9536 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:24:04.648+02:00 DEBUG 9536 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T20:24:04.649+02:00 DEBUG 9536 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T20:24:04.655+02:00 DEBUG 9536 --- [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T20:24:04.656+02:00 DEBUG 9536 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:24:19.020+02:00 DEBUG 9536 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-08-14T20:24:19.021+02:00 DEBUG 9536 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#createAccount(NewAccount)
+2024-08-14T20:24:19.288+02:00 DEBUG 9536 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: maxmuller@gmail.com (truncated)...]
+2024-08-14T20:24:19.642+02:00  INFO 9536 --- [http-nio-8080-exec-5] com.bank.service.AccountServiceImpl      : Account creation successful class UserCreated {
+    accountNumber: fullName001001
+    balance: 5000
+    status: ACTIVE
+    createdTimeStamp: Wed Aug 14 20:24:19 CEST 2024
+    updatedTimeStamp: Wed Aug 14 20:24:19 CEST 2024
+}
+2024-08-14T20:24:19.653+02:00 DEBUG 9536 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2024-08-14T20:24:19.664+02:00 DEBUG 9536 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [class UserCreated {<EOL>    accountNumber: fullName001001<EOL>    balance: 5000<EOL>    status: ACTIVE<EOL>    creat (truncated)...]
+2024-08-14T20:24:19.697+02:00 DEBUG 9536 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:24:52.966+02:00 DEBUG 9536 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/accounts/fullName001001/balance", parameters={}
+2024-08-14T20:24:52.969+02:00 DEBUG 9536 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountsAccountNumberBalanceGet(String)
+2024-08-14T20:24:53.095+02:00 DEBUG 9536 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#runTimeError(RuntimeException)
+2024-08-14T20:24:53.125+02:00 DEBUG 9536 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+2024-08-14T20:24:53.125+02:00 DEBUG 9536 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.bank.util.ErrorResponse@2aa0991]
+2024-08-14T20:24:53.133+02:00 DEBUG 9536 --- [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.access.AccessDeniedException: Access Denied]
+2024-08-14T20:24:53.134+02:00 DEBUG 9536 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:25:16.994+02:00 DEBUG 9536 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/auth/login", parameters={}
+2024-08-14T20:25:16.995+02:00 DEBUG 9536 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AuthController#login(LoginRequest)
+2024-08-14T20:25:17.007+02:00 DEBUG 9536 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.bank.model.LoginRequest@655a0421]
+2024-08-14T20:25:17.588+02:00 DEBUG 9536 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-08-14T20:25:17.589+02:00 DEBUG 9536 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.bank.model.LoginResponse@2dda56b8]
+2024-08-14T20:25:17.593+02:00 DEBUG 9536 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:26:03.018+02:00 DEBUG 9536 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/fullName001001/balance", parameters={}
+2024-08-14T20:26:03.033+02:00 DEBUG 9536 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T20:26:03.040+02:00 DEBUG 9536 --- [http-nio-8080-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T20:26:03.041+02:00 DEBUG 9536 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T20:26:03.043+02:00 DEBUG 9536 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-08-14T20:26:03.043+02:00 DEBUG 9536 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource api/fullName001001/balance.}]
+2024-08-14T20:26:03.050+02:00 DEBUG 9536 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/fullName001001/balance.]
+2024-08-14T20:26:03.052+02:00 DEBUG 9536 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:27:00.835+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/accounts/fullName001001/balance", parameters={}
+2024-08-14T20:27:00.837+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountsAccountNumberBalanceGet(String)
+2024-08-14T20:27:00.848+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#runTimeError(RuntimeException)
+2024-08-14T20:27:00.849+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-08-14T20:27:00.850+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.bank.util.ErrorResponse@4cd907d8]
+2024-08-14T20:27:00.857+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.security.access.AccessDeniedException: Access Denied]
+2024-08-14T20:27:00.858+02:00 DEBUG 9536 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T20:27:37.748+02:00  INFO 9536 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:27:37.754+02:00  INFO 9536 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-14T20:27:37.760+02:00  INFO 9536 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-14T20:28:00.358+02:00  INFO 12104 --- [main] com.bank.BankApplication                 : Starting BankApplication using Java 17.0.10 with PID 12104 (C:\Users\Veeroju\Music\bank\bank\target\classes started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T20:28:00.365+02:00  INFO 12104 --- [main] com.bank.BankApplication                 : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T20:28:07.806+02:00  INFO 12104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-14T20:28:08.154+02:00  INFO 12104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 321 ms. Found 6 JPA repository interfaces.
+2024-08-14T20:28:29.035+02:00  INFO 6636 --- [main] com.bank.BankApplication                 : Starting BankApplication using Java 17.0.10 with PID 6636 (C:\Users\Veeroju\Music\bank\bank\target\classes started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T20:28:29.046+02:00  INFO 6636 --- [main] com.bank.BankApplication                 : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T20:28:34.639+02:00  INFO 6636 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-14T20:28:34.961+02:00  INFO 6636 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 292 ms. Found 6 JPA repository interfaces.
+2024-08-14T20:28:38.822+02:00  INFO 6636 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-14T20:28:38.865+02:00  INFO 6636 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-14T20:28:38.868+02:00  INFO 6636 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-14T20:28:39.202+02:00  INFO 6636 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-14T20:28:39.203+02:00  INFO 6636 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9992 ms
+2024-08-14T20:28:40.277+02:00 DEBUG 6636 --- [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2024-08-14T20:28:42.082+02:00  INFO 6636 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-14T20:28:42.224+02:00  INFO 6636 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-14T20:28:43.076+02:00  INFO 6636 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/bankdb user=ADMIN
+2024-08-14T20:28:43.080+02:00  INFO 6636 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-14T20:28:46.782+02:00  INFO 6636 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T20:28:48.388+02:00  INFO 6636 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-14T20:28:49.918+02:00  WARN 6636 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-14T20:28:51.414+02:00 DEBUG 6636 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 20 mappings in 'requestMappingHandlerMapping'
+2024-08-14T20:28:52.345+02:00 DEBUG 6636 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2024-08-14T20:28:52.890+02:00  INFO 6636 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-08-14T20:28:53.289+02:00  INFO 6636 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@39000894, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4f5080ea, org.springframework.security.web.context.SecurityContextHolderFilter@494e7290, org.springframework.security.web.header.HeaderWriterFilter@340ef431, org.springframework.security.web.authentication.logout.LogoutFilter@391cc6cf, com.bank.security.JwtAuthenticationFilter@4baf997, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3fc4e667, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a5c041f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28cc690d, org.springframework.security.web.session.SessionManagementFilter@6222a343, org.springframework.security.web.access.ExceptionTranslationFilter@57421698, org.springframework.security.web.access.intercept.AuthorizationFilter@74940388]
+2024-08-14T20:28:53.924+02:00 DEBUG 6636 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-08-14T20:28:54.059+02:00 DEBUG 6636 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-08-14T20:28:55.945+02:00  INFO 6636 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-14T20:28:56.780+02:00  INFO 6636 --- [main] com.bank.BankApplication                 : Started BankApplication in 29.518 seconds (process running for 30.911)
+2024-08-14T20:29:02.399+02:00  INFO 6636 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-14T20:29:02.400+02:00  INFO 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-14T20:29:02.400+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-08-14T20:29:02.401+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-08-14T20:29:02.401+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-08-14T20:29:02.410+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@76737130
+2024-08-14T20:29:02.414+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@19f007c4
+2024-08-14T20:29:02.417+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-08-14T20:29:02.418+02:00  INFO 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 18 ms
+2024-08-14T20:29:02.546+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/accounts/create-account", parameters={}
+2024-08-14T20:29:02.550+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#createAccount(NewAccount)
+2024-08-14T20:29:03.066+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [class NewAccount {<EOL>    user: class UserM {<EOL>        name: fullName<EOL>        email: maxmuller@gmail.com (truncated)...]
+2024-08-14T20:29:03.334+02:00  INFO 6636 --- [http-nio-8080-exec-1] com.bank.service.AccountServiceImpl      : Account creation successful class UserCreated {
+    accountNumber: fullName001001
+    balance: 5000
+    status: ACTIVE
+    createdTimeStamp: Wed Aug 14 20:29:03 CEST 2024
+    updatedTimeStamp: Wed Aug 14 20:29:03 CEST 2024
+}
+2024-08-14T20:29:03.357+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json] and supported [application/json]
+2024-08-14T20:29:03.384+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [class UserCreated {<EOL>    accountNumber: fullName001001<EOL>    balance: 5000<EOL>    status: ACTIVE<EOL>    creat (truncated)...]
+2024-08-14T20:29:03.447+02:00 DEBUG 6636 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:29:14.484+02:00 DEBUG 6636 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/accounts/fullName001001/balance", parameters={}
+2024-08-14T20:29:14.495+02:00 DEBUG 6636 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AccountController#accountsAccountNumberBalanceGet(String)
+2024-08-14T20:29:14.564+02:00 DEBUG 6636 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json]
+2024-08-14T20:29:14.575+02:00 DEBUG 6636 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [class AccountM {<EOL>    accountNumber: fullName001001<EOL>    balance: 5000.00<EOL>    status: ACTIVE<EOL>    creat (truncated)...]
+2024-08-14T20:29:14.581+02:00 DEBUG 6636 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 202 ACCEPTED
+2024-08-14T20:35:23.926+02:00 DEBUG 6636 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/auth/login", parameters={}
+2024-08-14T20:35:23.928+02:00 DEBUG 6636 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bank.controller.AuthController#login(LoginRequest)
+2024-08-14T20:35:23.946+02:00 DEBUG 6636 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.bank.model.LoginRequest@1a859848]
+2024-08-14T20:35:24.379+02:00 DEBUG 6636 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-08-14T20:35:24.379+02:00 DEBUG 6636 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.bank.model.LoginResponse@3bb69363]
+2024-08-14T20:35:24.382+02:00 DEBUG 6636 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-08-14T20:57:58.717+02:00  INFO 7204 --- [main] com.bank.AccountServiceImplTest          : Starting AccountServiceImplTest using Java 17.0.10 with PID 7204 (started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T20:57:58.724+02:00  INFO 7204 --- [main] com.bank.AccountServiceImplTest          : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T20:57:58.880+02:00 DEBUG 7204 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7dac3fd8
+2024-08-14T20:57:59.222+02:00  WARN 7204 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accountServiceImpl': Unsatisfied dependency expressed through field 'accountRepository': No qualifying bean of type 'com.bank.repository.AccountRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2024-08-14T20:57:59.543+02:00 ERROR 7204 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field accountRepository in com.bank.service.AccountServiceImpl required a bean of type 'com.bank.repository.AccountRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.bank.repository.AccountRepository' in your configuration.
+
+2024-08-14T20:57:59.569+02:00  WARN 7204 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [com.bank.AccountServiceImplTest@3e83c18]
+
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@7cedfa63 testClass = com.bank.AccountServiceImplTest, locations = [], classes = [com.bank.service.AccountServiceImpl], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@316bcf94, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@31fa1761, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@27f981c6, org.springframework.boot.test.web.reactor.netty.DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory$DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer@273e7444, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@41a0aa7d, org.springframework.boot.test.context.SpringBootTestAnnotation@2336dffc], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180) ~[spring-test-6.1.11.jar:6.1.11]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130) ~[spring-test-6.1.11.jar:6.1.11]
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191) ~[spring-test-6.1.11.jar:6.1.11]
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:130) ~[spring-test-6.1.11.jar:6.1.11]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260) ~[spring-test-6.1.11.jar:6.1.11]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:163) ~[spring-test-6.1.11.jar:6.1.11]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$10(ClassBasedTestDescriptor.java:378) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:383) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:378) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:377) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$6(ClassBasedTestDescriptor.java:290) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:289) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$4(ClassBasedTestDescriptor.java:279) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at java.base/java.util.Optional.orElseGet(Optional.java:364) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:278) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:106) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:105) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.3.jar:5.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:123) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:123) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:90) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) ~[junit-platform-launcher-1.10.3.jar:1.10.3]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57) ~[junit5-rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) ~[idea_rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55) ~[junit-rt.jar:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accountServiceImpl': Unsatisfied dependency expressed through field 'accountRepository': No qualifying bean of type 'com.bank.repository.AccountRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.11.jar:6.1.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.8.jar:3.2.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.8.jar:3.2.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.8.jar:3.2.8]
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:137) ~[spring-boot-test-3.2.8.jar:3.2.8]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58) ~[spring-core-6.1.11.jar:6.1.11]
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46) ~[spring-core-6.1.11.jar:6.1.11]
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1463) ~[spring-boot-3.2.8.jar:3.2.8]
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:553) ~[spring-boot-test-3.2.8.jar:3.2.8]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:137) ~[spring-boot-test-3.2.8.jar:3.2.8]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:108) ~[spring-boot-test-3.2.8.jar:3.2.8]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225) ~[spring-test-6.1.11.jar:6.1.11]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152) ~[spring-test-6.1.11.jar:6.1.11]
+	... 72 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.bank.repository.AccountRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1880) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1406) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.11.jar:6.1.11]
+	... 97 common frames omitted
+
+2024-08-14T21:01:58.317+02:00  INFO 11124 --- [main] com.bank.AccountServiceImplTest          : Starting AccountServiceImplTest using Java 17.0.10 with PID 11124 (started by Veeroju in C:\Users\Veeroju\Music\bank\bank)
+2024-08-14T21:01:58.333+02:00  INFO 11124 --- [main] com.bank.AccountServiceImplTest          : No active profile set, falling back to 1 default profile: "default"
+2024-08-14T21:01:58.456+02:00 DEBUG 11124 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@70e659aa
+2024-08-14T21:02:05.390+02:00  INFO 11124 --- [main] com.bank.AccountServiceImplTest          : Started AccountServiceImplTest in 8.721 seconds (process running for 12.026)
+2024-08-14T21:02:06.516+02:00  INFO 11124 --- [main] com.bank.service.AccountServiceImpl      : Account creation successful class UserCreated {
+    accountNumber: null
+    balance: null
+    status: null
+    createdTimeStamp: null
+    updatedTimeStamp: null
+}
+2024-08-14T21:02:06.608+02:00 DEBUG 11124 --- [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@70e659aa, started on Wed Aug 14 21:01:58 CEST 2024
+2024-08-14T21:05:31.998+02:00 DEBUG 6636 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/h2-console/login.jsp?jsessionid=908c50a50433755b4ee5da14ad8a6620", parameters={masked}
+2024-08-14T21:05:32.018+02:00 DEBUG 6636 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T21:05:32.052+02:00 DEBUG 6636 --- [http-nio-8080-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T21:05:32.095+02:00 DEBUG 6636 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T21:05:32.145+02:00 DEBUG 6636 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2024-08-14T21:05:32.158+02:00 DEBUG 6636 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource h2-console/login.jsp.}]
+2024-08-14T21:05:32.381+02:00 DEBUG 6636 --- [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource h2-console/login.jsp.]
+2024-08-14T21:05:32.392+02:00 DEBUG 6636 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2024-08-14T21:05:32.511+02:00 DEBUG 6636 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2024-08-14T21:05:32.513+02:00 DEBUG 6636 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2024-08-14T21:05:32.526+02:00 DEBUG 6636 --- [http-nio-8080-exec-10] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2024-08-14T21:05:32.527+02:00 DEBUG 6636 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.bank.exception.ApplicationExceptionHandler#ex(Exception)
+2024-08-14T21:05:32.530+02:00 DEBUG 6636 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2024-08-14T21:05:32.530+02:00 DEBUG 6636 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{Message=No static resource favicon.ico.}]
+2024-08-14T21:05:32.536+02:00 DEBUG 6636 --- [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2024-08-14T21:05:32.540+02:00 DEBUG 6636 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR

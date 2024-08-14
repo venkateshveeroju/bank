@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
@@ -45,6 +46,7 @@ public class User {
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Address address;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
@@ -52,5 +54,5 @@ public class User {
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    private Set<Role> roles;
 }
