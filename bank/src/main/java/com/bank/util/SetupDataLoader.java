@@ -17,9 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class SetupDataLoader implements
@@ -56,13 +54,17 @@ public class SetupDataLoader implements
                 = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
         Privilege deletePrivilege
                 = createPrivilegeIfNotFound("DELETE_PRIVILEGE");
-        List<Privilege> adminPrivileges = Arrays.asList(
-                readPrivilege, writePrivilege, deletePrivilege);
+        Set<Privilege> adminPrivileges = new HashSet<>();
+        adminPrivileges.add(readPrivilege);
+        adminPrivileges.add(writePrivilege);
+        adminPrivileges.add(deletePrivilege);
+        Set<Privilege> userPrivileges = new HashSet<>();
+        userPrivileges.add(readPrivilege);
+        userPrivileges.add(writePrivilege);
         createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
-        createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
+        createRoleIfNotFound("ROLE_USER", userPrivileges);
 
         Role adminRole = roleRepository.findByName("ROLE_ADMIN");
-
 
         User user = new User();
         user.setName("Admin");
@@ -79,7 +81,6 @@ public class SetupDataLoader implements
 
         address.setUser(user);
         user.setAddress(address);
-
 
         userRepository.save(user);
 
@@ -99,11 +100,12 @@ public class SetupDataLoader implements
 
     @Transactional
     Role createRoleIfNotFound(
-            String name, Collection<Privilege> privileges) {
+            String name, Set<Privilege> privileges) {
 
         Role role = roleRepository.findByName(name);
         if (role == null) {
             role = new Role(name);
+
             role.setPrivileges(privileges);
             roleRepository.save(role);
         }

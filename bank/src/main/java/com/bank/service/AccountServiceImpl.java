@@ -81,10 +81,11 @@ public class AccountServiceImpl {
             
             user.setPassword(passwordEncoder.encode(body.getUser().getPassword()));
             Set<String> strRoles = new HashSet<>();
-            strRoles.add("ADMIN");//ADMIN
+            strRoles.add("ADMIN");
 
             Set<Role> roles = new HashSet<>();
             Role userRole = roleRepository.findByName("ROLE_USER");
+           // System.out.println("user role " + userRole.toString());
             roles.add(userRole);
 /*
 
@@ -106,18 +107,18 @@ public class AccountServiceImpl {
             }
 */
             List<String> privileges = new ArrayList<>();
-            List<Privilege> collection = new ArrayList<>();
+            Set<Privilege> privilegeSet = new HashSet<>();
 
             for (Role role : roles) {
                 privileges.add(role.getName());
-                collection.addAll(role.getPrivileges());
+                privilegeSet.addAll(role.getPrivileges());
             }
 
             Role role = new Role();
-            role.setPrivileges(collection);
+            role.setPrivileges(privilegeSet);
             roleRepository.save(role);
             Privilege privilegeObj = new Privilege();
-            privilegeObj.setRoles(roles);
+            //privilegeObj.set(roles);
             privilegeRepository.save(privilegeObj);
 
             user.setRoles(roles);

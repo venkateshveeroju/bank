@@ -20,9 +20,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -113,24 +111,31 @@ class AccountServiceImplTest {
        // newAccount.setUser(userM);
         // Prepare mock data
         Role role = mock(Role.class);
+
+
+
+
         Role adminRole = mock(Role.class);
         Privilege privilege = mock(Privilege.class);
-
-        when(roleRepository.findByName("ROLE_USER")).thenReturn(role);
-        when(roleRepository.findByName("ROLE_ADMIN")).thenReturn(adminRole);
+        privilege.setName("READ");
+        Set<Privilege> privCollection = new HashSet<>();
+        privCollection.add(privilege);
+        role.setPrivileges(privCollection);
+      //  when(roleRepository.findByName("ROLE_USER")).thenReturn(role);
+      //  when(roleRepository.findByName("ROLE_ADMIN")).thenReturn(adminRole);
 
         when(role.getName()).thenReturn("ROLE_USER");
         //when(role.getName()).thenReturn(Collections.emptyList());
 
         when(adminRole.getName()).thenReturn("ROLE_ADMIN");
-        when(adminRole.getPrivileges()).thenReturn(Collections.singletonList(privilege));
+        when(adminRole.getPrivileges()).thenReturn(privCollection);
 
         // Test with non-null strRoles
         Set<String> strRoles = new HashSet<>();
         strRoles.add("ROLE_USER");
         //
         when(userRepository.findEmailByEmail(newAccount.getUser().getEmail())).thenReturn(null);
-        when(roleRepository.findByName("ROLE_ADMIN")).thenReturn(new Role("ROLE_ADMIN" + "READ_PRIVILEGE"));
+        when(roleRepository.findByName("ROLE_ADMIN")).thenReturn(new Role("ROLE_ADMIN"));
         when(roleRepository.findByName("ROLE_USER")).thenReturn(new Role("ROLE_USER"));
         when(accountMapper.convertToUserCreated(any(Account.class))).thenReturn(new UserCreated());
 
