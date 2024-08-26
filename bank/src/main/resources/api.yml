@@ -8,20 +8,24 @@ info:
     - API to retrieve person information.
     - API to make a transfer from one account to another.
 
-  version: 1.0-SNAPSHOT
+  version: '1.0'
 servers:
-  - url: https://localhost:/api
+  - url: '{protocol}://localhost:8081/{basePath}'
+    description: My API locally hosted release
+security:
+  - bearerAuth: []
+
 tags:
   - name: accounts
     description: Operations between bank accounts
 paths:
-  /accounts:
+  /accounts/create-account:
     post:
       tags:
         - Account
       summary: Create an account
       description: Create an account with an option to deposit initial amount
-      operationId: accountId
+      operationId: createAccount
       requestBody:
         description: User Details and Desired amount to deposit
         required: true
@@ -44,6 +48,9 @@ paths:
                 $ref: '#/components/schemas/AccountNotFoundError'
   /accounts/{accountNumber}/balance:
     get:
+      security:
+        - bearerAuth:
+            - ROLE_USER
       tags:
         - Account
       summary: Get account balance
@@ -56,7 +63,7 @@ paths:
             type: string
       responses:
         200:
-          description: Account Balance Retrieved
+          description: Account Balance updated
           content:
             application/json:
               schema:
@@ -82,6 +89,12 @@ paths:
               $ref: '#/components/schemas/DepositRequest'
         required: true
       responses:
+        200:
+          description: Person Information Retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountM'
         204:
           description: Success
         404:
@@ -90,7 +103,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountNotFoundError'
-  /User/{accountNumber}:
+  /user/{accountNumber}:
     get:
       tags:
         - User
@@ -106,7 +119,7 @@ paths:
 
       responses:
         200:
-          description: Person Infromation Retrieved
+          description: Person Information Retrieved
           content:
             application/json:
               schema:
@@ -121,17 +134,46 @@ paths:
           description: Authorization information is missing or invalid.
         503:
           description: Unexpected error.
+  /transfer:
+    post:
+      tags:
+        - Account
+      summary: Makes money transfer between Accounts
+      description: Makes transfer between Accounts
+      operationId: transferId
+      requestBody:
+        description: Sender Account , Receiver account and Amount to be transferred need to be provided
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequest'
+      responses:
+        200:
+          description: Transaction details will be provided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionM'
+        404:
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountNotFoundError'
+        401:
+          description: Authorization information is missing or invalid.
+        503:
+          description: Unexpected error.
+
+# 1) Define the security scheme type (HTTP bearer)
 components:
   securitySchemes:
-    oAuthSample:
-      type: oauth2
-      description: This API uses OAuth 2 with the implicit grant flow.
-      flows:
-        implicit:
-          authorizationUrl: https://api.example.com/oauth2/authorize
-          scopes:
-            read_pets: read your pets
-            write_pets: modify pets in your account
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
   schemas:
     NewAccount:
       type: object
@@ -182,10 +224,13 @@ components:
         password:
           type: string
           example: "max234"
+        roles:
+          type: string
         address:
           $ref: '#/components/schemas/AddressM'
         account:
           $ref: '#/components/schemas/AccountM'
+
 
     UserInfo:
       type: object
@@ -204,7 +249,6 @@ components:
     UserCreated:
       type: object
       properties:
-
         accountNumber:
           type: string
           example: 'A1234'
@@ -215,32 +259,10 @@ components:
           type: string
         createdTimeStamp:
           type: string
-          format: date # or date-time
+          format: date-time # or date-time
         UpdatedTimeStamp:
           type: string
-          format: date # or date-time
-
-    TransactionM:
-      type: object
-      required:
-        - id
-        - accountId
-        - amount
-        - type
-      properties:
-        id:
-          type: string
-          example: 'A1234'
-        accountNumber:
-          type: string
-          example: 'C1234'
-        amount:
-          type: number
-          example: 1000.00
-        type:
-          type: string
-          enum: [deposit, withdrawal]
-          example: deposit
+          format: date-time # or date-time
 
     AccountM:
       type: object
@@ -255,21 +277,70 @@ components:
           type: string
         createdTimeStamp:
           type: string
-          format: date # or date-time
+          format: date-time # or date-time
         UpdatedTimeStamp:
           type: string
-          format: date # or date-time
+          format: date-time # or date-time
 
     AccountNotFoundError:
       type: object
       properties:
         message:
           type: string
+
+    TransferRequest:
+      type: object
+      properties:
+        senderAccount:
+          type: string
+        receiverAccount:
+          type: string
+        amount:
+          type: number
+
+    TransactionM:
+      type: object
+      properties:
+        id:
+          type: number
+          format: int64
+        amount:
+          type: number
+        userId:
+          type: number
+        senderAccount:
+          type: string
+        receiverAccount:
+          type: string
+        createdTimeStamp:
+          type: string
+          format: date-time
+        UpdatedTimeStamp:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastUpdatedBy:
+          type: string
+        randomUUId:
+          type: string
+
+
+        transactionId:
+          type: string
+        transactionBy:
+          type: string
+
     DepositRequest:
       type: object
       properties:
         accountNumber:
           type: string
-        depositAmount:
+        amount:
           type: number
+
+
+
+
+
 

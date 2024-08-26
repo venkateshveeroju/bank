@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
-    public UserInfo convertToAccountM(User User){
+    public UserInfo convertToAccountM(User User) {
         AddressM address = new AddressM();
         address.setStreet(User.getAddress().getStreet());
         address.setCity(User.getAddress().getCity());
@@ -16,13 +16,11 @@ public class UserMapper {
         address.setPostalCode(User.getAddress().getPostalCode());
 
 
-
         UserInfo UserInfo = new UserInfo();
-
         UserInfo.setEmail(User.getEmail());
         UserInfo.setName(User.getName());
-
-       UserInfo.setAddress(address);
+        UserInfo.setAddress(address);
         return UserInfo;
     }
+
 }

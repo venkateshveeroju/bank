@@ -1,7 +1,6 @@
 package com.bank.repository;
 
 import com.bank.entity.Account;
-import com.bank.model.AccountM;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,16 +17,19 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
 
     @Query(value = "SELECT BALANCE FROM ACCOUNT WHERE ACCOUNT_NUMBER =:accountNumber", nativeQuery = true)
-    public BigDecimal findBalanceByAcctID(String accountNumber);
+    BigDecimal findBalanceByAcctID(String accountNumber);
 
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query(value = "update Account set balance = :balance where ACCOUNT_NUMBER=:accountNumber", nativeQuery = true)
-    public void saveBalanceByAcctID(String accountNumber, BigDecimal balance);
+    void saveBalanceByAcctID(String accountNumber, BigDecimal balance);
 
     @Transactional
     @Modifying(clearAutomatically = true)
     @Query(value = "update Account set balance = :balance where ACCOUNT_NUMBER=:accountNumber", nativeQuery = true)
-    public void withdrawAmountByAcctID(String accountNumber, BigDecimal balance);
+    void withdrawAmountByAcctID(String accountNumber, BigDecimal balance);
+
+    String deleteByAccountNumber(String accountNumber);
+
 
 }

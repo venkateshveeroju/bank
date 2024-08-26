@@ -1,0 +1,36 @@
+  #H2DB Database Configuration
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/bankdb;AUTO_SERVER=TRUE
+    driverClassName: org.h2.Driver
+    username: admin
+    password: admin
+    application:
+      name: bank
+  main:
+    allow-circular-references: true
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate.ddl-auto: update
+    show-sql: false
+    generate-ddl: true
+
+server:
+  tomcat:
+    accessors:
+      enabled: true # Enable access log.
+      directory: logs # Directory in which log files are created. Can be relative to the tomcat base dir or absolute.
+      pattern: common # Format pattern for access logs.
+
+security:
+  jwt:
+    secret-key: thisismysecretkeydude
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: ERROR
+  file:
+    name: ./logs/bank.log

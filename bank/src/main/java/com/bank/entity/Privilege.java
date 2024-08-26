@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Builder
 @Data
 public class Privilege {
 
@@ -19,10 +20,14 @@ public class Privilege {
 
     private String name;
 
-    @ManyToMany(mappedBy = "privileges")
+    public Privilege(String name) {
+        this.name= name;
+    }
+
+   /* @ManyToMany(mappedBy = "privileges")
     private Collection<Role> roles;
 
     public Privilege(String name) {
         this.name = name;
-    }
+    }*/
 }
