@@ -92,73 +92,18 @@ class AccountServiceImplTest {
         //NewAccount newAccount = new NewAccount();
         NewAccount newAccount = objectMapper.readValue(json, NewAccount.class);
 
-       /* System.out.println(newAccount);
-        User user = new User();
-        user.setEmail("test@example.com");
-        user.setName("John Doe");
-        user.setPassword("password");
-        Address address = new Address();
-        address.setStreet("123 Main St");
-        address.setCity("Cityville");
-        address.setState("State");
-        address.setCountry("Country");
-        address.setPostalCode("12345");
-        user.setAddress(address);
-        Account account = new Account();
-        account.setBalance(BigDecimal.valueOf(1000));
-        account.setStatus(Status.ACTIVE);
-        // user.setAccount(accountMapper.convertToUserCreated(account));
-        UserM userM = new UserM();
-        userM.setEmail("test@example.com");
-        userM.setName("John Doe");
-        // newAccount.setUser(userM);
-        // newAccount.setUser(userM);
-        // Prepare mock data
-
-
-        Role role = mock(Role.class);
-
-
-        Role adminRole = mock(Role.class);
-        Privilege privilege = mock(Privilege.class);
-        privilege.setName("READ");
-        Set<Privilege> privCollection = new HashSet<>();
-        privCollection.add(privilege);
-        role.setPrivileges(privCollection);
-        //  when(roleRepository.findByName("ROLE_USER")).thenReturn(role);
-        //  when(roleRepository.findByName("ROLE_ADMIN")).thenReturn(adminRole);
-
-        when(role.getName()).thenReturn("ROLE_USER");
-        //when(role.getName()).thenReturn(Collections.emptyList());
-
-        when(adminRole.getName()).thenReturn("ROLE_ADMIN");
-        when(adminRole.getPrivileges()).thenReturn(privCollection);
-
-        // Test with non-null strRoles
-        Set<String> strRoles = new HashSet<>();
-        strRoles.add("ROLE_USER");
-        //
-         */
         when(userRepository.findEmailByEmail(newAccount.getUser().getEmail())).thenReturn(null);
-
         when(roleRepository.findByName("ROLE_USER")).thenReturn(new Role("ROLE_USER"));
         when(accountMapper.convertToUserCreated(any(Account.class))).thenReturn(new UserCreated());
-
-
         when(userRepository.save(any(User.class))).thenReturn(new User());
-
-
         // Call the method to test
         UserCreated userCreated = accountService.createAccount(newAccount);
-
         // Verify the result
         assertNotNull(userCreated);
-
-
     }
 
     @Test
-    void testCreateAccountUserExists() {
+    void testCreateAccountUserAlreadyExists() {
         NewAccount newAccount = new NewAccount();
         UserM user = new UserM();
         user.setName("John Doe");
@@ -167,11 +112,11 @@ class AccountServiceImplTest {
 
         when(userRepository.findEmailByEmail(anyString())).thenReturn("john.doe@example.com");
 
-        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class, () -> {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             accountService.createAccount(newAccount);
         });
 
-        assertEquals("Unsuccessfull john.doe@example.com", exception.getMessage());
+        assertTrue(exception.getMessage().contains("User already exists in system with Email : john.doe@example.com"));
     }
 
     @Test
@@ -187,7 +132,7 @@ class AccountServiceImplTest {
         //verify(accountRepository, times(1)).findByAccountNumber(anyString());
     }
 
-    @Test
+@Test
     void testGetAccountNotFound() {
         when(accountRepository.findByAccountNumber(anyString())).thenReturn(null);
 

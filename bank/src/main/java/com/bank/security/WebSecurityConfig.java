@@ -31,7 +31,8 @@ public class WebSecurityConfig {
             "/v1/api-docs/**",
             "/swagger-resources/**",
             "/console/**",
-            "/account/**"
+            "/account/**",
+            "/favicon.ico"
     };
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final CustomUserDetailService customUserDetailService;

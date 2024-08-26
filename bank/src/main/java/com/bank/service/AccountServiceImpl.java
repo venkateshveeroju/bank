@@ -45,11 +45,12 @@ public class AccountServiceImpl {
     public UserCreated createAccount(NewAccount body) {
         validateAccount(body);
         String email = body.getUser().getEmail();
-        try {
+
             String str = userRepository.findEmailByEmail(email);
             if (str != null && !str.isEmpty()) {
                 throw new IllegalArgumentException("User already exists in system with Email : " + email);
             }
+        try {
             UserCreated userCreated;
 
 
@@ -101,7 +102,7 @@ public class AccountServiceImpl {
             return userCreated;
         } catch (Exception ex) {
             logger.error(ex.getMessage());
-            throw new IllegalArgumentException("Unsuccessfull ");
+            throw new IllegalArgumentException("Unsuccessfull");
         }
     }
 
