@@ -16,8 +16,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class SetupDataLoader implements
@@ -45,7 +45,8 @@ public class SetupDataLoader implements
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
-
+        if (userRepository.findByEmail("admin@gmail.com").isPresent())
+        return;
         if (alreadySetup)
             return;
         Privilege readPrivilege

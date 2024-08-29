@@ -1,7 +1,10 @@
 package com.bank.service;
 
 
-import com.bank.entity.*;
+import com.bank.entity.Account;
+import com.bank.entity.Address;
+import com.bank.entity.Role;
+import com.bank.entity.User;
 import com.bank.enums.Status;
 import com.bank.mapper.AccountMapper;
 import com.bank.model.AccountM;
@@ -14,13 +17,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -39,6 +44,7 @@ public class AccountServiceImpl {
     private RoleRepository roleRepository;
     @Autowired
     private PrivilegeRepository privilegeRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -46,14 +52,12 @@ public class AccountServiceImpl {
         validateAccount(body);
         String email = body.getUser().getEmail();
 
-            String str = userRepository.findEmailByEmail(email);
-            if (str != null && !str.isEmpty()) {
-                throw new IllegalArgumentException("User already exists in system with Email : " + email);
-            }
+        String str = userRepository.findEmailByEmail(email);
+        if (str != null && !str.isEmpty()) {
+            throw new IllegalArgumentException("User already exists in system with Email : " + email);
+        }
         try {
             UserCreated userCreated;
-
-
             Address address = new Address();
             address.setStreet(body.getUser().getAddress().getStreet());
             address.setCity(body.getUser().getAddress().getCity());
@@ -78,14 +82,10 @@ public class AccountServiceImpl {
             user.setName(name);
             user.setEmail(email);
             user.setPassword(passwordEncoder.encode(body.getUser().getPassword()));
-
-
             Role userRole = roleRepository.findByName("ROLE_USER");
 
             Set<Role> roleSet = new HashSet<>();
             roleSet.add(userRole);
-
-
             user.setRoles(roleSet);
             user.setAccount(acc);
             user.setAddress(address);
@@ -106,38 +106,55 @@ public class AccountServiceImpl {
         }
     }
 
-    //@PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public AccountM getAccount(@NonNull String accountNumber) {
         AccountM accM;
-        Account account = accountRepository.findByAccountNumber(accountNumber);
-        if (account == null) {
+        Account account = accountRepository.findByAccountNumber(accountNumber)
+                .orElseThrow(() -> new IllegalArgumentException("Account does not exist : " + accountNumber));
+        /*if (account == null) {
             throw new IllegalArgumentException("Account does not exist : " + accountNumber);
-        }
-        accM = accountMapper.convertToAccountM(account);
+        }*/
+
+        accM = accountMapper.convertToAccountM(Optional.ofNullable(account));
+
         return accM;
     }
 
     @PreAuthorize("hasAuthority('DELETE')")
     public String deleteUserAccount(@NonNull String accountNumber) {
         AccountM accM;
-        Account account = accountRepository.findByAccountNumber(accountNumber);
+        Optional<Account> account = accountRepository.findByAccountNumber(accountNumber);
         if (account == null) {
             throw new IllegalArgumentException("Account does not exist : " + accountNumber);
         }
-        accountRepository.deleteByAccountNumber(accountNumber);
-        return accountNumber;
+        int deleteRecord = accountRepository.deleteByAccountNumber(accountNumber);
+        if (deleteRecord == 1) {
+            return accountNumber;
+        } else {
+            return "Unable to delete ";
+        }
     }
 
-    @PreAuthorize("hasAuthority('READ')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public AccountM depositToAccount(@NonNull String accountNumber, BigDecimal depositAmount) {
-        AccountM accM;
-        if (accountRepository.findByAccountNumber(accountNumber) == null) {
-            throw new IllegalArgumentException("Account does not exist : " + accountNumber);
+        // Fetch the account once
+        Optional<Account> optionalAccount = Optional.ofNullable(accountRepository.findByAccountNumber(accountNumber)
+                .orElseThrow(() -> new IllegalArgumentException("Receiver Account does not exists in our Bank")
+                ));
+
+        // Check if the account exists
+        if (!optionalAccount.isPresent()) {
+            throw new IllegalArgumentException("Account does not exist: " + accountNumber);
         }
-        accountRepository.saveBalanceByAcctID(accountNumber, depositAmount);
-        Account account = accountRepository.findByAccountNumber(accountNumber);
-        accM = accountMapper.convertToAccountM(account);
-        return accM;
+
+        // Update the account balance
+        BigDecimal finalBalance = accountRepository.findBalanceByAcctID(accountNumber).add(depositAmount);
+        accountRepository.saveBalanceByAcctID(accountNumber, finalBalance);
+        // Fetch the updated account
+        optionalAccount = accountRepository.findByAccountNumber(accountNumber);
+
+        // Convert to AccountM and return
+        return accountMapper.convertToAccountM(optionalAccount);
     }
 
     private void validateAccount(NewAccount newAccount) {

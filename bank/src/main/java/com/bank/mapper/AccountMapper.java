@@ -7,18 +7,19 @@ import com.bank.model.TransactionM;
 import com.bank.model.UserCreated;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
+import java.util.Optional;
 
 @Component
 public class AccountMapper {
-    public AccountM convertToAccountM(Account account) {
-        if (account == null)
-            throw new IllegalArgumentException("Invalid Account: ");
+    public AccountM convertToAccountM(Optional<Account> account) {
+        if (account.isEmpty() || !account.isPresent()) {
+            throw new IllegalArgumentException("Invalid Account");
+        }
         AccountM accountM = new AccountM();
-        accountM.setStatus(account.getStatus().toString());
-        accountM.setAccountNumber(account.getAccountNumber());
-        accountM.setBalance(account.getBalance());
-        accountM.setUpdatedTimeStamp(account.getUpdatedTimeStamp());
+        accountM.setStatus(account.get().getStatus().toString());
+        accountM.setAccountNumber(account.get().getAccountNumber());
+        accountM.setBalance(account.get().getBalance());
+        accountM.setUpdatedTimeStamp(account.get().getUpdatedTimeStamp());
         return accountM;
     }
 

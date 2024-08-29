@@ -12,8 +12,8 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Account> findById(Long id);
-    @Query(value = "SELECT * FROM ACCOUNT WHERE ACCOUNT_NUMBER =:accountNumber", nativeQuery = true)
-    Account findByAccountNumber(String accountNumber);
+   // @Query(value = "SELECT * FROM ACCOUNT WHERE ACCOUNT_NUMBER =:accountNumber", nativeQuery = true)
+    Optional<Account> findByAccountNumber(String accountNumber);
 
 
     @Query(value = "SELECT BALANCE FROM ACCOUNT WHERE ACCOUNT_NUMBER =:accountNumber", nativeQuery = true)
@@ -29,7 +29,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query(value = "update Account set balance = :balance where ACCOUNT_NUMBER=:accountNumber", nativeQuery = true)
     void withdrawAmountByAcctID(String accountNumber, BigDecimal balance);
 
-    String deleteByAccountNumber(String accountNumber);
+    int deleteByAccountNumber(String accountNumber);
 
 
 }

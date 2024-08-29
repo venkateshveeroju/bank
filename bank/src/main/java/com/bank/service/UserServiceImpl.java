@@ -41,10 +41,10 @@ public class UserServiceImpl {
     private AccountRepository accountRepository;
 
     public UserInfo getUserById(@NotNull String accountNumber) {
-        Account accountObj = accountRepository.findByAccountNumber(accountNumber);
+        Optional<Account> accountObj = accountRepository.findByAccountNumber(accountNumber);
         UserInfo userInfo = null;
         try {
-            Optional<User> user = userRepository.findById(accountObj.getUser().getId());
+            Optional<User> user = userRepository.findById(accountObj.get().getUser().getId());
             userInfo = userMapper.convertToAccountM(user.get());
         } catch (UsernameNotFoundException ex) {
             throw new UsernameNotFoundException("Account Number does not exist : " + accountNumber);

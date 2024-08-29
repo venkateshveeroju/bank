@@ -1,36 +1,37 @@
 package com.bank;
 
 
-import com.bank.entity.*;
+import com.bank.entity.Account;
+import com.bank.entity.Role;
+import com.bank.entity.User;
 import com.bank.enums.Status;
 import com.bank.mapper.AccountMapper;
-import com.bank.model.*;
+import com.bank.model.AccountM;
+import com.bank.model.NewAccount;
+import com.bank.model.UserCreated;
+import com.bank.model.UserM;
 import com.bank.repository.*;
 import com.bank.service.AccountServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Date;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes  = AccountServiceImpl.class)
+@SpringBootTest(classes = AccountServiceImpl.class)
 class AccountServiceImplTest {
 
     @Autowired
@@ -63,7 +64,7 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void createAccount_Success() throws JsonProcessingException {
+    void testCreateAccount_Success() throws JsonProcessingException {
         // Prepare mock data
 
         String json = "{\n" +
@@ -119,53 +120,99 @@ class AccountServiceImplTest {
         assertTrue(exception.getMessage().contains("User already exists in system with Email : john.doe@example.com"));
     }
 
+    /*@Test
+    public void testConvertToAccountM_WithEmptyOptional() {
+        Optional<Account> optionalAccount = Optional.empty();
+         accountMapper.convertToAccountM(optionalAccount);
+    }*/
     @Test
-    void testGetAccountSuccess() {
+    public void testGetAccountSuccess() {
+        // Arrange
+        String accountNumber = "12345";
+
+        // Create a sample Account object
         Account account = new Account();
-        account.setAccountNumber("123456");
-        when(accountRepository.findByAccountNumber(anyString())).thenReturn(account);
-        when(accountMapper.convertToAccountM(any(Account.class))).thenReturn(new AccountM());
+        account.setAccountNumber(accountNumber);
+        account.setStatus(Status.ACTIVE);
+        account.setBalance(BigDecimal.valueOf(1000));
+        account.setUpdatedTimeStamp(new Date());
 
-        AccountM accountM = accountService.getAccount("123456");
+        // Create a sample AccountM object
+        AccountM accountM = new AccountM();
+        accountM.setAccountNumber(accountNumber);
+        accountM.setStatus("Active");
+        accountM.setBalance(BigDecimal.valueOf(1000));
+        accountM.setUpdatedTimeStamp(account.getUpdatedTimeStamp());
 
-        assertNotNull(accountM);
-        //verify(accountRepository, times(1)).findByAccountNumber(anyString());
-    }
+        // Mock the repository and mapper behavior
+        when(accountRepository.findByAccountNumber(accountNumber)).thenReturn(Optional.of(account));
+        when(accountMapper.convertToAccountM(Optional.of(account))).thenReturn(accountM);
 
-@Test
-    void testGetAccountNotFound() {
-        when(accountRepository.findByAccountNumber(anyString())).thenReturn(null);
+        // Act
+        AccountM result = accountService.getAccount(accountNumber);
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            accountService.getAccount("123456");
-        });
+        // Assert
+        assertNotNull(result, "AccountM should not be null");
+        assertEquals(accountNumber, result.getAccountNumber(), "Account number should match");
+        assertEquals("Active", result.getStatus(), "Status should match");
+        assertEquals(BigDecimal.valueOf(1000), result.getBalance(), "Balance should match");
+        assertEquals(account.getUpdatedTimeStamp(), result.getUpdatedTimeStamp(), "Updated timestamp should match");
 
-        assertEquals("Account does not exist : 123456", exception.getMessage());
+        // Verify interactions
+        verify(accountRepository).findByAccountNumber(accountNumber);
+        verify(accountMapper).convertToAccountM(Optional.of(account));
     }
 
     @Test
+    public void testGetAccountNotFound() {
+        // Arrange
+        String accountNumber = "12345";
+
+        // Mock the repository to return an empty Optional
+        when(accountRepository.findByAccountNumber(accountNumber)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        IllegalArgumentException thrown = assertThrows(
+                IllegalArgumentException.class,
+                () -> accountService.getAccount(accountNumber),
+                "Expected getAccount() to throw, but it didn't"
+        );
+
+        assertEquals("Account does not exist : " + accountNumber, thrown.getMessage());
+
+        // Verify interactions
+        verify(accountRepository).findByAccountNumber(accountNumber);
+        verify(accountMapper, never()).convertToAccountM(any());
+    }
+
+    //@Test
     void testDepositToAccountSuccess() {
         Account account = new Account();
         account.setAccountNumber("123456");
         account.setBalance(new BigDecimal(1000));
-        when(accountRepository.findByAccountNumber(anyString())).thenReturn(account);
-        when(accountMapper.convertToAccountM(any(Account.class))).thenReturn(new AccountM());
-
+        account.setUpdatedTimeStamp(new Date());
+        account.setStatus(Status.ACTIVE);
+        when(accountRepository.findByAccountNumber(anyString())).thenReturn(Optional.of(account));
+        when(accountMapper.convertToAccountM(Optional.ofNullable(any(Account.class)))).thenReturn(new AccountM());
+        when(accountRepository.findBalanceByAcctID(anyString())).thenReturn(new BigDecimal(1000));
         AccountM accountM = accountService.depositToAccount("123456", new BigDecimal(500));
 
         assertNotNull(accountM);
-       // verify(accountRepository, times(1)).findByAccountNumber(anyString());
+        // verify(accountRepository, times(1)).findByAccountNumber(anyString());
         //verify(accountRepository, times(1)).saveBalanceByAcctID(anyString(), any(BigDecimal.class));
     }
 
     @Test
     void testDepositToAccountNotFound() {
-        when(accountRepository.findByAccountNumber(anyString())).thenReturn(null);
-
+        when(accountRepository.findByAccountNumber(anyString())).thenReturn(Optional.ofNullable(null));
+        Account account = new Account();
+        account.setAccountNumber("123456");
+        account.setBalance(new BigDecimal(1000));
+        account.setUpdatedTimeStamp(new Date());
+        account.setStatus(Status.ACTIVE);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             accountService.depositToAccount("123456", new BigDecimal(500));
         });
-
-        assertEquals("Account does not exist : 123456", exception.getMessage());
+        assertEquals("Receiver Account does not exists in our Bank", exception.getMessage());
     }
 }

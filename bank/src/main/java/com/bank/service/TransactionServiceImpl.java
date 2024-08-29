@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Optional;
 
 
 @Service
@@ -59,13 +60,13 @@ public class TransactionServiceImpl {
 
     public TransactionM transfer(TransferRequest body) {
         this.validateTransferRequest(body);
-        Account account = accountRepository.findByAccountNumber(body.getSenderAccount());
-        if (account.getId() != UserPrinciple.builder().build().getUserId()) {
+        Optional<Account> account = accountRepository.findByAccountNumber(body.getSenderAccount());
+        if (account.get().getId() != UserPrinciple.builder().build().getUserId()) {
             logger.error("You are not authorized to make a transfer");
             throw new IllegalArgumentException("You are not authorized to make a transfer");
         }
         TransactionM transactionM = this.transferAmount(
-                account.getId(), account.getUser().getName(), body.getSenderAccount(), body.getReceiverAccount(), body.getAmount());
+                account.get().getId(), account.get().getUser().getName(), body.getSenderAccount(), body.getReceiverAccount(), body.getAmount());
         return transactionM;
     }
 
