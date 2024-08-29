@@ -30,8 +30,6 @@ public class TransactionServiceImpl {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private AccountMapper accountMapper;
     @Autowired
     private TransactionRepository transactionRepository;
@@ -61,7 +59,7 @@ public class TransactionServiceImpl {
     public TransactionM transfer(TransferRequest body) {
         this.validateTransferRequest(body);
         Optional<Account> account = accountRepository.findByAccountNumber(body.getSenderAccount());
-        if (account.get().getId() != UserPrinciple.builder().build().getUserId()) {
+        if (account.get().getUser().getId() != UserPrinciple.builder().build().getUserId()) {
             logger.error("You are not authorized to make a transfer");
             throw new IllegalArgumentException("You are not authorized to make a transfer");
         }
@@ -82,6 +80,7 @@ public class TransactionServiceImpl {
         transaction.setLastUpdatedBy(user);
         transaction.setUserId(senderId);
         transaction.setCreatedTimeStamp(Date.from(Instant.now()));
+        transactionRepository.save(transaction);
         return accountMapper.convertToTransactionM(transaction);
 
     }

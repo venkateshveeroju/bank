@@ -11,6 +11,7 @@ import com.bank.repository.AccountRepository;
 import com.bank.repository.TransactionRepository;
 import com.bank.repository.UserRepository;
 import com.bank.security.UserPrinciple;
+import com.bank.service.AccountServiceImpl;
 import com.bank.service.TransactionServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,9 @@ import org.springframework.security.test.context.support.WithMockUser;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.time.Instant;
+import java.util.Collections;
+import java.util.Date;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,8 +43,6 @@ public class TransactionServiceImplTest {
     @Mock
     private TransactionRepository transactionRepository;
 
-    @Mock
-    private UserPrinciple userPrinciple;
     @InjectMocks
     private TransactionServiceImpl transactionService;
 
@@ -110,34 +112,47 @@ public class TransactionServiceImplTest {
         verify(accountRepository, never()).saveBalanceByAcctID(anyString(), any(BigDecimal.class));
     }
 
-    //@Test
-    @WithMockUser(username = "user", roles = {"ROLE_USER"})
+    @Test
     void testTransfer_Success() {
-        TransferRequest request = new TransferRequest();
-        request.setSenderAccount("1234567890");
-        request.setReceiverAccount("0987654321");
-        request.setAmount(new BigDecimal("500.00"));
+        TransferRequest body = new TransferRequest();
+        body.setSenderAccount("1234567890");
+        body.setReceiverAccount("0987654321");
+        body.setAmount(new BigDecimal("500.00"));
 
         Account senderAccount = new Account();
         senderAccount.setId(1L);
-        senderAccount.setUser(new User());
-        when(accountRepository.findByAccountNumber(request.getSenderAccount())).thenReturn(Optional.of(senderAccount));
+        Account destAccount = new Account();
+        destAccount.setId(2L);
+        destAccount.setBalance(new BigDecimal("200.00"));
+
+        User mockedUser = new User();
+        mockedUser.setId(null);
+        mockedUser.setName("dummyName");
+        senderAccount.setUser(mockedUser);
+
+        Transaction transaction = new Transaction();
+        transaction.setAmount(new BigDecimal("500.00"));
+        transaction.setSenderAccount(body.getSenderAccount());
+        transaction.setReceiverAccount(body.getReceiverAccount());
+        transaction.setUpdatedTimeStamp(Date.from(Instant.now()));
+        transaction.setLastModifiedBy(mockedUser.getName());
+        transaction.setLastUpdatedBy(mockedUser.getName());
+        transaction.setUserId(1L);
+        transaction.setCreatedTimeStamp(Date.from(Instant.now()));
+
+        when(accountRepository.findByAccountNumber(body.getSenderAccount())).thenReturn(Optional.of(senderAccount));
+        when(accountRepository.findBalanceByAcctID(body.getSenderAccount())).thenReturn(new BigDecimal("600.00"));
+        when(accountRepository.findByAccountNumber(body.getReceiverAccount())).thenReturn(Optional.of(destAccount));
+        when(accountRepository.findBalanceByAcctID(body.getReceiverAccount())).thenReturn(destAccount.getBalance());
         when(accountMapper.convertToTransactionM(any(Transaction.class))).thenReturn(new TransactionM());
+        when(transactionRepository.save(any(Transaction.class))).thenReturn(transaction);
 
-        UserPrinciple UserPrinciple = mock(UserPrinciple.class);
-
-        // Mock the chained method calls
-       /* when(mockUserPrinciple).thenReturn(mockUserPrinciple);
-            when(mockUserPrinciple.builder().build()).thenReturn(mockUserPrinciple);
-            when(mockUserPrinciple.getUserId()).thenReturn(1L);
-   // Now you can call the method and it should return the mocked user ID
-            Long userId = UserPrinciple.builder().build().getUserId();*/
-        when(UserPrinciple.builder().build().getUserId()).thenReturn(1L);
-
-        TransactionM transactionM = transactionService.transfer(request);
+        TransactionM transactionM = transactionService.transfer(body);
+        verify(accountRepository, times(1)).withdrawAmountByAcctID(body.getSenderAccount(), new BigDecimal("100.00"));
 
         assertNotNull(transactionM);
-        verify(accountRepository, times(1)).findByAccountNumber(request.getSenderAccount());
+        verify(accountRepository, times(1)).findByAccountNumber(body.getSenderAccount());
+        verify(accountRepository, times(1)).saveBalanceByAcctID(body.getReceiverAccount(), new BigDecimal("700.00"));
     }
 
     @Test
@@ -150,6 +165,10 @@ public class TransactionServiceImplTest {
         Account senderAccount = new Account();
         senderAccount.setId(2L); // Different user ID than the one returned by UserPrinciple
 
+        User mockedUser = new User();
+        mockedUser.setId(2L);
+        mockedUser.setName("dummyName");
+        senderAccount.setUser(mockedUser);
         when(accountRepository.findByAccountNumber(request.getSenderAccount())).thenReturn(Optional.of(senderAccount));
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
