@@ -59,12 +59,12 @@ public class UserServiceImpl {
     }
 
     public LoginResponse loginUser(@NotNull String email, @NotNull String password) {
-        if(email == null || password==null){
+        if (email == null || password == null) {
             throw new IllegalArgumentException("Email and password are must to login");
         }
         LoginResponse loginResponse = null;
         try {
-            if (userRepository.findByEmail(email).get().getEmail() == null) {
+            if (!userRepository.findByEmail(email).isPresent()) {
                 logger.error("User does not exist in the system with the email :  " + email);
                 throw new UsernameNotFoundException("User does not exist in the system ");
             }
@@ -84,7 +84,6 @@ public class UserServiceImpl {
 
         } catch (UsernameNotFoundException userEx) {
             logger.error("Invalid credentials " + userEx.getMessage());
-
         } catch (BadCredentialsException bcEx) {
             logger.error("Credentials you provided were wrong, please check");
         } catch (NullPointerException e) {
