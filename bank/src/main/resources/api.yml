@@ -324,8 +324,6 @@ components:
           type: string
         randomUUId:
           type: string
-
-
         transactionId:
           type: string
         transactionBy:

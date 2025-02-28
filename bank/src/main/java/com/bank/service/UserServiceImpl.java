@@ -44,7 +44,11 @@ public class UserServiceImpl {
         Optional<Account> accountObj = accountRepository.findByAccountNumber(accountNumber);
         UserInfo userInfo = null;
         try {
+<<<<<<< Updated upstream
             Optional<User> user = userRepository.findById(accountObj.get().getUser().getId());
+=======
+            Optional<User> user = userRepository.findById(accountObj.get().getId());
+>>>>>>> Stashed changes
             userInfo = userMapper.convertToAccountM(user.get());
         } catch (UsernameNotFoundException ex) {
             throw new UsernameNotFoundException("Account Number does not exist : " + accountNumber);
@@ -58,7 +62,11 @@ public class UserServiceImpl {
         return userInfo;
     }
 
+<<<<<<< Updated upstream
     public LoginResponse loginUser(@NotNull String email, @NotNull String password) {
+=======
+    public LoginResponse loginUser(@NotNull String email, @NotNull String password) throws UsernameNotFoundException{
+>>>>>>> Stashed changes
         if (email == null || password == null) {
             throw new IllegalArgumentException("Email and password are must to login");
         }
@@ -82,8 +90,12 @@ public class UserServiceImpl {
                     .accessToken(token)
                     .build();
 
-        } catch (UsernameNotFoundException userEx) {
+        /*} catch (UsernameNotFoundException userEx) {
             logger.error("Invalid credentials " + userEx.getMessage());
+<<<<<<< Updated upstream
+=======
+*/
+>>>>>>> Stashed changes
         } catch (BadCredentialsException bcEx) {
             logger.error("Credentials you provided were wrong, please check");
         } catch (NullPointerException e) {

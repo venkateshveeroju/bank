@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+</head>
+<body>
+<h1> Thymeleaf Front End</h1>
+<tbody>
+<tr th:each="user: ${users}">
+    <td th:text="${user.name}" />
+    <td th:text="${user.email}" />
+    <p>----------------------------</p>
+</tr>
+</tbody>
+</body>
+</html>

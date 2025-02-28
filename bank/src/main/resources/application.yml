@@ -1,7 +1,11 @@
   #H2DB Database Configuration
 spring:
   datasource:
+<<<<<<< Updated upstream
     url: jdbc:h2:file:./data/bankdb;
+=======
+    url: jdbc:h2:file:C:/Users/vveeroju/Desktop/workbench/data/bankdb;AUTO_SERVER=TRUE
+>>>>>>> Stashed changes
     driverClassName: org.h2.Driver
     username: admin
     password: admin
@@ -9,6 +13,10 @@ spring:
       name: bank
   main:
     allow-circular-references: true
+
+  thymeleaf:
+    prefix: /WEB-INF/views/
+    suffix: .html
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect

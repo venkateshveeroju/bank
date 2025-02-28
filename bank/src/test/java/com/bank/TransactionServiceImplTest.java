@@ -121,6 +121,10 @@ public class TransactionServiceImplTest {
 
         Account senderAccount = new Account();
         senderAccount.setId(1L);
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
         Account destAccount = new Account();
         destAccount.setId(2L);
         destAccount.setBalance(new BigDecimal("200.00"));

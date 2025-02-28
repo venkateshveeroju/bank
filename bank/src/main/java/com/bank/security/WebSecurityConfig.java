@@ -56,10 +56,11 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/api/v1/accounts/**").permitAll()
+                        .requestMatchers("/demo/v1/**").permitAll()
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers("/h2/**").permitAll()
                         .requestMatchers("/api/transfer/**").hasRole("USER")
-                        .requestMatchers("/api/test/admin/**").hasRole("USER")
+                        .requestMatchers("/api/test/**").hasRole("USER")
                         .requestMatchers("/api/test/user/**").hasAuthority("READ_PRIVILEGE")
                         .requestMatchers("/api/test/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()

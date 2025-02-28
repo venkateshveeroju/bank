@@ -5,6 +5,7 @@ import com.bank.repository.UserRepository;
 import com.bank.security.*;
 import io.jsonwebtoken.Claims;
 import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,8 @@ public class TestController {
     }
 
     @GetMapping("/admin1")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') && hasRole('ROLE_USER')")
+    @Operation(summary = "Get data", description = "Retrieve some data")
     public String admin() {
         return "Hello Admin ";
     }
@@ -80,6 +82,9 @@ public class TestController {
     public Long getUserId(Principal principal) {
         return ((UserPrinciple) ((UserPrincipleAuthenticationToken) principal).getPrincipal()).getUserId();
     }
-
+    @GetMapping(value = "/azure")
+    public String azureUserMethod() {
+        return "Hello, Test is working";
+    }
 
 }

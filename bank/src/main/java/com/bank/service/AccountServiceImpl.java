@@ -90,12 +90,6 @@ public class AccountServiceImpl {
             user.setAccount(acc);
             user.setAddress(address);
 
-            /*acc.setUser(user);
-            acc.setUpdatedTimeStamp(Date.from(Instant.now()));
-            address.setUser(user);
-
-            addressRepository.save(address);
-            Account ac = accountRepository.save(acc);*/
             userRepository.save(user);
             userCreated = accountMapper.convertToUserCreated(acc);
             logger.info("Account creation successful " + userCreated.toString());
@@ -109,11 +103,15 @@ public class AccountServiceImpl {
     @PreAuthorize("hasRole('ROLE_USER')")
     public AccountM getAccount(@NonNull String accountNumber) {
         AccountM accM;
+<<<<<<< Updated upstream
         Account account = accountRepository.findByAccountNumber(accountNumber)
                 .orElseThrow(() -> new IllegalArgumentException("Account does not exist : " + accountNumber));
         /*if (account == null) {
             throw new IllegalArgumentException("Account does not exist : " + accountNumber);
         }*/
+=======
+        Account account = accountRepository.findByAccountNumber(accountNumber).orElseThrow(() -> new IllegalArgumentException("Account does not exist : " + accountNumber));
+>>>>>>> Stashed changes
 
         accM = accountMapper.convertToAccountM(Optional.ofNullable(account));
 
@@ -138,9 +136,13 @@ public class AccountServiceImpl {
     @PreAuthorize("hasRole('ROLE_USER')")
     public AccountM depositToAccount(@NonNull String accountNumber, BigDecimal depositAmount) {
         // Fetch the account once
+<<<<<<< Updated upstream
         Optional<Account> optionalAccount = Optional.ofNullable(accountRepository.findByAccountNumber(accountNumber)
                 .orElseThrow(() -> new IllegalArgumentException("Receiver Account does not exists in our Bank")
                 ));
+=======
+        Optional<Account> optionalAccount = Optional.ofNullable(accountRepository.findByAccountNumber(accountNumber).orElseThrow(() -> new IllegalArgumentException("Receiver Account does not exists in our Bank")));
+>>>>>>> Stashed changes
 
         // Check if the account exists
         if (!optionalAccount.isPresent()) {
