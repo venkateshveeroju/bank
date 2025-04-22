@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("api/v2/")
+@RequestMapping("api/v2")
 @RestController
 @Hidden
 public class AccountControllerV2 {

@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com</groupId>
-    <artifactId>Demo Bank Project</artifactId>
+    <artifactId>demo-bank-project</artifactId>
     <version>1.0</version>
     <name>bank</name>
     <description>Demo project for Spring Boot + openapi</description>
@@ -59,14 +59,10 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-
         <!-- Bean Validation API -->
         <dependency>
             <groupId>javax.validation</groupId>
@@ -74,12 +70,21 @@
             <version>2.0.1.Final</version>
         </dependency>
 
+
+
         <!-- Hibernate Validator (implementation of the Bean Validation) -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.10.Final</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -130,6 +135,7 @@
                         <artifactId>handlebars</artifactId>
                         <version>4.3.0</version>
                     </dependency>
+
                 </dependencies>
                 <executions>
                     <execution>

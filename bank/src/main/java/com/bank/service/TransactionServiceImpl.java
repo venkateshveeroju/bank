@@ -7,20 +7,24 @@ import com.bank.model.TransactionM;
 import com.bank.model.TransferRequest;
 import com.bank.repository.AccountRepository;
 import com.bank.repository.TransactionRepository;
-import com.bank.repository.UserRepository;
 import com.bank.security.UserPrinciple;
 import jakarta.transaction.Transactional;
 import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -59,12 +63,16 @@ public class TransactionServiceImpl {
     public TransactionM transfer(TransferRequest body) {
         this.validateTransferRequest(body);
         Optional<Account> account = accountRepository.findByAccountNumber(body.getSenderAccount());
-        if (account.get().getUser().getId() != UserPrinciple.builder().build().getUserId()) {
+        UserPrinciple userPrinciple = (UserPrinciple) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+        if (account.get().getUser().getId().longValue() != userPrinciple.getUserId().longValue()) {
             logger.error("You are not authorized to make a transfer");
-            throw new IllegalArgumentException("You are not authorized to make a transfer");
+            throw new IllegalArgumentException("You are not authorized to make a transfer, Only logged User / Admin is allowed to transfer funds");
         }
         TransactionM transactionM = this.transferAmount(
-                account.get().getId(), account.get().getUser().getName(), body.getSenderAccount(), body.getReceiverAccount(), body.getAmount());
+                account.get().getId().longValue(), account.get().getUser().getName(), body.getSenderAccount(), body.getReceiverAccount(), body.getAmount());
         return transactionM;
     }
 
@@ -82,7 +90,6 @@ public class TransactionServiceImpl {
         transaction.setCreatedTimeStamp(Date.from(Instant.now()));
         transactionRepository.save(transaction);
         return accountMapper.convertToTransactionM(transaction);
-
     }
 
     public void validateTransferRequest(@NonNull TransferRequest body) {
@@ -97,5 +104,32 @@ public class TransactionServiceImpl {
             logger.error("Amount cannot be empty ");
             throw new IllegalArgumentException("Amount cannot be empty ");
         }
+    }
+
+    public List<Transaction> getTransactions(String accountNo) {
+        // transactionRepository.findBySenderAccountOrReceiverAccount(accountNo,"");
+        return transactionRepository
+                .findAll()
+                .parallelStream()
+                .filter(trxHistory -> accountNo.equals(trxHistory.getSenderAccount()))
+                .toList();
+    }
+
+    public List<Transaction> getFilteredTransactions(String accountNumber,
+                                                     Date startDate,
+                                                     Date endDate,
+                                                     BigDecimal minAmount,
+                                                     BigDecimal maxAmount) {
+
+        // Convert Date to LocalDate
+        LocalDate startLocalDate = (startDate != null) ? startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
+        LocalDate endLocalDate = (endDate != null) ? endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
+
+        return transactionRepository.findBySenderAccount(accountNumber).stream()
+                .filter(tx -> startLocalDate == null || !tx.getCreatedTimeStamp().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().isBefore(startLocalDate))
+                .filter(tx -> endLocalDate == null || !tx.getCreatedTimeStamp().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().isAfter(endLocalDate))
+                .filter(tx -> minAmount == null || tx.getAmount().compareTo(minAmount) >= 0)
+                .filter(tx -> maxAmount == null || tx.getAmount().compareTo(maxAmount) <= 0)
+                .collect(Collectors.toList());
     }
 }

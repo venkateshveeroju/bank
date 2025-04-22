@@ -21,6 +21,21 @@ public class ApplicationExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
         return new ResponseEntity(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<String> handleEmailAlreadyExists(EmailAlreadyExistsException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);  // 400 - Bad Request
+    }
+
+    @ExceptionHandler(RoleNotFoundException.class)
+    public ResponseEntity<String> handleRoleNotFound(RoleNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);  // 404 - Not Found
+    }
+
+    @ExceptionHandler(AccountCreationException.class)
+    public ResponseEntity<String> handleAccountCreationError(AccountCreationException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);  // 500 - Internal Server Error
+    }
+
 
     @ExceptionHandler(value = NoSuchElementException.class)
     public ResponseEntity noSuchElementEx(NoSuchElementException ex) {

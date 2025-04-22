@@ -7,6 +7,7 @@ import com.bank.model.TransactionM;
 import com.bank.model.UserCreated;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Component
@@ -35,11 +36,15 @@ public class AccountMapper {
 
     public TransactionM convertToTransactionM(Transaction transaction) {
         TransactionM transactionM = new TransactionM();
-       // transactionM.setSenderId(BigDecimal.valueOf(transaction.getUserId()));
+        transactionM.setId(BigDecimal.valueOf(transaction.getUserId()));
         transactionM.setAmount(transaction.getAmount());
         transactionM.setReceiverAccount(transaction.getReceiverAccount());
         transactionM.setSenderAccount(transaction.getSenderAccount());
         transactionM.setCreatedTimeStamp(transaction.getCreatedTimeStamp());
+        transactionM.setLastModifiedBy(transaction.getLastModifiedBy());
+        transactionM.setLastUpdatedBy(transaction.getLastUpdatedBy());
+        transactionM.setUpdatedTimeStamp(transaction.getUpdatedTimeStamp());
+        transactionM.setRandomUUId(transaction.getRandomUUId());
         transactionM.setTransactionId(transaction.getRandomUUId().toString());
         transactionM.setTransactionBy(transaction.getLastModifiedBy());
         return transactionM;

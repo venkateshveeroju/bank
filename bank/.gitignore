@@ -1,33 +1,24 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
+bank/mvnw.cmd
+/.idea
+bank.iml
+/target
+/${project..directory}/generated-sources/generated-sources
+mvnw
+mvnw.cmd
+.mvn/wrapper/maven-wrapper.properties
+logs/bank.log.2024-07-22.0.gz
+.terraform.lock.hcl
+.terraform.lock.hcl
+.terraform/providers/registry.terraform.io/hashicorp/azurerm/3.0.2/windows_amd64/terraform-provider-azurerm_v3.0.2_x5.exe
+.terraform.lock.hcl
+.terraform/providers/registry.terraform.io/hashicorp/azurerm/3.0.2/windows_amd64/terraform-provider-azurerm_v3.0.2_x5.exe
+.terraform/providers/registry.terraform.io/hashicorp/random/3.6.2/windows_amd64/terraform-provider-random_v3.6.2_x5.exe
+.vscode/settings.json
+logs/bank.log.2024-09-09.0.gz
+logs/bank.log.2024-09-17.1.gz
+logs/bank.log.2025-02-25.0.gz
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+azure notes.txt

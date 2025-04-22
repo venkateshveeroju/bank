@@ -56,8 +56,9 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/api/v1/accounts/**").permitAll()
+                       // .requestMatchers("/api/v1/user/**").permitAll()
                         .requestMatchers("/demo/v1/**").permitAll()
-                        .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/api/auth/login").permitAll()
                         .requestMatchers("/h2/**").permitAll()
                         .requestMatchers("/api/transfer/**").hasRole("USER")
                         .requestMatchers("/api/test/**").hasRole("USER")

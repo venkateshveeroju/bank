@@ -1,9 +1,7 @@
 package com.bank.entity;
 
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

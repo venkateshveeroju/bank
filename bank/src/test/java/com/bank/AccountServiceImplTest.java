@@ -81,7 +81,7 @@ class AccountServiceImplTest {
                 "      \"postalCode\": \"501510\"\n" +
                 "    },\n" +
                 "    \"account\": {\n" +
-                "      \"accountNumber\": \"A1234\",\n" +
+                "      \"accountNumber\": \"fullName001001\",\n" +
                 "      \"balance\": 5000,\n" +
                 "      \"status\": \"string\",\n" +
                 "      \"createdTimeStamp\": \"2024-07-04T15:34:29.975Z\",\n" +
@@ -128,7 +128,7 @@ class AccountServiceImplTest {
     @Test
     public void testGetAccountSuccess() {
         // Arrange
-        String accountNumber = "12345";
+        String accountNumber = "fullName001001";
 
         // Create a sample Account object
         Account account = new Account();

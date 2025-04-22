@@ -10,13 +10,13 @@ info:
 
   version: '1.0'
 servers:
-  - url: '{protocol}://localhost:8081/{basePath}'
-    description: My API locally hosted release
+  - url: '{protocol}://localhost:8080/{basePath}'
+    description: My API locally hosted Dev Server
 security:
   - bearerAuth: []
 
 tags:
-  - name: accounts
+  - name: Account
     description: Operations between bank accounts
 paths:
   /accounts/create-account:
@@ -55,6 +55,7 @@ paths:
         - Account
       summary: Get account balance
       description: Get account information using account number
+      operationId: getBalance
       parameters:
         - name: accountNumber
           in: path
@@ -103,8 +104,96 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountNotFoundError'
+  /accounts/transactions/{accountNumber}:
+    get:
+      security:
+        - bearerAuth:
+            - ROLE_USER
+      tags:
+        - Account
+      summary: Shows the transactions specific to an account
+      description: Shows the transactions specific to an account
+      operationId: getTransactionsOfAnAccount
+      parameters:
+        - name: accountNumber
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "A3C0C6510"
+      responses:
+        200:
+          description: Transaction details will be provided
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionM'
+        404:
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountNotFoundError'
+        401:
+          description: Authorization information is missing or invalid.
+        503:
+          description: Unexpected error.
+
+  /accounts/transactions/filtered:
+    post:
+      summary: Get filtered transactions
+      description: Fetch a list of transactions filtered by account number, date range, and amount.
+      operationId: getFilteredTransactions
+      requestBody:
+        description: Criteria for filtering the transactions
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                accountNumber:
+                  type: string
+                  example: "A3C0C6510"
+                  description: The account number to filter by.
+                startDate:
+                  type: string
+                  format: date
+                  example: "2023-01-01"
+                  description: The start date of the range to filter transactions.
+                endDate:
+                  type: string
+                  format: date
+                  example: "2023-12-31"
+                  description: The end date of the range to filter transactions.
+                minAmount:
+                  type: number
+                  example: 100
+                  description: The minimum amount to filter transactions.
+                maxAmount:
+                  type: number
+                  example: 1000
+                  description: The maximum amount to filter transactions.
+      responses:
+        '200':
+          description: A list of filtered transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionM'
+        '400':
+          description: Bad request (e.g., invalid parameters)
+        '500':
+          description: Internal server error
   /user/{accountNumber}:
     get:
+      security:
+        - bearerAuth:
+            - ROLE_USER
       tags:
         - User
       summary: Retrieves Person information
@@ -116,7 +205,6 @@ paths:
           required: true
           schema:
             type: string
-
       responses:
         200:
           description: Person Information Retrieved
@@ -130,6 +218,71 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountNotFoundError'
+        401:
+          description: Authorization information is missing or invalid.
+        503:
+          description: Unexpected error.
+
+  /user/users:
+    get:
+      security:
+        - bearerAuth:
+            - ROLE_USER
+      tags:
+        - User
+      summary: Retrieves Person information
+      description: Retrieves Person information using User id.
+      operationId: getAllUsers
+      responses:
+        200:
+          description: Person Information Retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+        404:
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountNotFoundError'
+        401:
+          description: Authorization information is missing or invalid.
+        503:
+          description: Unexpected error.
+  /user/delete:
+    get:
+      security:
+        - bearerAuth:
+            - ROLE_USER
+      tags:
+        - User
+      summary: Retrieves Person information
+      description: Retrieves Person information using User id.
+      operationId: deleteUserByAccountNumber
+      parameters:
+        - name: accountNumber
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: User Information deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+        404:
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountNotFoundError'
         401:
           description: Authorization information is missing or invalid.
         503:
@@ -208,6 +361,7 @@ components:
           example: 'country name'
         postalCode:
           type: string
+          pattern: '^\d{6}$'
           example: '501510'
 
 
@@ -255,6 +409,7 @@ components:
         balance:
           type: number
           example: 5000.00
+          minimum: 0
         status:
           type: string
         createdTimeStamp:
@@ -269,6 +424,7 @@ components:
       properties:
         accountNumber:
           type: string
+          readOnly: true
           example: 'A1234'
         balance:
           type: number
@@ -290,6 +446,10 @@ components:
 
     TransferRequest:
       type: object
+      required:
+        - senderAccount
+        - receiverAccount
+        - amount
       properties:
         senderAccount:
           type: string

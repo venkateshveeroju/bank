@@ -7,19 +7,23 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
-    public UserInfo convertToAccountM(User User) {
-        AddressM address = new AddressM();
-        address.setStreet(User.getAddress().getStreet());
-        address.setCity(User.getAddress().getCity());
-        address.setState(User.getAddress().getState());
-        address.setCountry(User.getAddress().getCountry());
-        address.setPostalCode(User.getAddress().getPostalCode());
-
+    public UserInfo convertToAccountM(User user) {
 
         UserInfo UserInfo = new UserInfo();
-        UserInfo.setEmail(User.getEmail());
-        UserInfo.setName(User.getName());
+        if(user != null) {
+            AddressM address = new AddressM();
+            address.setStreet(user.getAddress().getStreet());
+            address.setCity(user.getAddress().getCity());
+            address.setState(user.getAddress().getState());
+            address.setCountry(user.getAddress().getCountry());
+            address.setPostalCode(user.getAddress().getPostalCode());
+
+
+
+        UserInfo.setEmail(user.getEmail());
+        UserInfo.setName(user.getName());
         UserInfo.setAddress(address);
+        }
         return UserInfo;
     }
 

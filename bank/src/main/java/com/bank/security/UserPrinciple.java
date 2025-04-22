@@ -5,8 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @Builder
 public class UserPrinciple implements UserDetails {

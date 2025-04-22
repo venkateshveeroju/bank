@@ -33,9 +33,5 @@ public class Address {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    public Address(LocalDateTime createdTimeStamp, LocalDateTime updatedTimeStamp, String lastModifiedBy, String lastUpdatedBy, UUID corrId) {
-        super();
-    }
-
 
 }

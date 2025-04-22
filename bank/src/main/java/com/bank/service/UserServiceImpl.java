@@ -22,8 +22,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -44,11 +46,9 @@ public class UserServiceImpl {
         Optional<Account> accountObj = accountRepository.findByAccountNumber(accountNumber);
         UserInfo userInfo = null;
         try {
-<<<<<<< Updated upstream
-            Optional<User> user = userRepository.findById(accountObj.get().getUser().getId());
-=======
+
             Optional<User> user = userRepository.findById(accountObj.get().getId());
->>>>>>> Stashed changes
+
             userInfo = userMapper.convertToAccountM(user.get());
         } catch (UsernameNotFoundException ex) {
             throw new UsernameNotFoundException("Account Number does not exist : " + accountNumber);
@@ -62,11 +62,18 @@ public class UserServiceImpl {
         return userInfo;
     }
 
-<<<<<<< Updated upstream
-    public LoginResponse loginUser(@NotNull String email, @NotNull String password) {
-=======
-    public LoginResponse loginUser(@NotNull String email, @NotNull String password) throws UsernameNotFoundException{
->>>>>>> Stashed changes
+    public List<UserInfo> usersList() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(user -> userMapper.convertToAccountM(user)).collect(Collectors.toList());
+    }
+
+    public UserInfo deleteUser(String accountNumber) {
+        userRepository.deleteByAccountNumber(accountNumber);
+        return null;
+    }
+
+    public LoginResponse loginUser(@NotNull String email, @NotNull String password) throws UsernameNotFoundException {
+
         if (email == null || password == null) {
             throw new IllegalArgumentException("Email and password are must to login");
         }
@@ -89,13 +96,6 @@ public class UserServiceImpl {
             loginResponse = LoginResponse.builder()
                     .accessToken(token)
                     .build();
-
-        /*} catch (UsernameNotFoundException userEx) {
-            logger.error("Invalid credentials " + userEx.getMessage());
-<<<<<<< Updated upstream
-=======
-*/
->>>>>>> Stashed changes
         } catch (BadCredentialsException bcEx) {
             logger.error("Credentials you provided were wrong, please check");
         } catch (NullPointerException e) {

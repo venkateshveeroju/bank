@@ -1,16 +1,15 @@
   #H2DB Database Configuration
 spring:
   datasource:
-<<<<<<< Updated upstream
-    url: jdbc:h2:file:./data/bankdb;
-=======
-    url: jdbc:h2:file:C:/Users/vveeroju/Desktop/workbench/data/bankdb;AUTO_SERVER=TRUE
->>>>>>> Stashed changes
+    url: jdbc:h2:file:./data/bankdb;AUTO_SERVER=TRUE
     driverClassName: org.h2.Driver
     username: admin
     password: admin
     application:
       name: bank
+  h2:
+    console:
+      enabled: true
   main:
     allow-circular-references: true
 

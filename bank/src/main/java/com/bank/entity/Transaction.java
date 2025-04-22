@@ -40,5 +40,7 @@ public class Transaction {
     //@Transient
     @Column
     private UUID randomUUId = UUID.randomUUID();
-
+    public String getRandomUUId() {
+        return randomUUId.toString();
+    }
 }
