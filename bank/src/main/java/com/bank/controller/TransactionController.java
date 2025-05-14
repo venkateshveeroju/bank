@@ -22,7 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @Hidden
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TransactionController implements TransferApi {
     @Autowired
     TransactionServiceImpl transactionServiceImpl;

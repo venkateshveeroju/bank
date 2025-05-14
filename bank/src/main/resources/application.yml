@@ -34,6 +34,12 @@ server:
 security:
   jwt:
     secret-key: thisismysecretkeydude
+  oauth2:
+    client:
+      registration:
+        google:
+          client-id: <your client id>
+          client-secret: <your client secret>
 logging:
   level:
     root: INFO
@@ -41,3 +47,4 @@ logging:
     org.hibernate: ERROR
   file:
     name: ./logs/bank.log
+

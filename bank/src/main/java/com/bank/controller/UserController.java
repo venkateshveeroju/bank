@@ -16,10 +16,7 @@ public class UserController implements UserApi {
     UserServiceImpl userService;
 
 
-    @Override
-    public ResponseEntity<UserInfo> deleteUserByAccountNumber(String accountNumber) {
-        return ResponseEntity.ok(userService.deleteUser(accountNumber));
-    }
+
 
     @Override
     public ResponseEntity<UserInfo> getAllUsers() {

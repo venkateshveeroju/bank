@@ -67,10 +67,7 @@ public class UserServiceImpl {
         return users.stream().map(user -> userMapper.convertToAccountM(user)).collect(Collectors.toList());
     }
 
-    public UserInfo deleteUser(String accountNumber) {
-        userRepository.deleteByAccountNumber(accountNumber);
-        return null;
-    }
+
 
     public LoginResponse loginUser(@NotNull String email, @NotNull String password) throws UsernameNotFoundException {
 

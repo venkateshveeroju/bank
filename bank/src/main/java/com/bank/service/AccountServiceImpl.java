@@ -15,11 +15,11 @@ import com.bank.model.NewAccount;
 import com.bank.model.UserCreated;
 import com.bank.repository.*;
 import jakarta.transaction.Transactional;
-import java.util.Date;
 import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -129,9 +130,15 @@ public class AccountServiceImpl {
         }
     }
 
+    public int deleteAccount(String accountNumber) {
+        int result = accountRepository.deleteByAccountNumber(accountNumber);
+        return result;
+    }
+
     private String generateAccountNumber() {
         return "A" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
     }
+
     @PreAuthorize("hasRole('ROLE_USER')")
     public AccountM getAccount(@NonNull String accountNumber) {
         AccountM accM;
@@ -181,5 +188,15 @@ public class AccountServiceImpl {
         } else if (newAccount.getUser().getName() == null || newAccount.getUser().getName().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be empty ");
         }
+    }
+
+    public ResponseEntity<List<AccountM>> getAllAccounts() {
+        List<AccountM> accountMList = accountRepository
+                .findAll()
+                .stream()
+                .map(account -> accountMapper.convertToAccountM(Optional.ofNullable(account)))
+                .collect(Collectors.toList());
+        //ResponseEntity<List<AccountM>> accountMList1 = (org.springframework.http.ResponseEntity<List<AccountM>>) accountMList;
+        return ResponseEntity.ok(accountMList) ;
     }
 }

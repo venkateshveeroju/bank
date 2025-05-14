@@ -13,6 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableMethodSecurity
@@ -56,7 +59,6 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/api/v1/accounts/**").permitAll()
-                       // .requestMatchers("/api/v1/user/**").permitAll()
                         .requestMatchers("/demo/v1/**").permitAll()
                         .requestMatchers("/api/auth/login").permitAll()
                         .requestMatchers("/h2/**").permitAll()
@@ -82,4 +84,5 @@ public class WebSecurityConfig {
                 .passwordEncoder(passwordEncoder());
         return authManagerBuilder.build();
     }
+
 }

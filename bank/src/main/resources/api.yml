@@ -13,7 +13,7 @@ servers:
   - url: '{protocol}://localhost:8080/{basePath}'
     description: My API locally hosted Dev Server
 security:
-  - bearerAuth: []
+  - bearerAuth: [ ]
 
 tags:
   - name: Account
@@ -195,7 +195,7 @@ paths:
         - bearerAuth:
             - ROLE_USER
       tags:
-        - User
+        - Account
       summary: Retrieves Person information
       description: Retrieves Person information using User id.
       operationId: UserId
@@ -222,7 +222,6 @@ paths:
           description: Authorization information is missing or invalid.
         503:
           description: Unexpected error.
-
   /user/users:
     get:
       security:
@@ -252,13 +251,13 @@ paths:
           description: Authorization information is missing or invalid.
         503:
           description: Unexpected error.
-  /user/delete:
+  /accounts/delete/{accountNumber}:
     get:
       security:
         - bearerAuth:
             - ROLE_USER
       tags:
-        - User
+        - Account
       summary: Retrieves Person information
       description: Retrieves Person information using User id.
       operationId: deleteUserByAccountNumber
@@ -270,19 +269,41 @@ paths:
             type: string
       responses:
         200:
-          description: User Information deleted successfully
+          description: Account deleted successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserInfo'
+                type: number
         404:
           description: Account not found
+          content:
+
+        401:
+          description: Authorization information is missing or invalid.
+        503:
+          description: Unexpected error.
+  /accounts:
+    get:
+      security:
+        - bearerAuth:
+            - ROLE_USER
+      tags:
+        - Account
+      summary: Retrieves All Accounts
+      description: Retrieves All Accounts
+      operationId: getAllAccounts
+      responses:
+        200:
+          description: Account fetched successfully
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/AccountNotFoundError'
+                  $ref: '#/components/schemas/AccountM'
+        404:
+          description: Account not exists
+          content:
         401:
           description: Authorization information is missing or invalid.
         503:
@@ -322,7 +343,7 @@ paths:
 # 1) Define the security scheme type (HTTP bearer)
 components:
   securitySchemes:
-    bearerAuth:            # arbitrary name for the security scheme
+    bearerAuth: # arbitrary name for the security scheme
       type: http
       scheme: bearer
       bearerFormat: JWT
@@ -342,8 +363,6 @@ components:
       properties:
         User:
           $ref: '#/components/schemas/UserM'
-
-
     AddressM:
       type: object
       properties:
@@ -363,8 +382,6 @@ components:
           type: string
           pattern: '^\d{6}$'
           example: '501510'
-
-
     UserM:
       type: object
       properties:
@@ -384,8 +401,6 @@ components:
           $ref: '#/components/schemas/AddressM'
         account:
           $ref: '#/components/schemas/AccountM'
-
-
     UserInfo:
       type: object
       properties:
@@ -398,8 +413,6 @@ components:
           example: 'maxmuller@gmail.com'
         address:
           $ref: '#/components/schemas/AddressM'
-
-
     UserCreated:
       type: object
       properties:
@@ -418,7 +431,6 @@ components:
         UpdatedTimeStamp:
           type: string
           format: date-time # or date-time
-
     AccountM:
       type: object
       properties:
@@ -437,13 +449,11 @@ components:
         UpdatedTimeStamp:
           type: string
           format: date-time # or date-time
-
     AccountNotFoundError:
       type: object
       properties:
         message:
           type: string
-
     TransferRequest:
       type: object
       required:
@@ -457,7 +467,6 @@ components:
           type: string
         amount:
           type: number
-
     TransactionM:
       type: object
       properties:
@@ -488,7 +497,6 @@ components:
           type: string
         transactionBy:
           type: string
-
     DepositRequest:
       type: object
       properties:

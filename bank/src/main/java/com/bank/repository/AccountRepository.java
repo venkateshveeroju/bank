@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.Optional;
+
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Account> findById(Long id);
-   // @Query(value = "SELECT * FROM ACCOUNT WHERE ACCOUNT_NUMBER =:accountNumber", nativeQuery = true)
+
+    // @Query(value = "SELECT * FROM ACCOUNT WHERE ACCOUNT_NUMBER =:accountNumber", nativeQuery = true)
     Optional<Account> findByAccountNumber(String accountNumber);
 
 

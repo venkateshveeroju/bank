@@ -120,11 +120,7 @@ class AccountServiceImplTest {
         assertTrue(exception.getMessage().contains("User already exists in system with Email : john.doe@example.com"));
     }
 
-    /*@Test
-    public void testConvertToAccountM_WithEmptyOptional() {
-        Optional<Account> optionalAccount = Optional.empty();
-         accountMapper.convertToAccountM(optionalAccount);
-    }*/
+
     @Test
     public void testGetAccountSuccess() {
         // Arrange

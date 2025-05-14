@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,9 +43,23 @@ public class AccountController implements AccountsApi {
     }
 
     @Override
+    public ResponseEntity<BigDecimal> deleteUserByAccountNumber(String accountNumber) {
+        int n = accountService.deleteAccount(accountNumber);
+        String response = n == 1 ? "Account deleted successfully" : "Account is not deleted, please try again";
+        return ResponseEntity.ok(BigDecimal.valueOf(n));
+    }
+
+
+    @Override
     public ResponseEntity<AccountM> depositToAccount(@NonNull DepositRequest body) {
         return new ResponseEntity<>(accountService.depositToAccount(body.getAccountNumber(), body.getAmount()), HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<List<AccountM>> getAllAccounts() {
+        return  accountService.getAllAccounts();
+    }
+
 
     @Override
     public ResponseEntity<AccountM> getBalance(String accountNumber) {

@@ -16,9 +16,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     String findEmailByEmail(@Param("email") String email);
 
     Optional<User> findByEmail(String email);
-
-    Optional<User> deleteByAccountNumber(String accountNumber);
-
     @Override
     List<User> findAll();
 }

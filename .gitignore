@@ -11,3 +11,6 @@ bank/${project..directory}/generated-sources/generated-sources/__project/groupId
 /bank/${project..directory}/generated-sources
 /bank/${project..directory}/generated-sources
 /bank
+bank/logs/bank.log
+bank/${project..directory}/generated-sources/generated-sources/__project/groupId/artifactId_/model/Account.java
+bank/${project..directory}/generated-sources/generated-sources/__project/groupId/artifactId_/model/Account.java
